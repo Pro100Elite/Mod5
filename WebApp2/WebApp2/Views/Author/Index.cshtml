@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApp2.Models.AuthorViewModel>
+
+@{
+    ViewBag.Title = "Authors";
+}
+<h3>@ViewBag.Message</h3>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <p>
+            @foreach (var author in Model)
+            {
+                <div>
+                    @author.Id, @author.Name
+                    <div>
+                        @Html.ActionLink("Подробнее", "Details", new { id = author.Id})
+                    </div>
+                    <hr />
+                </div>
+            }
+        </p>
+    </div>
+</body>
+</html>

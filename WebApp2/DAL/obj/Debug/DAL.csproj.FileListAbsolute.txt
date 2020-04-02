@@ -1,0 +1,11 @@
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\DAL.dll.config
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\DAL.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\DAL.pdb
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\obj\Debug\DAL.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\DAL\obj\Debug\DAL.pdb

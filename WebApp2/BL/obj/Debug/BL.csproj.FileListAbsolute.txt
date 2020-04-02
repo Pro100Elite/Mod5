@@ -1,0 +1,14 @@
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\BL.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\BL.pdb
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\AutoMapper.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\DAL.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\EntityFramework.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\DAL.pdb
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\DAL.dll.config
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\AutoMapper.pdb
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\AutoMapper.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\bin\Debug\EntityFramework.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\obj\Debug\BL.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\BL\obj\Debug\BL.pdb

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp2", "WebApp2\WebApp2.csproj", "{F9BCED38-EE46-4E3C-BD1F-9D2CC676B13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8C15A904-BFD6-453B-8900-0EB1D58C2B6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{4C8B2466-EA95-4916-B2B8-0BC1394190DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9BCED38-EE46-4E3C-BD1F-9D2CC676B13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9BCED38-EE46-4E3C-BD1F-9D2CC676B13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9BCED38-EE46-4E3C-BD1F-9D2CC676B13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9BCED38-EE46-4E3C-BD1F-9D2CC676B13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C15A904-BFD6-453B-8900-0EB1D58C2B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C15A904-BFD6-453B-8900-0EB1D58C2B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C15A904-BFD6-453B-8900-0EB1D58C2B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C15A904-BFD6-453B-8900-0EB1D58C2B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51F3B004-EB12-4359-AD27-542B2AE343C8}
+	EndGlobalSection
+EndGlobal
