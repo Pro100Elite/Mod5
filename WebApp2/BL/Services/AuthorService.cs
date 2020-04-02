@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BL.Services
 {
-    public class AuthorService: IAuthorService
+    public class AuthorService : IAuthorService
     {
         private readonly IAuthorRepository _repository;
 
@@ -23,7 +23,11 @@ namespace BL.Services
 
         public IEnumerable<AuthorModel> GetAuthors()
         {
-            var config = new MapperConfiguration(con => con.CreateMap<Author, AuthorModel>());
+            var config = new MapperConfiguration(con =>
+            {
+                con.CreateMap<Author, AuthorModel>();
+                con.CreateMap<Article, ArticleModel>();;
+            });
 
             var mapper = new Mapper(config);
 

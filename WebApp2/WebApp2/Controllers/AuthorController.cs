@@ -23,7 +23,11 @@ namespace WebApp2.Controllers
         // GET: Author
         public ActionResult Index()
         {
-            var config = new MapperConfiguration(con => con.CreateMap<AuthorModel, AuthorViewModel>());
+            var config = new MapperConfiguration(con =>
+            {
+                con.CreateMap<AuthorModel, AuthorViewModel>();
+                con.CreateMap<ArticleModel, ArticleViewModel>();
+            });
 
             var mapper = new Mapper(config);
 
@@ -36,7 +40,11 @@ namespace WebApp2.Controllers
         // GET: Author/Details/5
         public ActionResult Details(int id)
         {
-            var config = new MapperConfiguration(con => con.CreateMap<AuthorModel, AuthorViewModel>());
+            var config = new MapperConfiguration(con => 
+            {
+                con.CreateMap<AuthorModel, AuthorViewModel>();
+                con.CreateMap<ArticleModel, ArticleViewModel>();
+            });
 
             var mapper = new Mapper(config);
 
