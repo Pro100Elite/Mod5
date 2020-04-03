@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface IAuthorRepository
     {
         IEnumerable<Author> GetAuthors();
+        void Create(Author author);
     }
 }

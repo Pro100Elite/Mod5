@@ -10,7 +10,7 @@ namespace DAL.Models
     public class Author
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
 

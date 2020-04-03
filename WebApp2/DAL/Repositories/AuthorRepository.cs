@@ -19,5 +19,14 @@ namespace DAL.Repositories
                 return result;
             }
         }
+
+        public void Create(Author author)
+        {
+            using (var _ctx = new MyContext())
+            {
+                _ctx.Authors.Add(author);
+                _ctx.SaveChanges();
+            }
+        }
     }
 }

@@ -66,7 +66,16 @@ namespace WebApp2.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                var config = new MapperConfiguration(con =>
+                {
+                    con.CreateMap<FormCollection,AuthorModel>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src["name"])); 
+                });
+
+                var mapper = new Mapper(config);
+
+                var author = mapper.Map<AuthorModel>(collection);
+                _service.Create(author);
 
                 return RedirectToAction("Index");
             }

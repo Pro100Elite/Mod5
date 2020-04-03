@@ -10,5 +10,6 @@ namespace BL.Interfaces
     public interface IAuthorService
     {
         IEnumerable<AuthorModel> GetAuthors();
+        void Create(AuthorModel authorModel);
     }
 }

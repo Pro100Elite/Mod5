@@ -13,7 +13,7 @@
     <title>Details</title>
 </head>
 <body>
-    <div>
+    <div class="panel">
         @Html.DisplayNameFor(model => model.Id)
         @Html.DisplayFor(model => model.Id)
 
@@ -22,8 +22,12 @@
         <p>
             @foreach (var obj in Model.Articles)
             {
-                @obj.Title
-                <img src="@Url.Content(obj.Img)" width="400" alt="IMAGES" />
+                <div class="panel-body">
+                    @obj.Title
+                    <div class="pager">
+                        <img src="@Url.Content(obj.Img)" width="400" alt="IMAGES" />
+                    </div>
+                </div>
             }
         </p>
     </div>

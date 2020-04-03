@@ -13,11 +13,11 @@
     <title>Index</title>
 </head>
 <body>
-    <div>
+    <div class="jumbotron">
         <p>
             @foreach (var author in Model)
             {
-                <div>
+                <div class="panel-group">
                     @author.Id, @author.Name
                     <div>
                         @Html.ActionLink("Подробнее", "Details", new { id = author.Id})

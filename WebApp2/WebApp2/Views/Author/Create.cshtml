@@ -1,0 +1,12 @@
+﻿@model WebApp2.Models.AuthorViewModel
+
+@{
+    ViewBag.Title = "CreateAuthors";
+}
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())
+{
+    <div >@Html.LabelFor(m => m.Name)@Html.EditorFor(m => m.Name)</div>
+    <button type="submit">Отправить</button>
+}

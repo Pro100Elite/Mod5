@@ -13,23 +13,27 @@
     <title>Index</title>
 </head>
 <body>
-    <div>
+    <div class="jumbotron">
         <p>
             @foreach (var article in Model)
             {
-                <div>
-                    @article.Id, @article.Title
-                    <div>
+                <div class="panel">
+                    <div class="panel-body">
+                        @article.Id
+                        <div>
+                            @article.Title
+                        </div>
+                    </div>
+                    <div class="pager">
                         @if (article.Img == null)
                         {
                             article.Img = "~/Resourses/firefox.png";
                         }
                         <img src="@Url.Content(article.Img)" width="400" alt="IMAGES" />
                     </div>
-                    <div>
+                    <div class="pager">
                         @article.Txt
                     </div>
-                    <hr />
                 </div>
             }
         </p>
