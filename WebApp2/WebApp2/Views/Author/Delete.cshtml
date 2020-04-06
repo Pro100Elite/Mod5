@@ -1,0 +1,12 @@
+﻿@model WebApp2.Models.AuthorViewModel
+
+@{
+    ViewBag.Title = "DeleteAuthors";
+}
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm())
+{
+    <div>@Html.LabelFor(m => m.Id)@Html.EditorFor(m => m.Id)</div>
+    <button type="submit">Отправить</button>
+}

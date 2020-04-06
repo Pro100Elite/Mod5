@@ -48,5 +48,10 @@ namespace BL.Services
             var author = mapper.Map<Author>(authorModel);
             _repository.Create(author);
         }
+
+        public void Delete(int Id)
+        {
+            _repository.Delete(Id);
+        }
     }
 }

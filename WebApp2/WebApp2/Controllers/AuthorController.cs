@@ -40,7 +40,7 @@ namespace WebApp2.Controllers
         // GET: Author/Details/5
         public ActionResult Details(int id)
         {
-            var config = new MapperConfiguration(con => 
+            var config = new MapperConfiguration(con =>
             {
                 con.CreateMap<AuthorModel, AuthorViewModel>();
                 con.CreateMap<ArticleModel, ArticleViewModel>();
@@ -68,8 +68,8 @@ namespace WebApp2.Controllers
             {
                 var config = new MapperConfiguration(con =>
                 {
-                    con.CreateMap<FormCollection,AuthorModel>()
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src["name"])); 
+                    con.CreateMap<FormCollection, AuthorModel>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src["name"]));
                 });
 
                 var mapper = new Mapper(config);
@@ -98,7 +98,6 @@ namespace WebApp2.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -108,19 +107,20 @@ namespace WebApp2.Controllers
         }
 
         // GET: Author/Delete/5
-        public ActionResult Delete(int id)
+        //[HttpGet]
+        public ActionResult Delete()
         {
             return View();
         }
 
         // POST: Author/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                _service.Delete(id);
                 return RedirectToAction("Index");
             }
             catch

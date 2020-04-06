@@ -11,5 +11,6 @@ namespace BL.Interfaces
     {
         IEnumerable<AuthorModel> GetAuthors();
         void Create(AuthorModel authorModel);
+        void Delete(int Id);
     }
 }

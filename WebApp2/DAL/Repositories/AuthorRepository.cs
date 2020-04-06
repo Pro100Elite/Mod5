@@ -28,5 +28,15 @@ namespace DAL.Repositories
                 _ctx.SaveChanges();
             }
         }
+
+        public void Delete(int Id)
+        {
+            using (var _ctx = new MyContext())
+            {
+                var deleteItem = _ctx.Authors.Find(Id);
+                _ctx.Authors.Remove(deleteItem);
+                _ctx.SaveChanges();
+            }
+        }
     }
 }
