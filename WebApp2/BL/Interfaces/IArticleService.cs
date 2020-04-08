@@ -10,5 +10,6 @@ namespace BL.Interfaces
     public interface IArticleService
     {
         IEnumerable<ArticleModel> GetArticles();
+        void EditArticle(ArticleModel articleModel);
     }
 }

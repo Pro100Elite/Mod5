@@ -69,12 +69,12 @@ namespace WebApp2.Controllers
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ArticleModel articleModel)
         {
             try
             {
                 // TODO: Add update logic here
-
+                _service.EditArticle(articleModel);
                 return RedirectToAction("Index");
             }
             catch

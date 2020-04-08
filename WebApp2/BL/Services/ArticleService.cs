@@ -31,5 +31,16 @@ namespace BL.Services
 
             return articles;
         }
+
+        public void EditArticle(ArticleModel articleModel)
+        {
+            var config = new MapperConfiguration(con => con.CreateMap<ArticleModel, Article>());
+
+            var mapper = new Mapper(config);
+
+            var article = mapper.Map<Article>(articleModel);
+
+            _repository.Update(article);
+        }
     }
 }
