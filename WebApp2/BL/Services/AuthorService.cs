@@ -32,13 +32,6 @@ namespace BL.Services
 
         public void Create(AuthorModel authorModel)
         {
-            //var config = new MapperConfiguration(con =>
-            //{
-            //    con.CreateMap<AuthorModel, Author >();
-            //});
-
-            //var mapper = new Mapper(config);
-
             var author = _mapper.Map<Author>(authorModel);
             _repository.Create(author);
         }

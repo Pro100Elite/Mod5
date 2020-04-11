@@ -45,16 +45,7 @@ namespace WebApp2.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Article/Edit/5
@@ -65,18 +56,15 @@ namespace WebApp2.Controllers
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(ArticleModel articleModel)
+        public ActionResult Edit(ArticleViewModel articleModel)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
-                _service.EditArticle(articleModel);
-                return RedirectToAction("Index");
+                return View(articleModel);
             }
-            catch
-            {
-                return View();
-            }
+            var resultMap = _mapper.Map<ArticleModel>(articleModel);
+            _service.EditArticle(resultMap);
+            return RedirectToAction("Index");
         }
 
         // GET: Article/Delete/5
@@ -89,16 +77,7 @@ namespace WebApp2.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

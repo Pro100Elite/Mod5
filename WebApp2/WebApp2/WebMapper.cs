@@ -12,8 +12,8 @@ namespace WebApp2
     {
         public WebMapper()
         {
-            CreateMap<AuthorModel, AuthorViewModel>();
-            CreateMap<ArticleModel, ArticleViewModel>();
+            CreateMap<AuthorModel, AuthorViewModel>().ReverseMap();
+            CreateMap<ArticleModel, ArticleViewModel>().ReverseMap();
         }
     }
 }

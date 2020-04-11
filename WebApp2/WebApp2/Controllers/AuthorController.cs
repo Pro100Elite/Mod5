@@ -48,18 +48,15 @@ namespace WebApp2.Controllers
 
         // POST: Author/Create
         [HttpPost]
-        public ActionResult Create(AuthorModel author)
+        public ActionResult Create(AuthorViewModel author)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                _service.Create(author);
-
-                return RedirectToAction("Index");
+                return View(author);
             }
-            catch
-            {
-                return View();
-            }
+            var resultMap = _mapper.Map<AuthorModel>(author);
+            _service.Create(resultMap);
+            return RedirectToAction("Index");
         }
 
         // GET: Author/Edit/5
@@ -72,15 +69,7 @@ namespace WebApp2.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Author/Delete/5
@@ -94,16 +83,8 @@ namespace WebApp2.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-                _service.Delete(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _service.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

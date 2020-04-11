@@ -18,7 +18,7 @@
             @foreach (var author in Model)
             {
                 <div class="panel-group">
-                    @author.Id, @author.Name
+                    @author.Id, @author.Name, @author.Birthday
                     <div>
                         @Html.ActionLink("Подробнее", "Details", new { id = author.Id})
                     </div>
