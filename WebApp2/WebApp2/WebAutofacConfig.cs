@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
+using BL;
 using BL.Interfaces;
 using BL.Services;
 using System;
@@ -10,7 +12,7 @@ using System.Web.Mvc;
 
 namespace WebApp2
 {
-    public class AutofacConfig
+    public class WebAutofacConfig
     {
         public static void ConfigureContainer()
         {
@@ -21,7 +23,14 @@ namespace WebApp2
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             // регистрируем споставление типов
+            var config = new MapperConfiguration(cfg => cfg.AddProfiles(
+                 new List<Profile>() { new WebMapper(), new BLMapper()}));
+            builder.Register(c => config.CreateMapper());
+
             builder.RegisterType<ArticleService>().As<IArticleService>();
+            builder.RegisterType<AuthorService>().As<IAuthorService>();
+
+            builder.RegisterModule<BLAutofacConfig>();
 
             // создаем новый контейнер с теми зависимостями, которые определены выше
             var container = builder.Build();

@@ -95,3 +95,15 @@ C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.dll
 C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.pdb
 C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\EntityFramework.SqlServer.dll
 C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\EntityFramework.SqlServer.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Autofac.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Autofac.Integration.Mvc.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Autofac.pdb
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Autofac.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Autofac.Integration.Mvc.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Pro100Elite\source\Mod5\WebApp2\WebApp2\bin\BL.dll.config

@@ -11,9 +11,16 @@ namespace DAL.Repositories
 {
     public class AuthorRepository : IAuthorRepository
     {
+        private readonly IMyContext _ctx;
+
+        public AuthorRepository(IMyContext context)
+        {
+            _ctx = context;
+        }
+
         public IEnumerable<Author> GetAuthors()
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 var result = _ctx.Authors.Include(a => a.Articles).ToList();
                 return result;
@@ -22,7 +29,7 @@ namespace DAL.Repositories
 
         public void Create(Author author)
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 _ctx.Authors.Add(author);
                 _ctx.SaveChanges();
@@ -31,7 +38,7 @@ namespace DAL.Repositories
 
         public void Delete(int Id)
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 var deleteItem = _ctx.Authors.Find(Id);
                 _ctx.Authors.Remove(deleteItem);

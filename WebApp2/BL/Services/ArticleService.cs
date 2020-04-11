@@ -15,30 +15,24 @@ namespace BL.Services
     public class ArticleService: IArticleService
     {
         private readonly IArticleRepository _repository;
+        private readonly IMapper _mapper;
 
-        public ArticleService()
+        public ArticleService(IArticleRepository articleRepository, IMapper mapper)
         {
-            _repository = new ArticleRepository();
+            _repository = articleRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<ArticleModel> GetArticles()
         {
-            var config = new MapperConfiguration(con => con.CreateMap<Article, ArticleModel>());
-
-            var mapper = new Mapper(config);
-
-            var articles = mapper.Map<IEnumerable<ArticleModel>>(_repository.GetArticles());
+            var articles = _mapper.Map<IEnumerable<ArticleModel>>(_repository.GetArticles());
 
             return articles;
         }
 
         public void EditArticle(ArticleModel articleModel)
         {
-            var config = new MapperConfiguration(con => con.CreateMap<ArticleModel, Article>());
-
-            var mapper = new Mapper(config);
-
-            var article = mapper.Map<Article>(articleModel);
+            var article = _mapper.Map<Article>(articleModel);
 
             _repository.Update(article);
         }

@@ -15,37 +15,31 @@ namespace BL.Services
     public class AuthorService : IAuthorService
     {
         private readonly IAuthorRepository _repository;
+        private readonly IMapper _mapper;
 
-        public AuthorService()
+        public AuthorService(IAuthorRepository authorRepository, IMapper mapper)
         {
-            _repository = new AuthorRepository();
+            _repository = authorRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<AuthorModel> GetAuthors()
         {
-            var config = new MapperConfiguration(con =>
-            {
-                con.CreateMap<Author, AuthorModel>();
-                con.CreateMap<Article, ArticleModel>();;
-            });
-
-            var mapper = new Mapper(config);
-
-            var authors = mapper.Map<IEnumerable<AuthorModel>>(_repository.GetAuthors());
+            var authors = _mapper.Map<IEnumerable<AuthorModel>>(_repository.GetAuthors());
 
             return authors;
         }
 
         public void Create(AuthorModel authorModel)
         {
-            var config = new MapperConfiguration(con =>
-            {
-                con.CreateMap<AuthorModel, Author >();
-            });
+            //var config = new MapperConfiguration(con =>
+            //{
+            //    con.CreateMap<AuthorModel, Author >();
+            //});
 
-            var mapper = new Mapper(config);
+            //var mapper = new Mapper(config);
 
-            var author = mapper.Map<Author>(authorModel);
+            var author = _mapper.Map<Author>(authorModel);
             _repository.Create(author);
         }
 

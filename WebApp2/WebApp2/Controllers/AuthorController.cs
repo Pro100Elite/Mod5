@@ -14,24 +14,18 @@ namespace WebApp2.Controllers
     public class AuthorController : Controller
     {
         private readonly IAuthorService _service;
+        private readonly IMapper _mapper;
 
-        public AuthorController()
+        public AuthorController(IAuthorService authorService, IMapper mapper)
         {
-            _service = new AuthorService();
+            _service = authorService;
+            _mapper = mapper;
         }
 
         // GET: Author
         public ActionResult Index()
         {
-            var config = new MapperConfiguration(con =>
-            {
-                con.CreateMap<AuthorModel, AuthorViewModel>();
-                con.CreateMap<ArticleModel, ArticleViewModel>();
-            });
-
-            var mapper = new Mapper(config);
-
-            var authors = mapper.Map<List<AuthorViewModel>>(_service.GetAuthors());
+            var authors = _mapper.Map<List<AuthorViewModel>>(_service.GetAuthors());
 
             ViewBag.Message = "Authors";
             return View(authors);
@@ -40,15 +34,7 @@ namespace WebApp2.Controllers
         // GET: Author/Details/5
         public ActionResult Details(int id)
         {
-            var config = new MapperConfiguration(con =>
-            {
-                con.CreateMap<AuthorModel, AuthorViewModel>();
-                con.CreateMap<ArticleModel, ArticleViewModel>();
-            });
-
-            var mapper = new Mapper(config);
-
-            var author = mapper.Map<AuthorViewModel>(_service.GetAuthors().FirstOrDefault(x => x.Id == id));
+            var author = _mapper.Map<AuthorViewModel>(_service.GetAuthors().FirstOrDefault(x => x.Id == id));
 
             ViewBag.Message = "Author";
             return View(author);
@@ -62,19 +48,10 @@ namespace WebApp2.Controllers
 
         // POST: Author/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AuthorModel author)
         {
             try
             {
-                var config = new MapperConfiguration(con =>
-                {
-                    con.CreateMap<FormCollection, AuthorModel>()
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src["name"]));
-                });
-
-                var mapper = new Mapper(config);
-
-                var author = mapper.Map<AuthorModel>(collection);
                 _service.Create(author);
 
                 return RedirectToAction("Index");

@@ -14,21 +14,17 @@ namespace WebApp2.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _service;
+        private readonly IMapper _mapper;
 
-        public ArticleController()
+        public ArticleController(IArticleService articleService, IMapper mapper)
         {
-            _service = new ArticleService();
+            _service = articleService;
+            _mapper = mapper;
         }
         // GET: Article
         public ActionResult Index()
         {
-
-            var config = new MapperConfiguration(con => con.CreateMap<ArticleModel, ArticleViewModel>());
-
-            var mapper = new Mapper(config);
-
-            var articles = mapper.Map<List<ArticleViewModel>>(_service.GetArticles());
-
+            var articles = _mapper.Map<List<ArticleViewModel>>(_service.GetArticles());
             ViewBag.Message = "Articles";
             return View(articles);
         }

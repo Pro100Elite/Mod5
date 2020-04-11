@@ -1,3 +1,4 @@
+using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace WebApp2
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            WebAutofacConfig.ConfigureContainer();
+            //BLAutofacConfig.ConfigureContainer();
         }
     }
 }
