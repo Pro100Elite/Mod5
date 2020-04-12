@@ -76,6 +76,8 @@ namespace WebApp2.Controllers
         //[HttpGet]
         public ActionResult Delete()
         {
+            ViewBag.Authors = _service.GetAuthorsToDelete()
+                .Select(x => new SelectListItem { Value = x.Key.ToString(), Text = x.Value }); 
             return View();
         }
 

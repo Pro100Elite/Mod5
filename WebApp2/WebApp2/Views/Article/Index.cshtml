@@ -17,29 +17,31 @@
         <p>
             @foreach (var article in Model)
             {
-            <div class="panel">
-                <div class="panel-body">
-                    @article.Id
-                    <div>
-                        @article.Title
+                <div class="panel">
+                    <div class="panel-body">
+                        @article.Id
+                        <div>
+                            <center>
+                                <h2>
+                                    @article.Title
+                                </h2>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="pager">
+                        @if (article.Img == null)
+                        {
+                            article.Img = "~/Resourses/firefox.png";
+                        }
+                        <img src="@Url.Content(article.Img)" width="400" alt="IMAGES" />
+                    </div>
+                    <div class="pager">
+                        @article.Txt
+                    </div>
+                    <div class="form-horizontal">
+                        <a class="btn btn-default" href="@Url.Action("Edit", new { id=article.Id })"> Редактировать &raquo;</a>
                     </div>
                 </div>
-                <div class="pager">
-                    @if (article.Img == null)
-                    {
-                        article.Img = "~/Resourses/firefox.png";
-                    }
-                    <img src="@Url.Content(article.Img)" width="400" alt="IMAGES" />
-                </div>
-                <div class="pager">
-                    @article.Txt
-                </div>
-                <div class="form-horizontal">
-                    <button type="submit">
-                        @Html.ActionLink("Редактировать", "Edit", new { id = article.Id })
-                    </button>
-                </div>
-            </div>
             }
         </p>
     </div>

@@ -8,7 +8,7 @@ namespace WebApp2.Models
 {
     public class AuthorViewModel
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Обязательно для заполнения!")]
         [RegularExpression(@"^[a-z A-Z]+$", ErrorMessage = "Некорректное имя")]

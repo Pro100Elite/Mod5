@@ -40,5 +40,10 @@ namespace BL.Services
         {
             _repository.Delete(Id);
         }
+
+        public Dictionary<int, string> GetAuthorsToDelete()
+        {
+            return _repository.GetAuthors().ToDictionary(x => x.Id, x => x.Name);
+        }
     }
 }

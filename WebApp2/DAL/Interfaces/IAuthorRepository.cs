@@ -12,5 +12,6 @@ namespace DAL.Interfaces
         IEnumerable<Author> GetAuthors();
         void Create(Author author);
         void Delete(int Id);
+        //Dictionary<int, string> GetAuthorsToDelete();
     }
 }

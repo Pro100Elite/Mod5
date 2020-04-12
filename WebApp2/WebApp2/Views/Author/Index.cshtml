@@ -13,19 +13,40 @@
     <title>Index</title>
 </head>
 <body>
+
     <div class="jumbotron">
-        <p>
+        <table class="table">
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nickname
+                </th>
+                <th>
+                    Birthday
+                </th>
+                <th></th>
+            </tr>
             @foreach (var author in Model)
             {
-                <div class="panel-group">
-                    @author.Id, @author.Name, @author.Birthday
-                    <div>
-                        @Html.ActionLink("Подробнее", "Details", new { id = author.Id})
-                    </div>
-                    <hr />
-                </div>
+                <tr>
+                    <td>
+                        @author.Id
+                    </td>
+                    <td>
+                        @author.Birthday
+                    </td>
+                    <td>
+                        @author.Name
+                    </td>
+                    <td>
+                        @Html.ActionLink("Подробнее", "Details", new { id = author.Id })
+                    </td>
+                </tr>
             }
-        </p>
+        </table>
+        <hr />
     </div>
 </body>
 </html>
