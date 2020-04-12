@@ -12,7 +12,7 @@ namespace DAL
     {
         public MyContext() : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=WebDB;Integrated Security=True")
         {
-
+            Database.SetInitializer<MyContext>(new MyContextInitializer());
         }
 
         public DbSet<Article> Articles { get; set; }
