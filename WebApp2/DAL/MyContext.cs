@@ -19,5 +19,13 @@ namespace DAL
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Article>()
+                .HasOptional<Author>(s => s.Author)
+                .WithMany()
+                .WillCascadeOnDelete(true);
+        }
     }
 }
