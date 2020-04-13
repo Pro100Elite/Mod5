@@ -9,6 +9,40 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #Container ul {
+            list-style: none;
+        }
+
+            #Container ul li {
+                background-color: lightsteelblue;
+                width: 150px;
+                border: 1px solid black;
+                border-radius: 10px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                float: left;
+                color: darkslateblue;
+                font-size: 19px;
+            }
+
+                #Container ul li:hover {
+                    background-color: darkgrey;
+                }
+
+            #Container ul ul {
+                display: none;
+            }
+
+            #Container ul li:hover > ul {
+                display: block;
+            }
+
         body {
             background: url(Resourses/Space.gif) no-repeat;
             background-size: cover;
@@ -32,10 +66,25 @@
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Статьи", "Index", "Article")</li>
-                    <li>@Html.ActionLink("Авторы", "Index", "Author")</li>
-                    <li>@Html.ActionLink("Создать Автора", "Create", "Author")</li>
-                    <li>@Html.ActionLink("Удалить Автора", "Delete", "Author")</li>
                 </ul>
+                <div id="Container">
+                    <ul>
+                        <li>
+                            AuthorMenu
+                            <ul>
+                                <li>
+                                    <a class=" btn" href="@Url.Action("Index", "Author")">Authors &raquo;</a>
+                                </li>
+                                <li>
+                                    <a class=" btn" href="@Url.Action("Create", "Author")">Create Author &raquo;</a>
+                                </li>
+                                <li>
+                                    <a class=" btn" href="@Url.Action("Delete", "Author")">Delete Author &raquo;</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

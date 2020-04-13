@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     <div>
-        @Html.DropDownListFor(x => x.Id, ViewBag.Authors as IEnumerable<SelectListItem>);
+        @Html.DropDownListFor(x => x.Id, ViewBag.Authors as IEnumerable<SelectListItem>)
     </div>
     <button type="submit">Отправить</button>
 }
