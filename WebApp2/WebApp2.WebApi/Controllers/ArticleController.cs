@@ -1,18 +1,29 @@
-﻿using System;
+﻿using AutoMapper;
+using BL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApp2.WebApi.Models;
 
 namespace WebApp2.WebApi.Controllers
 {
     public class ArticleController : ApiController
     {
-        // GET: api/Article
-        public IEnumerable<string> Get()
+        private readonly IArticleService _service;
+        private readonly IMapper _mapper;
+
+        public ArticleController(IArticleService articleService, IMapper mapper)
         {
-            return new string[] { "value1", "value2" };
+            _service = articleService;
+            _mapper = mapper;
+        }
+        // GET: api/Article
+        public IEnumerable<ArticleViewModel> Get()
+        {
+            return _service.GetArticles();
         }
 
         // GET: api/Article/5

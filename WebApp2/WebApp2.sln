@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{4C8B2466-EA95-4916-B2B8-0BC1394190DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp2.WebApi", "WebApp2.WebApi\WebApp2.WebApi.csproj", "{132B018C-FC88-4CD5-92C0-2F0D10D95441}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C8B2466-EA95-4916-B2B8-0BC1394190DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{132B018C-FC88-4CD5-92C0-2F0D10D95441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{132B018C-FC88-4CD5-92C0-2F0D10D95441}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{132B018C-FC88-4CD5-92C0-2F0D10D95441}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{132B018C-FC88-4CD5-92C0-2F0D10D95441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
