@@ -30,7 +30,7 @@ namespace DAL.Repositories
         {
             using (_ctx)
             {
-                var result = _ctx.Articles.ToList();
+                var result = _ctx.Articles.Include(a => a.Author).ToList();
                 return result;
             }
         }

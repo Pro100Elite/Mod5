@@ -21,6 +21,9 @@
                     <div class="panel-body">
                         @article.Id
                         <div>
+                            <h1>
+                                @article.Author.Name
+                            </h1>
                             <center>
                                 <h2>
                                     @article.Title
@@ -44,7 +47,6 @@
                         <a class="read-next" style="display:none;" href="#">Читать далее...</a>
                     </div>
                     <div class="form-horizontal">
-
                         <a class="btn btn-default" href="@Url.Action("Edit", new { id=article.Id })"> Редактировать &raquo;</a>
                     </div>
                 </div>

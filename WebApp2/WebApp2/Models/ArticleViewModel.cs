@@ -15,5 +15,7 @@ namespace WebApp2.Models
 
         public string Txt { get; set; }
         public string Img { get; set; }
+
+        public AuthorViewModel Author { get; set; }
     }
 }

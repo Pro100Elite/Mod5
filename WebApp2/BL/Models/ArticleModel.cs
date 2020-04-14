@@ -12,6 +12,6 @@ namespace BL.Models
         public string Title { get; set; }
         public string Txt { get; set; }
         public string Img { get; set; }
-        //public int Author_Id { get; set; }
+        public AuthorModel Author { get; set; }
     }
 }

@@ -61,30 +61,32 @@
                 </button>
                 @Html.ActionLink("AntiKoronaBlog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Информация", "About", "Home")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Статьи", "Index", "Article")</li>
+            <div  id="Container">
+                <ul>
+                    <li>
+                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("About", "Home")">Информация</a>
+                    </li>
+                    <li>
+                        <a class=" btn"style="height:inherit; width:inherit"  href="@Url.Action("Contact", "Home")">Связаться</a>
+                    </li>
+                    <li>
+                        <a class=" btn"style="height:inherit; width:inherit"  href="@Url.Action("Index", "Article")">Статьи</a>
+                    </li>
+                    <li>
+                        AuthorMenu
+                        <ul>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit"  href="@Url.Action("Index", "Author")">Authors &raquo;</a>
+                            </li>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit"  href="@Url.Action("Create", "Author")">Create Author &raquo;</a>
+                            </li>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit"  href="@Url.Action("Delete", "Author")">Delete Author &raquo;</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-                <div id="Container">
-                    <ul>
-                        <li>
-                            AuthorMenu
-                            <ul>
-                                <li>
-                                    <a class=" btn" href="@Url.Action("Index", "Author")">Authors &raquo;</a>
-                                </li>
-                                <li>
-                                    <a class=" btn" href="@Url.Action("Create", "Author")">Create Author &raquo;</a>
-                                </li>
-                                <li>
-                                    <a class=" btn" href="@Url.Action("Delete", "Author")">Delete Author &raquo;</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ namespace DAL.Models
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
 
-        public virtual ICollection<Article> Articles { get; set; }
+        public ICollection<Article> Articles { get; set; }
         public Author()
         {
             Articles = new List<Article>();
