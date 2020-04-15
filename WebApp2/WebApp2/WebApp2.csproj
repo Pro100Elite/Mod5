@@ -167,7 +167,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resourses\Author1.png" />
     <Content Include="Resourses\d.jpg" />
+    <Content Include="Resourses\defaultAu.png" />
     <Content Include="Resourses\firefox.png" />
     <Content Include="Resourses\g.jpg" />
     <Content Include="Resourses\Space.gif" />

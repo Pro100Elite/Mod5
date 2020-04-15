@@ -18,37 +18,47 @@
             @foreach (var article in Model)
             {
                 <div class="panel">
+
                     <div class="panel-body">
                         @article.Id
                         <div>
+                            <right>
+                                @if (article.Author.Photo == null)
+                                {
+                                    article.Author.Photo = "~/Resourses/defaultAu.png";
+                                }
+                                <img src="@Url.Content(article.Author.Photo)" width="100" style="border-radius:50px;" alt="IMAGES" />
+                            </right>
                             <h1>
                                 @article.Author.Name
                             </h1>
+                        </div>
+                    </div>
+
+                    <div class="pager" style="background-color:bisque; height:100%; border-style:groove">
+                        <div>
                             <center>
                                 <h2>
                                     @article.Title
                                 </h2>
                             </center>
                         </div>
-                    </div>
 
-                    <div class="pager">
                         @if (article.Img == null)
                         {
                             article.Img = "~/Resourses/firefox.png";
                         }
                         <img src="@Url.Content(article.Img)" width="400" alt="IMAGES" />
-                    </div>
-
-                    <div class="pager" style="height:100%">
                         <div id="txt" style="overflow:hidden">
                             @article.Txt
                         </div>
                         <a class="read-next" style="display:none;" href="#">Читать далее...</a>
                     </div>
+
                     <div class="form-horizontal">
                         <a class="btn btn-default" href="@Url.Action("Edit", new { id=article.Id })"> Редактировать &raquo;</a>
                     </div>
+
                 </div>
             }
         </p>

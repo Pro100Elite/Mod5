@@ -14,20 +14,27 @@
 </head>
 <body>
 
-    <div class="jumbotron">
+    <div class="jumbotron" style="border-style:groove">
         <table class="table">
             <tr>
                 <th>
                     Id
                 </th>
                 <th>
-                    Birthday
+                    Photo
                 </th>
                 <th>
                     Nickname
                 </th>
+                <th>
+                    Birthday
+                </th>
+                <th>
+                    Articles
+                </th>
                 <th></th>
             </tr>
+
             @foreach (var author in Model)
             {
                 <tr>
@@ -35,10 +42,17 @@
                         @author.Id
                     </td>
                     <td>
-                        @author.Birthday
+                        @if (author.Photo == null)
+                        {
+                            author.Photo = "~/Resourses/defaultAu.png";
+                        }
+                        <img src="@Url.Content(author.Photo)" width="100" style="border-radius:50px;" alt="IMAGES" />
                     </td>
                     <td>
                         @author.Name
+                    </td>
+                    <td>
+                        @author.Birthday
                     </td>
                     <td>
                         @Html.ActionLink("Подробнее", "Details", new { id = author.Id })
@@ -46,6 +60,7 @@
                 </tr>
             }
         </table>
+
         <hr />
     </div>
 </body>

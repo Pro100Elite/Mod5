@@ -51,18 +51,12 @@
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("AntiKoronaBlog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div  id="Container">
+    <div class="navbar-fixed-top" style="background-color:transparent">
+            <div class="container" id="Container">
                 <ul>
+                    <li>
+                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Home")">AntiKoronaBlog</a>
+                    </li>
                     <li>
                         <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("About", "Home")">Информация</a>
                     </li>
@@ -88,11 +82,9 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - AntiKoronaBlog</p>
         </footer>

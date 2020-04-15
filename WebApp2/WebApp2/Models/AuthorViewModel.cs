@@ -18,6 +18,8 @@ namespace WebApp2.Models
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
+        public string Photo { get; set; }
+
         public ICollection<ArticleViewModel> Articles { get; set; }
     }
 }
