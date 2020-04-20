@@ -1,0 +1,27 @@
+﻿@model IEnumerable<InternetMag.Models.CategoryView>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @foreach (var ct in Model)
+        {
+            <div>
+                @ct.Id
+            </div>
+            <div>
+                @ct.Name
+            </div>
+        }
+    </div>
+</body>
+</html>

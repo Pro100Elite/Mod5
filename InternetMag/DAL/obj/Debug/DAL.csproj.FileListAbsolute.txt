@@ -1,0 +1,11 @@
+I:\project\Mod5\InternetMag\DAL\bin\Debug\DAL.dll.config
+I:\project\Mod5\InternetMag\DAL\bin\Debug\DAL.dll
+I:\project\Mod5\InternetMag\DAL\bin\Debug\DAL.pdb
+I:\project\Mod5\InternetMag\DAL\bin\Debug\EntityFramework.dll
+I:\project\Mod5\InternetMag\DAL\bin\Debug\EntityFramework.SqlServer.dll
+I:\project\Mod5\InternetMag\DAL\bin\Debug\EntityFramework.xml
+I:\project\Mod5\InternetMag\DAL\bin\Debug\EntityFramework.SqlServer.xml
+I:\project\Mod5\InternetMag\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+I:\project\Mod5\InternetMag\DAL\obj\Debug\DAL.csproj.CopyComplete
+I:\project\Mod5\InternetMag\DAL\obj\Debug\DAL.dll
+I:\project\Mod5\InternetMag\DAL\obj\Debug\DAL.pdb

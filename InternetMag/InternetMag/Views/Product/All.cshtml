@@ -1,0 +1,31 @@
+﻿@model  IEnumerable<InternetMag.Models.ProductsView>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @foreach (var pr in Model)
+        {
+            <div>
+                @pr.Id;
+            </div>
+            <div>
+                @pr.Name;
+            </div>
+            <div>
+                @pr.categoryId
+            </div>
+            <div>
+                @pr.Price
+            </div>
+            <hr />
+        }
+    </div>
+</body>
+</html>
