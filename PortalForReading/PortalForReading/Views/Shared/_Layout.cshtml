@@ -1,30 +1,90 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Books, Ukrain, Read Book, Download Book" />
+    <meta name="description" content="Read online or Download Books" />
+    <link rel="icon" href="~/Resourses/IconBook.png" />
+    <title>@ViewBag.Title - AntiKoronaBlog</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #Container ul {
+            list-style: none;
+        }
+
+            #Container ul li {
+                background-color:transparent;
+                width: 150px;
+                border: 0.2px solid bisque;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                float: left;
+                color:black;
+                font-size: 19px;
+            }
+
+                #Container ul li:hover {
+                    background-color: bisque;
+                }
+
+            #Container ul ul {
+                display: none;
+            }
+
+            #Container ul li:hover > ul {
+                display: block;
+            }
+            a{
+                 color:saddlebrown;
+            }
+
+        body {
+            background-color: bisque
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:burlywood; border-color:bisque">
+        <div class="container" id="Container">
+            <ul>
+                <li>
+                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Home")">
+                        <img src="@Url.Content("~/Resourses/IconBook.png")" width="30" alt="IMAGES" />  Home
+                    </a>
+                </li>
+                <li>
+                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("About", "Home")">Информация</a>
+                </li>
+                <li>
+                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Contact", "Home")">Связаться</a>
+                </li>
+                <li>
+                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article")">Статьи</a>
+                </li>
+                <li>
+                    <a class=" btn" style="height:inherit; width:inherit">
+                        AuthorMenu
+                    </a>
+                    <ul>
+                        <li>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Author")">Authors &raquo;</a>
+                        </li>
+                        <li>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Create", "Author")">Create Author &raquo;</a>
+                        </li>
+                        <li>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Delete", "Author")">Delete Author &raquo;</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="container body-content">

@@ -10,7 +10,7 @@ namespace DAL
 {
     public class MyContext : DbContext, IMyContext
     {
-        public MyContext() : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=WebDB;Integrated Security=True")
+        public MyContext() : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=BooksPortalDb;Integrated Security=True")
         {
             Database.SetInitializer<MyContext>(new MyContextInitializer());
         }
