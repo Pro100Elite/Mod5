@@ -19,14 +19,14 @@
         }
 
             #Container ul li {
-                background-color:transparent;
+                background-color: burlywood;
                 width: 150px;
                 border: 0.2px solid bisque;
                 height: 50px;
                 line-height: 50px;
                 text-align: center;
                 float: left;
-                color:black;
+                color: black;
                 font-size: 19px;
             }
 
@@ -41,9 +41,10 @@
             #Container ul li:hover > ul {
                 display: block;
             }
-            a{
-                 color:saddlebrown;
-            }
+
+        a {
+            color: saddlebrown;
+        }
 
         body {
             background-color: bisque
@@ -67,20 +68,15 @@
                 </li>
                 <li>
                     <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article")">Статьи</a>
-                </li>
-                <li>
-                    <a class=" btn" style="height:inherit; width:inherit">
-                        AuthorMenu
-                    </a>
                     <ul>
                         <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Author")">Authors &raquo;</a>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Author")">Фентези &raquo;</a>
                         </li>
                         <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Create", "Author")">Create Author &raquo;</a>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Create", "Author")">Мистика &raquo;</a>
                         </li>
                         <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Delete", "Author")">Delete Author &raquo;</a>
+                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Delete", "Author")">Херня &raquo;</a>
                         </li>
                     </ul>
                 </li>

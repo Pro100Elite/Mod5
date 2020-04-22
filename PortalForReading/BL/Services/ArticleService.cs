@@ -29,6 +29,13 @@ namespace BL.Services
             return articles;
         }
 
+        public ArticleModel GetById(int id)
+        {
+            var article = _mapper.Map<ArticleModel>(_repository.GetById(id));
+
+            return article;
+        }
+
         public void EditArticle(ArticleModel articleModel)
         {
             var article = _mapper.Map<Article>(articleModel);

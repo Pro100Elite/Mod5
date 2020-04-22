@@ -1,0 +1,23 @@
+﻿@model PortalForReading.Models.ArticleBookView
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ReadOnline</title>
+</head>
+<body>
+    <div class="pager" style="border-color:burlywood; background-color:navajowhite">
+        <p style="text-emphasis-position:below">
+            <strong>
+                @Model.Title
+            </strong>
+            <hr />
+            <strong>
+                @Model.BookTxt
+            </strong>
+        </p>
+    </div>
+</body>
+</html>

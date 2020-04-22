@@ -12,7 +12,7 @@ namespace PortalForReading.Models
 
         [Required(ErrorMessage = "Обязательно для заполнения!")]
         public string Title { get; set; }
-
+        public string Txt { get; set; }
         public string Book { get; set; }
         public string Img { get; set; }
 

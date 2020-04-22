@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PortalForReading.Models.ArticleView>
+
+@{
+    ViewBag.Title = "Articles";
+}
+<h3>@ViewBag.Message</h3>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<body>
+    <div class="jumbotron" style="background-color:bisque;  border-color:burlywood">
+        @foreach (var article in Model)
+        {
+        <div class="panel" style="background-color: burlywood">
+            @article.Id
+            @article.Title
+            <hr />
+            <img src="@Url.Content(article.Img)" width="200" alt="IMAGES"/>
+            <p>
+                @article.Txt
+            </p>
+            <hr />
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id })"> Читать &raquo;</a>
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Скачать &raquo;</a>
+        </div>
+        }
+    </div>
+</body>
+</html>
