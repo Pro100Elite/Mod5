@@ -1,5 +1,6 @@
 ﻿using BL.Services;
 using InternetMag.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +16,15 @@ namespace InternetMag.Controllers
     {
         private readonly ProductService _service;
         private readonly CategoryService _categoryService;
-        HttpClient client = new HttpClient();
+
+        private readonly RestClient _restClient;
+        private string apiURL = "api/Product";
 
         public ProductController()
         {
             _service = new ProductService();
             _categoryService = new CategoryService();
-        }
-
-        public async Task RunAsync()
-        {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:64195/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            _restClient = new RestClient("http://local.blog");
         }
 
         [HttpGet]
@@ -43,7 +38,7 @@ namespace InternetMag.Controllers
         [HttpPost]
         public RedirectToRouteResult Cat(int Id)
         {
-            if(Id == 0)
+            if (Id == 0)
             {
                 return RedirectToAction("All");
             }
@@ -54,15 +49,23 @@ namespace InternetMag.Controllers
         }
 
         //GET: Product
-
         [HttpGet]
         public ActionResult All()
         {
-            var products = _service.GetProducts()
-                .Select(x => new ProductsView { Id = x.Id, categoryId = x.categoryId, Name = x.Name, Price = x.Price }).ToList();
+            var request = new RestRequest(apiURL);
+            var responseData = _restClient.Execute<List<ProductsView>>(request, Method.GET).Data;
+            return View(responseData);
+        } 
+        
+        //[HttpGet]
+        //public ActionResult All()
+        //{
+        //    var products = _service.GetProducts()
+        //        .Select(x => new ProductsView { Id = x.Id, categoryId = x.categoryId, Name = x.Name, Price = x.Price }).ToList();
 
-            return View(products);
-        }
+        //    return View(products);
+        //}
+
 
         [HttpGet]
         public ActionResult Index(int id)

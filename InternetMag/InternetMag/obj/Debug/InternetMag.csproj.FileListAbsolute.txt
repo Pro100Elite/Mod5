@@ -92,3 +92,5 @@ I:\project\Mod5\InternetMag\InternetMag\bin\Google.Protobuf.dll
 I:\project\Mod5\InternetMag\InternetMag\bin\Renci.SshNet.dll
 I:\project\Mod5\InternetMag\InternetMag\bin\Google.Protobuf.xml
 I:\project\Mod5\InternetMag\InternetMag\bin\Renci.SshNet.xml
+I:\project\Mod5\InternetMag\InternetMag\bin\RestSharp.dll
+I:\project\Mod5\InternetMag\InternetMag\bin\RestSharp.xml

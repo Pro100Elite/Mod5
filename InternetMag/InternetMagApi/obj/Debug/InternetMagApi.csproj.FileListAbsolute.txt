@@ -82,3 +82,8 @@ I:\project\Mod5\InternetMag\InternetMagApi\obj\Debug\InternetMagApi.csprojAssemb
 I:\project\Mod5\InternetMag\InternetMagApi\obj\Debug\InternetMagApi.csproj.CopyComplete
 I:\project\Mod5\InternetMag\InternetMagApi\obj\Debug\InternetMagApi.dll
 I:\project\Mod5\InternetMag\InternetMagApi\obj\Debug\InternetMagApi.pdb
+I:\project\Mod5\InternetMag\InternetMagApi\bin\BL.dll
+I:\project\Mod5\InternetMag\InternetMagApi\bin\DAL.dll
+I:\project\Mod5\InternetMag\InternetMagApi\bin\BL.pdb
+I:\project\Mod5\InternetMag\InternetMagApi\bin\DAL.pdb
+I:\project\Mod5\InternetMag\InternetMagApi\bin\DAL.dll.config
