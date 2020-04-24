@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BL.Interfaces;
+using PagedList;
 using PortalForReading.Models;
 using System;
 using System.Collections.Generic;
@@ -21,24 +22,30 @@ namespace PortalForReading.Controllers
             _mapper = mapper;
         }
         // GET: Article
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var articles = _mapper.Map<List<ArticleView>>(_service.GetArticles());
             ViewBag.Message = "Articles";
-            return View(articles);
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(articles.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Article/Details/5
         [HttpGet]
-        public ActionResult ReadOnline(int id)
+        public ActionResult ReadOnline(int id, int pagenumber)
         {
             XmlDocument xDoc = new XmlDocument();
 
             var article = _mapper.Map<ArticleView>(_service.GetById(id));
             var artikleBook = new ArticleBookView();
 
+            artikleBook.Id = id;
+            artikleBook.pagenumber = pagenumber;
+
             xDoc.Load(article.Book);
             XmlElement xRoot = xDoc.DocumentElement;
+
             // обход всех узлов в корневом элементе
             foreach (XmlNode xnode in xRoot)
             {
@@ -51,10 +58,12 @@ namespace PortalForReading.Controllers
 
                     if (childnode.Name == "section")
                     {
-                        artikleBook.BookTxt += childnode.InnerText;
+                        //artikleBook.BookTxt += childnode.InnerText;
+                        artikleBook.BookPagin = childnode.InnerText.Split(".!?".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Skip(pagenumber * artikleBook.pageSize).Take(artikleBook.pageSize).ToList();
                     }
                 }
             }
+
                 return View(artikleBook);
         }
 

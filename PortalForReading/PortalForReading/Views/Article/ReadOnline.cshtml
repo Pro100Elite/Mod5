@@ -14,10 +14,46 @@
                 @Model.Title
             </strong>
             <hr />
-            <strong>
-                @Model.BookTxt
-            </strong>
+            <div id="txt" style="overflow:hidden">
+                <strong>
+                    @*@Model.BookTxt*@
+                    @foreach (var ch in @Model.BookPagin)
+                    {
+                        @ch;
+                    }
+                </strong>
+            </div>
+            <hr />
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> Prev &raquo;</a>
+            @Model.pagenumber
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> Next &raquo;</a>
         </p>
     </div>
+
+    @*<script>
+        window.onload = function(){
+            blok = document.getElementById('txt');
+            parent = blok.parentNode;
+            blok_height = blok.style.height ? blok.style.height : blok.offsetHeight;
+
+            if(blok_height > 100){
+                blok.style.maxHeight = '100px';
+                link = parent.getElementsByClassName('read-next')[0];
+                link.style.display = 'inline';
+                link.onclick = function () {
+
+                    if(blok.style.maxHeight){
+                       blok.style.maxHeight = ''
+                       link.innerHTML = 'Скрыть';
+                    } else {
+                       blok.style.maxHeight = '100px';
+                       link.innerHTML = 'Читать далее...';
+                    }
+
+                    return false;
+                }
+            }
+        }
+        </script>*@
 </body>
 </html>

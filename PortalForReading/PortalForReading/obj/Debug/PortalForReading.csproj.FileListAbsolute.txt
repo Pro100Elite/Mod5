@@ -99,3 +99,7 @@ I:\project\Mod5\PortalForReading\PortalForReading\obj\Debug\PortalForReading.csp
 I:\project\Mod5\PortalForReading\PortalForReading\obj\Debug\PortalForReading.csproj.CopyComplete
 I:\project\Mod5\PortalForReading\PortalForReading\obj\Debug\PortalForReading.dll
 I:\project\Mod5\PortalForReading\PortalForReading\obj\Debug\PortalForReading.pdb
+I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.Mvc.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.Mvc.xml

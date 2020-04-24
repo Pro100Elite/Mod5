@@ -1,4 +1,6 @@
-﻿@model IEnumerable<PortalForReading.Models.ArticleView>
+﻿@model PagedList.IPagedList<PortalForReading.Models.ArticleView>
+@using PagedList.Mvc;
+@*<link href="~/Content/PagedList.css" style="background-color:burlywood"/>*@
 
 @{
     ViewBag.Title = "Articles";
@@ -14,22 +16,30 @@
 </head>
 
 <body>
-    <div class="jumbotron" style="background-color:bisque;  border-color:burlywood">
+    <div class ="panel-body"  style="background-color:bisque;  border-color:burlywood">
         @foreach (var article in Model)
         {
         <div class="panel" style="background-color: burlywood">
             @article.Id
             @article.Title
             <hr />
-            <img src="@Url.Content(article.Img)" width="200" alt="IMAGES"/>
-            <p>
+            <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque"/>
+            <br />
+            <br />
+            <p class="panel-body" style="background-color:burlywood; border-radius:15px; border:groove; border-color:bisque;">
                 @article.Txt
             </p>
             <hr />
-            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id })"> Читать &raquo;</a>
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
             <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Скачать &raquo;</a>
         </div>
         }
     </div>
+    <br />
+        <center>
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </center>
 </body>
 </html>
