@@ -16,10 +16,10 @@
 </head>
 
 <body>
-    <div class ="panel-body"  style="background-color:bisque;  border-color:burlywood">
+    <div class ="panel-body"  style="background-color:bisque">
         @foreach (var article in Model)
         {
-        <div class="panel" style="background-color: burlywood">
+        <div class="panel" style="background-color: burlywood" >
             @article.Id
             @article.Title
             <hr />
@@ -30,7 +30,8 @@
                 @article.Txt
             </p>
             <hr />
-            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
+            <a class="btn btn-default" style="        background-color: bisque
+" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
             <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Скачать &raquo;</a>
         </div>
         }

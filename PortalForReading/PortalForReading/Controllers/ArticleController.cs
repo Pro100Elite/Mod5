@@ -58,8 +58,7 @@ namespace PortalForReading.Controllers
 
                     if (childnode.Name == "section")
                     {
-                        //artikleBook.BookTxt += childnode.InnerText;
-                        artikleBook.BookPagin = childnode.InnerText.Split(".!?".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).Skip(pagenumber * artikleBook.pageSize).Take(artikleBook.pageSize).ToList();
+                        artikleBook.BookPagin = childnode.InnerText.Split('\n').Skip(pagenumber * artikleBook.pageSize).Take(artikleBook.pageSize).ToList();
                     }
                 }
             }
