@@ -8,19 +8,14 @@
     <title>ReadOnline</title>
 </head>
 <body>
-    <div class="pager" style="background-color:moccasin">
-        <p style="text-emphasis-position:below">
+    <div class="pager" style="background-color:transparent">
+        <p>
             <strong>
                 @Model.Title
             </strong>
             <hr />
-            <div id="txt" style="overflow:hidden" align="justify">
-                <strong>
-                    @foreach (var ch in @Model.BookPagin)
-                    {
-                        @ch;
-                    }
-                </strong>
+            <div>
+                <img src="@Url.Content(Model.Book)" alt="IMAGES" style="border-radius:15px; border:groove; border-color:burlywood"/>
             </div>
             <hr />
             <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>

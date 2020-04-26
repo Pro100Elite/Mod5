@@ -28,6 +28,7 @@ namespace PortalForReading.Controllers
             ViewBag.Message = "Articles";
             int pageSize = 2;
             int pageNumber = (page ?? 1);
+
             return View(articles.ToPagedList(pageNumber, pageSize));
         }
 
@@ -35,35 +36,10 @@ namespace PortalForReading.Controllers
         [HttpGet]
         public ActionResult ReadOnline(int id, int pagenumber)
         {
-            XmlDocument xDoc = new XmlDocument();
+            var article = _mapper.Map<ArticleBookView>(_service.GetForRead(id, pagenumber));
+            article.pagenumber = pagenumber;
 
-            var article = _mapper.Map<ArticleView>(_service.GetById(id));
-            var artikleBook = new ArticleBookView();
-
-            artikleBook.Id = id;
-            artikleBook.pagenumber = pagenumber;
-
-            xDoc.Load(article.Book);
-            XmlElement xRoot = xDoc.DocumentElement;
-
-            // обход всех узлов в корневом элементе
-            foreach (XmlNode xnode in xRoot)
-            {
-                foreach (XmlNode childnode in xnode.ChildNodes)
-                {
-                    if (childnode.Name == "title")
-                    {
-                        artikleBook.Title += childnode.InnerText;
-                    }
-
-                    if (childnode.Name == "section")
-                    {
-                        artikleBook.BookPagin = childnode.InnerText.Split('\n').Skip(pagenumber * artikleBook.pageSize).Take(artikleBook.pageSize).ToList();
-                    }
-                }
-            }
-
-                return View(artikleBook);
+            return View(article);
         }
 
         // GET: Article/Create

@@ -176,9 +176,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Resourses\Anonim.jpg" />
     <Content Include="Resourses\IconBook.png" />
+    <Content Include="Resourses\Monarch.jpg" />
+    <Content Include="Resourses\result.jpg" />
+    <Content Include="Resourses\Vedmak2.jpg" />
+    <Content Include="Resourses\WarcraftTom3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Books\Монарх_Вечной_Ночи_Том_1_Глава_1_–_Кровавая_ночь_-_Том_3_Глава_120_–_Расставание_%282%29.fb2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -209,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Books\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -9,9 +9,7 @@ namespace PortalForReading.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string BookTxt { get; set; }
-        public List<string> BookPagin { get; set; }
-        public int pageSize = 200;
+        public string Book { get; set; }
         public int pagenumber { get; set; }
     }
 }

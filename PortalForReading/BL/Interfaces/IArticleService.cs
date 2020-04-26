@@ -11,6 +11,7 @@ namespace BL.Interfaces
     {
         IEnumerable<ArticleModel> GetArticles();
         ArticleModel GetById(int id);
+        ArticleModel GetForRead(int id, int pagenumber);
         void EditArticle(ArticleModel articleModel);
     }
 }

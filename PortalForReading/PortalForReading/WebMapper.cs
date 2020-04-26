@@ -14,6 +14,8 @@ namespace PortalForReading
         {
             //CreateMap<AuthorModel, AuthorViewModel>().ReverseMap();
             CreateMap<ArticleModel, ArticleView>().ReverseMap();
+            CreateMap<ArticleModel, ArticleBookView>().ReverseMap();
+
         }
     }
 }

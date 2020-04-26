@@ -103,3 +103,8 @@ I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.dll
 I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.Mvc.dll
 I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.xml
 I:\project\Mod5\PortalForReading\PortalForReading\bin\PagedList.Mvc.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Syncfusion.Pdf.Base.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Syncfusion.Compression.Base.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Syncfusion.Licensing.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Syncfusion.Pdf.Base.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Syncfusion.Compression.Base.xml

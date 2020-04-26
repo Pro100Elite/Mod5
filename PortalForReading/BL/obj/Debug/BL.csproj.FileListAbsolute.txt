@@ -21,3 +21,8 @@ I:\project\Mod5\PortalForReading\BL\obj\Debug\BL.csprojAssemblyReference.cache
 I:\project\Mod5\PortalForReading\BL\obj\Debug\BL.csproj.CopyComplete
 I:\project\Mod5\PortalForReading\BL\obj\Debug\BL.dll
 I:\project\Mod5\PortalForReading\BL\obj\Debug\BL.pdb
+I:\project\Mod5\PortalForReading\BL\bin\Debug\Syncfusion.Compression.Base.dll
+I:\project\Mod5\PortalForReading\BL\bin\Debug\Syncfusion.Licensing.dll
+I:\project\Mod5\PortalForReading\BL\bin\Debug\Syncfusion.Pdf.Base.dll
+I:\project\Mod5\PortalForReading\BL\bin\Debug\Syncfusion.Compression.Base.xml
+I:\project\Mod5\PortalForReading\BL\bin\Debug\Syncfusion.Pdf.Base.xml
