@@ -209,6 +209,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\ReadOnline.cshtml" />
+    <Content Include="Views\Article\AuthorArticles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

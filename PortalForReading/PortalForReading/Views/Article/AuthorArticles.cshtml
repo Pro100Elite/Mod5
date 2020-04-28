@@ -1,6 +1,4 @@
-﻿@model PagedList.IPagedList<PortalForReading.Models.ArticleView>
-@using PagedList.Mvc;
-@*<link href="~/Content/PagedList.css" style="background-color:burlywood"/>*@
+﻿@model IEnumerable<PortalForReading.Models.ArticleView>
 
 @{
     ViewBag.Title = "Articles";
@@ -30,7 +28,7 @@
                 <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque; float:left" />
 
                 <h2>
-                      Автор:
+                    Автор:
                     <a href="@Url.Action("AuthorArticles", new {author = article.Author.Id })">@article.Author.Name</a>
                 </h2>
 
@@ -45,11 +43,5 @@
             </div>
         }
     </div>
-    <br />
-    <center>
-        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
-
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-    </center>
 </body>
 </html>

@@ -32,6 +32,15 @@ namespace PortalForReading.Controllers
             return View(articles.ToPagedList(pageNumber, pageSize));
         }
 
+        [HttpGet]
+        public ActionResult AuthorArticles(int author)
+        {
+            var articles = _mapper.Map<List<ArticleView>>(_service.GetArticlesForAuthor(author));
+            ViewBag.Message = "Articles";
+
+            return View(articles);
+        }
+
         // GET: Article/Details/5
         [HttpGet]
         public ActionResult ReadOnline(int id, int pagenumber)

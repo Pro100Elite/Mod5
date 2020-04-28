@@ -15,6 +15,6 @@ namespace BL.Models
         public string Book { get; set; }
         public string Img { get; set; }
 
-        //public Author Author { get; set; }
+        public AuthorModel Author { get; set; }
     }
 }

@@ -18,9 +18,9 @@
                 <img src="@Url.Content(Model.Book)" alt="IMAGES" style="border-radius:15px; border:groove; border-color:burlywood"/>
             </div>
             <hr />
-            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>
+            <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>
             @Model.pagenumber
-            <a class="btn btn-default" style="background-color: bisque" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> >></a>
+            <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> >></a>
         </p>
     </div>
 </body>

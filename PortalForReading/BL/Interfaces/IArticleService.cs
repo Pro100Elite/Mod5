@@ -10,6 +10,7 @@ namespace BL.Interfaces
     public interface IArticleService
     {
         IEnumerable<ArticleModel> GetArticles();
+        IEnumerable<ArticleModel> GetArticlesForAuthor(int author);
         ArticleModel GetById(int id);
         ArticleModel GetForRead(int id, int pagenumber);
         void EditArticle(ArticleModel articleModel);

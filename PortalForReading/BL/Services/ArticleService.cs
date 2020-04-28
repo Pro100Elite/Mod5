@@ -32,6 +32,13 @@ namespace BL.Services
             return articles;
         }
 
+        public IEnumerable<ArticleModel> GetArticlesForAuthor(int author)
+        {
+            var articles = _mapper.Map<IEnumerable<ArticleModel>>(_repository.GetArticles().Where(x => x.Author.Id == author));
+
+            return articles;
+        }
+
         public ArticleModel GetById(int id)
         {
             var article = _mapper.Map<ArticleModel>(_repository.GetById(id));

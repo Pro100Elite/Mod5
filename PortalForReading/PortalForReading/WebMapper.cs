@@ -12,7 +12,7 @@ namespace PortalForReading
     {
         public WebMapper()
         {
-            //CreateMap<AuthorModel, AuthorViewModel>().ReverseMap();
+            CreateMap<AuthorModel, AuthorView>().ReverseMap();
             CreateMap<ArticleModel, ArticleView>().ReverseMap();
             CreateMap<ArticleModel, ArticleBookView>().ReverseMap();
 

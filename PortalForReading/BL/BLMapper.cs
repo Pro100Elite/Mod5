@@ -13,7 +13,7 @@ namespace BL
     {
         public BLMapper()
         {
-            //CreateMap<Author, AuthorModel>().ReverseMap();
+            CreateMap<Author, AuthorModel>().ReverseMap();
             CreateMap<Article, ArticleModel>().ReverseMap();
         }
     }
