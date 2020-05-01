@@ -13,19 +13,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        .ul.pagination {
+             background-color:burlywood;
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.pagination li {
+            background-color:burlywood;
+            display: inline;
+        }
+
+            ul.pagination li a {
+                background-color:burlywood;
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+            }
+
+                ul.pagination li a:hover:not(.active) {
+                    background-color: bisque;
+                }
+                                ul.pagination li:last-child.active a  {
+                     background-color:burlywood;
+                     border-color:black;
+                     border-style:double;
+                }
+            ul.pagination li:first-child.active a {
+                background-color: burlywood;
+                border-color:black;
+                border-style: double;
+            }
+    </style>
 </head>
 
 <body>
-    <div class="panel-body" style="background-color:bisque">
+    <div class="panel-body" style="background-color: bisque">
         @foreach (var article in Model)
         {
-            <div class="panel" style="background-color: burlywood">
+            <div class="panel" style="background-color: burlywood ">
                 @article.Id
                 <h1>
                     @article.Title
                 </h1>
                 <hr />
-                <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque; float:left"/>
+                <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style=" border-radius: 15px; border: groove; border-color: bisque; float:left" />
                 <h2>
                     Автор:
                     <a href="@Url.Action("AuthorArticles", new {author = article.Author.Id })">@article.Author.Name</a>
@@ -53,9 +89,10 @@
     </div>
     <br />
     <center>
-        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
-
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        <div class="pagination">
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
     </center>
 </body>
 </html>
