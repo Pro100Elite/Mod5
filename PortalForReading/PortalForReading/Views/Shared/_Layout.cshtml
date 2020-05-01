@@ -21,7 +21,7 @@
             #Container ul li {
                 background-color: burlywood;
                 width: 150px;
-                border: 0.2px solid bisque;
+                border: 2px solid bisque;
                 height: 50px;
                 line-height: 50px;
                 text-align: center;
@@ -52,37 +52,38 @@
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:burlywood; border-color:bisque">
+    <div class="navbar-fixed-top" style="background-color:burlywood; border-color:bisque">
         <div class="container" id="Container">
-            <ul>
-                <li>
-                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Home")">
-                        <img src="@Url.Content("~/Resourses/IconBook.png")" width="30" alt="IMAGES" />  Home
-                    </a>
-                </li>
-                <li>
-                    <a class=" btn" style="        height: inherit;
-        width: inherit
-" href="@Url.Action("About", "Home")">Информация</a>
-                </li>
-                <li>
-                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Contact", "Home")">Связаться</a>
-                </li>
-                <li>
-                    <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article")">Статьи</a>
-                    <ul>
-                        <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Author")">Фентези &raquo;</a>
-                        </li>
-                        <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Create", "Author")">Мистика &raquo;</a>
-                        </li>
-                        <li>
-                            <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Delete", "Author")">Херня &raquo;</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            <div class=" navbar-left">
+                <ul>
+                    <li>
+                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Home")">
+                            <img src="@Url.Content("~/Resourses/IconBook.png")" width="30" alt="IMAGES" />  Home
+                        </a>
+                    </li>
+                    <li>
+                        <a class=" btn" style="height:inherit; width: inherit" href="@Url.Action("About", "Home")">Информация</a>
+                    </li>
+                    <li>
+                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Contact", "Home")">Связаться</a>
+                    </li>
+                    <li>
+                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article")">Статьи</a>
+                        <ul>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 1})">Фентези &raquo;</a>
+                            </li>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры &raquo;</a>
+                            </li>
+                            <li>
+                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 2})">Фантастика &raquo;</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
     <div class="container body-content">

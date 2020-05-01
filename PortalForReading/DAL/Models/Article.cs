@@ -17,5 +17,11 @@ namespace DAL.Models
         public string Img { get; set; }
 
         public Author Author { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
+        public Article()
+        {
+            Categories = new List<Category>();
+        }
     }
 }

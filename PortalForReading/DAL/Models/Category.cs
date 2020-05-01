@@ -10,5 +10,11 @@ namespace DAL.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+
+        public ICollection<Article> Articles { get; set; }
+        public Category()
+        {
+            Articles = new List<Article>();
+        }
     }
 }

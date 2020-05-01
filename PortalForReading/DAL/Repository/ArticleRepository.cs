@@ -26,11 +26,31 @@ namespace DAL.Repository
             }
         }
 
+        public IEnumerable<Article> GetByAuthor(int author)
+        {
+            using (var _ctx = new MyContext())
+            {
+                return _ctx.Articles.Where(x => x.Author.Id == author).Include(a => a.Author)
+                    .Include(c => c.Categories).ToList();
+            }
+        }
+
         public IEnumerable<Article> GetArticles()
         {
             using (_ctx)
             {
-                var result = _ctx.Articles.Include(a => a.Author).ToList();
+                var result = _ctx.Articles.Include(a => a.Author).Include(c => c.Categories).ToList();
+
+                return result;
+            }
+        }
+
+        public IEnumerable<Article> GetArticles(int? category)
+        {
+            using (_ctx)
+            {
+                var result = _ctx.Articles.Where(c => c.Categories.Any(x => x.Id == category))
+                    .Include(a => a.Author).Include(c => c.Categories).ToList();
 
                 return result;
             }

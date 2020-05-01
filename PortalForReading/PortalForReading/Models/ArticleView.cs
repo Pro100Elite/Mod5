@@ -17,5 +17,7 @@ namespace PortalForReading.Models
         public string Img { get; set; }
 
         public AuthorView Author { get; set; }
+
+        public ICollection<CategoryView> Categories { get; set; }
     }
 }

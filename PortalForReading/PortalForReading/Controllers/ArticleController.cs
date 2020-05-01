@@ -21,34 +21,43 @@ namespace PortalForReading.Controllers
             _service = articleService;
             _mapper = mapper;
         }
-        // GET: Article
-        public ActionResult Index(int? page)
+
+        //GET: Article
+        [HttpGet]
+        public ActionResult Index(int? page, int? category)
         {
-            var articles = _mapper.Map<List<ArticleView>>(_service.GetArticles());
+            var articles = _service.GetArticles(category);
+            var result = _mapper.Map<List<ArticleView>>(articles);
+
+
             ViewBag.Message = "Articles";
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
-            return View(articles.ToPagedList(pageNumber, pageSize));
+            return View(result.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
         public ActionResult AuthorArticles(int author)
         {
-            var articles = _mapper.Map<List<ArticleView>>(_service.GetArticlesForAuthor(author));
+            var articles = _service.GetByAuthor(author);
+            var result = _mapper.Map<List<ArticleView>>(articles);
+
             ViewBag.Message = "Articles";
 
-            return View(articles);
+            return View(result);
         }
 
         // GET: Article/Details/5
         [HttpGet]
         public ActionResult ReadOnline(int id, int pagenumber)
         {
-            var article = _mapper.Map<ArticleBookView>(_service.GetForRead(id, pagenumber));
-            article.pagenumber = pagenumber;
+            var article = _service.GetForRead(id, pagenumber);
+            var result = _mapper.Map<ArticleBookView>(article);
 
-            return View(article);
+            result.pagenumber = pagenumber;
+
+            return View(result);
         }
 
         // GET: Article/Create

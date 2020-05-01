@@ -1,5 +1,4 @@
-﻿using DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +15,7 @@ namespace BL.Models
         public string Img { get; set; }
 
         public AuthorModel Author { get; set; }
+
+        public ICollection<CategoryModel> Categories { get; set; }
     }
 }

@@ -25,32 +25,45 @@ namespace BL.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<ArticleModel> GetArticles()
+        public IEnumerable<ArticleModel> GetArticles(int? category)
         {
-            var articles = _mapper.Map<IEnumerable<ArticleModel>>(_repository.GetArticles());
+            IEnumerable<Article> articles;
 
-            return articles;
+            if (category != null) 
+            {
+                articles = _repository.GetArticles(category);
+            }
+            else
+            {
+                articles = _repository.GetArticles();
+            }
+            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
+
+            return result;
         }
 
-        public IEnumerable<ArticleModel> GetArticlesForAuthor(int author)
+        public IEnumerable<ArticleModel> GetByAuthor(int author)
         {
-            var articles = _mapper.Map<IEnumerable<ArticleModel>>(_repository.GetArticles().Where(x => x.Author.Id == author));
+            var articles = _repository.GetByAuthor(author);
+            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
 
-            return articles;
+            return result;
         }
 
         public ArticleModel GetById(int id)
         {
-            var article = _mapper.Map<ArticleModel>(_repository.GetById(id));
+            var article = _repository.GetById(id);
+            var result = _mapper.Map<ArticleModel>(article);
 
-            return article;
+            return result;
         }
 
         public ArticleModel GetForRead(int id, int pagenumber)
         {
-            var article = _mapper.Map<ArticleModel>(_repository.GetById(id));
+            var article = _repository.GetById(id);
+            var result = _mapper.Map<ArticleModel>(article);
 
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(article.Book);
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(result.Book);
             //Exporting specify page index as image
             if (pagenumber >= 0 & pagenumber < loadedDocument.Pages.Count)
             {
@@ -60,13 +73,13 @@ namespace BL.Services
                 string path = "I:/project/Mod5/PortalForReading/PortalForReading/Resourses/result.jpg";
                 image.Save(path, ImageFormat.Jpeg);
 
-                article.Book = "~/Resourses/result.jpg";
+                result.Book = "~/Resourses/result.jpg";
 
                 //Close the document
                 loadedDocument.Close(true);
             }
 
-            return article;
+            return result;
         }
 
         public void EditArticle(ArticleModel articleModel)

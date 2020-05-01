@@ -15,6 +15,9 @@ namespace DAL
             Author au1 = new Author { Name = "Хаяо Миядзаки", Photo = "~/Resourses/Anonim.png" };
             Author au2 = new Author { Name = "KateSeed" };
 
+            Category ct1 = new Category { Title = "Fantasy" };
+            Category ct2 = new Category { Title = "Vampire" };
+
             Article ar1 = new Article
             {
                 Img = "~/Resourses/Monarch.jpg",
@@ -65,8 +68,17 @@ namespace DAL
             au2.Articles.Add(ar3);
             au2.Articles.Add(ar4);
 
+            ar1.Categories.Add(ct1);
+            ar1.Categories.Add(ct2);
+            ar2.Categories.Add(ct1);
+            ar3.Categories.Add(ct1);
+            ar4.Categories.Add(ct1);
+
             db.Authors.Add(au1);
             db.Authors.Add(au2);
+
+            db.Categories.Add(ct1);
+            db.Categories.Add(ct2);
 
             db.Articles.Add(ar1);
             db.Articles.Add(ar2);
