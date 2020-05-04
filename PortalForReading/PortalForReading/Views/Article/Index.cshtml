@@ -13,49 +13,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <style>
-        .ul.pagination {
-             background-color:burlywood;
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul.pagination li {
-            background-color:burlywood;
-            display: inline;
-        }
-
-            ul.pagination li a {
-                background-color:burlywood;
-                color: black;
-                float: left;
-                padding: 8px 16px;
-                text-decoration: none;
-                transition: background-color .3s;
-            }
-
-                ul.pagination li a:hover:not(.active) {
-                    background-color: bisque;
-                }
-                                ul.pagination li:last-child.active a  {
-                     background-color:burlywood;
-                     border-color:black;
-                     border-style:double;
-                }
-            ul.pagination li:first-child.active a {
-                background-color: burlywood;
-                border-color:black;
-                border-style: double;
-            }
-    </style>
 </head>
 
 <body>
-    <div class="panel-body" style="background-color: bisque">
+    <div class="panel-body" style="background-color: transparent; border-radius:15px; border:groove; border-color:burlywood">
         @foreach (var article in Model)
         {
-            <div class="panel" style="background-color: burlywood ">
+            <div class="panel" style="background-color:burlywood; border-radius:15px; border:groove; border-color:burlywood">
                 @article.Id
                 <h1>
                     @article.Title
@@ -77,13 +41,17 @@
                     </h2>
                 </div>
                 <br />
-                <p class="panel-body" style="border-radius:15px; border:groove; border-color:bisque;">
+                <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: bisque;">
                     @article.Txt
                 </p>
                 <hr />
 
                 <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
-                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Скачать &raquo;</a>
+                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("DownLoad", new { id=article.Id })"> Скачать &raquo;</a>
+                @if (User.IsInRole("admin"))
+                {
+                    <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Редактировать &raquo;</a>
+                }
             </div>
         }
     </div>

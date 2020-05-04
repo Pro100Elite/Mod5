@@ -8,3 +8,4 @@ I:\project\Mod5\PortalForReading\DAL\bin\Debug\EntityFramework.SqlServer.xml
 I:\project\Mod5\PortalForReading\DAL\obj\Debug\DAL.csproj.CopyComplete
 I:\project\Mod5\PortalForReading\DAL\obj\Debug\DAL.dll
 I:\project\Mod5\PortalForReading\DAL\obj\Debug\DAL.pdb
+I:\project\Mod5\PortalForReading\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

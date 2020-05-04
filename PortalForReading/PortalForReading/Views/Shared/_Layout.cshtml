@@ -8,51 +8,9 @@
     <title>@ViewBag.Title - AntiKoronaBlog</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #Container ul {
-            list-style: none;
-        }
-
-            #Container ul li {
-                background-color: burlywood;
-                width: 150px;
-                border: 2px solid bisque;
-                height: 50px;
-                line-height: 50px;
-                text-align: center;
-                float: left;
-                color: black;
-                font-size: 19px;
-            }
-
-                #Container ul li:hover {
-                    background-color: bisque;
-                }
-
-            #Container ul ul {
-                display: none;
-            }
-
-            #Container ul li:hover > ul {
-                display: block;
-            }
-
-        a {
-            color: saddlebrown;
-        }
-
-        body {
-            background-color: bisque
-        }
-    </style>
 </head>
 <body>
-    <div class="navbar-fixed-top" style="background-color:burlywood; border-color:bisque">
+    <div class="navbar-fixed-top">
         <div class="container" id="Container">
             <div class=" navbar-left">
                 <ul>
@@ -62,22 +20,22 @@
                         </a>
                     </li>
                     <li>
-                        <a class=" btn" style="height:inherit; width: inherit" href="@Url.Action("About", "Home")">Информация</a>
+                        <a class=" btn" href="@Url.Action("About", "Home")">Информация</a>
                     </li>
                     <li>
-                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Contact", "Home")">Связаться</a>
+                        <a class=" btn" href="@Url.Action("Contact", "Home")">Связаться</a>
                     </li>
                     <li>
-                        <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article")">Статьи</a>
+                        <a class=" btn" href="@Url.Action("Index", "Article")">Статьи</a>
                         <ul>
                             <li>
-                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 1})">Фентези &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 1})">Фентези &raquo;</a>
                             </li>
                             <li>
-                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры &raquo;</a>
                             </li>
                             <li>
-                                <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Article", new {category = 3})">Фантастика &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 3})">Фантастика &raquo;</a>
                             </li>
                         </ul>
                     </li>

@@ -26,6 +26,14 @@ namespace DAL.Repository
             }
         }
 
+        public string GetBook(int id)
+        {
+            using (var _ctx = new MyContext())
+            {
+                return _ctx.Articles.Find(id).Book;
+            }
+        }
+
         public IEnumerable<Article> GetByAuthor(int author)
         {
             using (var _ctx = new MyContext())

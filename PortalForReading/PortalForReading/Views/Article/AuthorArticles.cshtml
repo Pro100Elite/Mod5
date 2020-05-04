@@ -14,10 +14,10 @@
 </head>
 
 <body>
-    <div class="panel-body" style="background-color:bisque">
+    <div class="panel-body" style="background-color: transparent; border-radius:15px; border:groove; border-color:burlywood">
         @foreach (var article in Model)
         {
-            <div class="panel" style="background-color: burlywood">
+            <div class="panel" style="background-color:burlywood; border-radius:15px; border:groove; border-color:burlywood">
                 @article.Id
 
                 <h1>
@@ -33,7 +33,7 @@
                 </h2>
 
                 <br />
-                <p class="panel-body" style="background-color:burlywood; border-radius:15px; border:groove; border-color:bisque;">
+                <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: bisque">
                     @article.Txt
                 </p>
                 <hr />

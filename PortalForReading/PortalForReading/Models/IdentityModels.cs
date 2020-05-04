@@ -23,6 +23,7 @@ namespace PortalForReading.Models
         public ApplicationDbContext()
             : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=BooksPortalDb;Integrated Security=True", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
@@ -30,36 +31,37 @@ namespace PortalForReading.Models
             return new ApplicationDbContext();
         }
     }
-    //public class AppDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
-    //{
-    //    protected override void Seed(ApplicationDbContext context)
-    //    {
-    //        var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
-    //        var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
-    //        // создаем две роли
-    //        var role1 = new IdentityRole { Name = "admin" };
-    //        var role2 = new IdentityRole { Name = "user" };
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-    //        // добавляем роли в бд
-    //        roleManager.Create(role1);
-    //        roleManager.Create(role2);
+            // создаем две роли
+            var role1 = new IdentityRole { Name = "admin" };
+            var role2 = new IdentityRole { Name = "user" };
 
-    //        // создаем пользователей
-    //        var admin = new ApplicationUser { Email = "Admin@gmail.com", UserName = "User@gmail.com" };
-    //        string password = "Admin_1";
-    //        var result = userManager.Create(admin, password);
+            // добавляем роли в бд
+            roleManager.Create(role1);
+            roleManager.Create(role2);
 
-    //        // если создание пользователя прошло успешно
-    //        if (result.Succeeded)
-    //        {
-    //            // добавляем для пользователя роль
-    //            userManager.AddToRole(admin.Id, role1.Name);
-    //            userManager.AddToRole(admin.Id, role2.Name);
-    //        }
+            // создаем пользователей
+            var admin = new ApplicationUser { Email = "Admin@gmail.com", UserName = "Admin@gmail.com" };
+            string password = "Admin_1995";
+            var result = userManager.Create(admin, password);
 
-    //        base.Seed(context);
-    //    }
-    //}
+            // если создание пользователя прошло успешно
+            if (result.Succeeded)
+            {
+                // добавляем для пользователя роль
+                userManager.AddToRole(admin.Id, role1.Name);
+                userManager.AddToRole(admin.Id, role2.Name);
+            }
+
+            base.Seed(context);
+        }
+    }
 }

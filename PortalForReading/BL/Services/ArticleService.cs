@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,14 +64,16 @@ namespace BL.Services
             var article = _repository.GetById(id);
             var result = _mapper.Map<ArticleModel>(article);
 
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(result.Book);
+            string localPath = @"I:\project\Mod5\PortalForReading\PortalForReading";
+
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument($"{localPath}{result.Book}");
             //Exporting specify page index as image
             if (pagenumber >= 0 & pagenumber < loadedDocument.Pages.Count)
             {
                 Bitmap image = loadedDocument.ExportAsImage(pagenumber);
 
                 //Save the image as JPG format
-                string path = "I:/project/Mod5/PortalForReading/PortalForReading/Resourses/result.jpg";
+                string path = $"{ localPath}/Resourses/result.jpg";
                 image.Save(path, ImageFormat.Jpeg);
 
                 result.Book = "~/Resourses/result.jpg";

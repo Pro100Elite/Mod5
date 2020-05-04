@@ -60,6 +60,21 @@ namespace PortalForReading.Controllers
             return View(result);
         }
 
+        [Authorize(Roles = "admin")]
+        public FileResult DownLoad(int id)
+        {
+            var article = _service.GetById(id);
+            var result = _mapper.Map<ArticleBookView>(article);
+            // Путь к файлу
+            string file_path = Server.MapPath(result.Book);
+            // Тип файла - content-type
+            string file_type = "application/pdf";
+            // Имя файла - необязательно
+            string file_name = $"{result.Title}.pdf";
+
+            return File(file_path, file_type, file_name);
+        }
+
         // GET: Article/Create
         public ActionResult Create()
         {
