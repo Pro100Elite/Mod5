@@ -20,26 +20,30 @@
                         </a>
                     </li>
                     <li>
-                        <a class=" btn" href="@Url.Action("About", "Home")">Информация</a>
-                    </li>
-                    <li>
                         <a class=" btn" href="@Url.Action("Contact", "Home")">Связаться</a>
                     </li>
                     <li>
                         <a class=" btn" href="@Url.Action("Index", "Article")">Статьи</a>
                         <ul>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 1})">Фентези &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 1})">Фентези</a>
                             </li>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры</a>
                             </li>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 3})">Фантастика &raquo;</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 3})">Фантастика</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+            </div>
+            <div class="navbar-left">
+                @using (Html.BeginForm("Filter", "Article"))
+                {
+                    <input type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." />
+                    <button type="submit">Find</button>
+                }
             </div>
             @Html.Partial("_LoginPartial")
         </div>

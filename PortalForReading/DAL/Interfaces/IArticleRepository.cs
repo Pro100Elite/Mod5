@@ -13,6 +13,7 @@ namespace DAL.Interfaces
         IEnumerable<Article> GetByAuthor(int author);
         IEnumerable<Article> GetArticles();
         IEnumerable<Article> GetArticles(int? category);
+
         void Create(Article article);
         void Delete(int id);
         void Update(Article article);

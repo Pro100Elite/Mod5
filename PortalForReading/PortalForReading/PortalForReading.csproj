@@ -211,6 +211,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resourses\Anonim.jpg" />
+    <Content Include="Resourses\Back.Texture.png" />
+    <Content Include="Resourses\Finding.png" />
+    <Content Include="Resourses\Game-menu.png" />
     <Content Include="Resourses\IconBook.png" />
     <Content Include="Resourses\Monarch.jpg" />
     <Content Include="Resourses\result.jpg" />
@@ -266,6 +269,8 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Article\_GetArticles.cshtml" />
+    <Content Include="Views\Article\Filter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

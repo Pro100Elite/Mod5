@@ -22,19 +22,38 @@ namespace PortalForReading.Controllers
             _mapper = mapper;
         }
 
+
+        [HttpGet]
+        public ActionResult Filter()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Filter(string filter)
+        {
+            ViewBag.filter = filter;
+
+            var articles = _service.GetArticles(null);
+            var result = _mapper.Map<List<ArticleView>>(articles);
+
+            result = ViewBag.filter == null ? result : result.Where(f => f.Title.Contains(ViewBag.filter)).ToList();
+
+            return View(result);
+        }
+
         //GET: Article
         [HttpGet]
-        public ActionResult Index(int? page, int? category)
+        public ActionResult Index(int? page, int? category, string filter = null)
         {
             var articles = _service.GetArticles(category);
             var result = _mapper.Map<List<ArticleView>>(articles);
-
 
             ViewBag.Message = "Articles";
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
-            return View(result.ToPagedList(pageNumber, pageSize));
+            return View("_GetArticles",result.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -66,7 +85,7 @@ namespace PortalForReading.Controllers
             var article = _service.GetById(id);
             var result = _mapper.Map<ArticleBookView>(article);
             // Путь к файлу
-            string file_path = Server.MapPath(result.Book);
+            string file_path = Server.MapPath($@"\{result.Book}");
             // Тип файла - content-type
             string file_type = "application/pdf";
             // Имя файла - необязательно

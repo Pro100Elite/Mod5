@@ -1,15 +1,33 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:bisque
-    /*background:url('../Resourses/BackGround.png');*/
-    /*background-size:cover;
+    background-color: bisque;
+    font-family: Monotype Corsiva, Times, Serif;
+    font-size:x-large;
+    font-stretch:extra-condensed;
+    font-weight:400;
+    /*background:url('../Resourses/BackTest.png');
+    background-size:cover;
     position:relative;*/
 }
 a.btn {
     height: inherit;
     width: inherit; 
     border-radius:10px 10px;
+    font-size:large
+}
+
+input {
+    float: unset;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px 10px;
+    border-style: groove;
+    background-color: burlywood;
+}
+
+button {
+    background-color: burlywood;
 }
 
 .navbar-fixed-top {
@@ -40,7 +58,6 @@ a.btn {
         text-align: center;
         float: left;
         color: black;
-        font-size: 19px;
     }
 
         #Container ul li:hover {

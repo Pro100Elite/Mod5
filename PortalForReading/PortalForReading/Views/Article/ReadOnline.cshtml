@@ -19,7 +19,7 @@
             </div>
             <br />
             <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>
-            @Model.pagenumber
+            @(Model.pagenumber+1)
             <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> >></a>
         </p>
     </div>

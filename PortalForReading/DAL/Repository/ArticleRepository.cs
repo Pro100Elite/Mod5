@@ -20,7 +20,7 @@ namespace DAL.Repository
 
         public Article GetById(int id)
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 return _ctx.Articles.Find(id);
             }
@@ -28,7 +28,7 @@ namespace DAL.Repository
 
         public string GetBook(int id)
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 return _ctx.Articles.Find(id).Book;
             }
@@ -36,7 +36,7 @@ namespace DAL.Repository
 
         public IEnumerable<Article> GetByAuthor(int author)
         {
-            using (var _ctx = new MyContext())
+            using (_ctx)
             {
                 return _ctx.Articles.Where(x => x.Author.Id == author).Include(a => a.Author)
                     .Include(c => c.Categories).ToList();
