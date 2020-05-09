@@ -39,15 +39,6 @@ namespace BL.Services
                 articles = _repository.GetArticles();
             }
 
-            //if (!String.IsNullOrEmpty(searchString) & category != null)
-            //{
-            //    articles = _repository.GetArticles(category).Where(s => s.Title.Contains(searchString));
-            //}
-            //else if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    articles = _repository.GetArticles().Where(s => s.Title.Contains(searchString));
-            //}
-
             var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
 
             return result;
@@ -65,6 +56,14 @@ namespace BL.Services
         {
             var article = _repository.GetById(id);
             var result = _mapper.Map<ArticleModel>(article);
+
+            return result;
+        }
+
+        public IEnumerable<ArticleModel> Filter(string filter)
+        {
+            var articles = _repository.Filter(filter);
+            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
 
             return result;
         }

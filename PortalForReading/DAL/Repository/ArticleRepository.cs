@@ -26,6 +26,15 @@ namespace DAL.Repository
             }
         }
 
+        public IEnumerable<Article> Filter(string filter)
+        {
+            using (_ctx)
+            {
+                return _ctx.Articles.Where(f => f.Title.Contains(filter)).Include(a => a.Author)
+                    .Include(c => c.Categories).ToList(); 
+            }
+        }
+
         public string GetBook(int id)
         {
             using (_ctx)

@@ -11,6 +11,7 @@ namespace BL.Interfaces
     {
         IEnumerable<ArticleModel> GetArticles(int? category);
         IEnumerable<ArticleModel> GetByAuthor(int author);
+        IEnumerable<ArticleModel> Filter(string filter);
         ArticleModel GetById(int id);
         ArticleModel GetForRead(int id, int pagenumber);
         void EditArticle(ArticleModel articleModel);

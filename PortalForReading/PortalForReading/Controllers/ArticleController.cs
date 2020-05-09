@@ -32,12 +32,11 @@ namespace PortalForReading.Controllers
         [HttpPost]
         public ActionResult Filter(string filter)
         {
-            ViewBag.filter = filter;
 
-            var articles = _service.GetArticles(null);
+            var articles = _service.Filter(filter);
             var result = _mapper.Map<List<ArticleView>>(articles);
 
-            result = ViewBag.filter == null ? result : result.Where(f => f.Title.Contains(ViewBag.filter)).ToList();
+            //result = ViewBag.filter == null ? result : result.Where(f => f.Title.Contains(ViewBag.filter)).ToList();
 
             return View(result);
         }
