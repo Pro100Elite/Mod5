@@ -7,13 +7,6 @@
 <h3>@ViewBag.Message</h3>
 
 <div class="panel-body" style="background-color: transparent; background:url(../../Resourses/Game-menu.png); background-size:cover; border-radius:15px; border:groove; border-color:burlywood">
-    @*@using (Html.BeginForm())
-    {
-        <input type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." />
-        <span>
-            <button type="submit">Find</button>
-        </span>
-    }*@
 
     @foreach (var article in Model)
     {

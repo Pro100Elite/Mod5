@@ -16,11 +16,8 @@ a.btn {
     border-radius:10px 10px;
     font-size:large
 }
-
-input {
+input[type=text]{
     float: unset;
-    height: 50px;
-    width: 200px;
     border-radius: 10px 10px;
     border-style: groove;
     background-color: burlywood;

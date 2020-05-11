@@ -15,6 +15,7 @@ namespace BL
         {
             CreateMap<Author, AuthorModel>().ReverseMap();
             CreateMap<Article, ArticleModel>().ReverseMap();
+            CreateMap<UserData, UserDataModel>().ReverseMap();
             CreateMap<Category, CategoryModel>().ReverseMap();
         }
     }

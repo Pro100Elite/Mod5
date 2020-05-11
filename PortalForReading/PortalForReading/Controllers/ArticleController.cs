@@ -36,15 +36,15 @@ namespace PortalForReading.Controllers
             var articles = _service.Filter(filter);
             var result = _mapper.Map<List<ArticleView>>(articles);
 
-            //result = ViewBag.filter == null ? result : result.Where(f => f.Title.Contains(ViewBag.filter)).ToList();
-
             return View(result);
         }
 
         //GET: Article
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index(int? page, int? category, string filter = null)
         {
+
             var articles = _service.GetArticles(category);
             var result = _mapper.Map<List<ArticleView>>(articles);
 
@@ -66,7 +66,6 @@ namespace PortalForReading.Controllers
             return View(result);
         }
 
-        // GET: Article/Details/5
         [HttpGet]
         public ActionResult ReadOnline(int id, int pagenumber)
         {

@@ -32,7 +32,7 @@ namespace PortalForReading.Models
         }
     }
 
-    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class AppDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -49,7 +49,7 @@ namespace PortalForReading.Models
             roleManager.Create(role2);
 
             // создаем пользователей
-            var admin = new ApplicationUser { Email = "Admin@gmail.com", UserName = "Admin@gmail.com" };
+            var admin = new ApplicationUser { Email = "Admin@gmail.com", UserName = "Admin@gmail.com"};
             string password = "Admin_1995";
             var result = userManager.Create(admin, password);
 

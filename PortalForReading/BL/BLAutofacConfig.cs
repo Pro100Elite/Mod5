@@ -17,6 +17,7 @@ namespace BL
             builder.RegisterType<MyContext>().As<IMyContext>();
 
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>();
+            builder.RegisterType<UserDataRepository>().As<IUserDataRepository>();
             //builder.RegisterType<AuthorRepository>().As<IAuthorRepository>();
         }
     }
