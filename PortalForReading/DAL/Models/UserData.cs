@@ -10,9 +10,10 @@ namespace DAL.Models
 {
     public class UserData
     {
-        public Dictionary<int,int> BooksPage { get; set; }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
+        public int BookId { get; set; }
         public string AccountId { get; set; }
+        public int BookPage { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace BL.Interfaces
 {
     public interface IUserDataService
     {
+        UserDataModel GetById(string accountId, int bookId);
         void Create(UserDataModel userData);
         void Update(UserDataModel userData);
     }

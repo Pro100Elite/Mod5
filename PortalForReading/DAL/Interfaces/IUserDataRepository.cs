@@ -9,6 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IUserDataRepository
     {
+        UserData GetById(string accountId, int bookId);
         void Create(UserData userData);
         void Update(UserData userData);
     }

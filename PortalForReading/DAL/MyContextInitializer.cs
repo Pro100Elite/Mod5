@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class MyContextInitializer : CreateDatabaseIfNotExists<MyContext>
+    class MyContextInitializer : DropCreateDatabaseIfModelChanges<MyContext>
     {
         protected override void Seed(MyContext db)
         {

@@ -16,30 +16,34 @@
     <div class="panel-body" style="background-color: transparent; border-radius:15px; border:groove; border-color:burlywood">
         @foreach (var article in Model)
         {
-            <div class="panel" style="background-color:burlywood; border-radius:15px; border:groove; border-color:burlywood">
-                @article.Id
+        <div class="panel" style="background-color:burlywood; border-radius:15px; border:groove; border-color:burlywood">
+            @article.Id
 
-                <h1>
-                    @article.Title
-                </h1>
+            <h1>
+                @article.Title
+            </h1>
 
-                <hr />
-                <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque; float:left" />
+            <hr />
+            <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque; float:left" />
 
-                <h2>
-                    Автор:
-                    <a href="@Url.Action("AuthorArticles", new {author = article.Author.Id })">@article.Author.Name</a>
-                </h2>
+            <h2>
+                Автор:
+                <a href="@Url.Action("AuthorArticles", new {author = article.Author.Id })">@article.Author.Name</a>
+            </h2>
 
-                <br />
-                <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: bisque">
-                    @article.Txt
-                </p>
-                <hr />
+            <br />
+            <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: bisque">
+                @article.Txt
+            </p>
+            <hr />
 
-                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
-                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })"> Скачать &raquo;</a>
-            </div>
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
+            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("DownLoad", new { id=article.Id })">Скачать</a>
+            @if (User.IsInRole("admin"))
+            {
+                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit", new { id=article.Id })">Редактировать</a>
+            }
+        </div>
         }
     </div>
 </body>

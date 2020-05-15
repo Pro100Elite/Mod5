@@ -22,6 +22,15 @@ namespace BL.Services
             _mapper = mapper;
         }
 
+        public UserDataModel GetById(string accountId, int bookId)
+        {
+            var userData = _repository.GetById(accountId, bookId);
+
+            var result = _mapper.Map<UserDataModel>(userData);
+
+            return result;
+        }
+
         public void Create(UserDataModel userData)
         {
             var result = _mapper.Map<UserData>(userData);

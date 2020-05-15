@@ -8,7 +8,8 @@ namespace BL.Models
 {
     public class UserDataModel
     {
-        public Dictionary<int, int> BooksPage { get; set; }
         public string AccountId { get; set; }
+        public int BookId { get; set; }
+        public int BookPage { get; set; }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using BL.Interfaces;
+using BL.Models;
 using PagedList;
 using PortalForReading.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml;
@@ -14,22 +16,26 @@ namespace PortalForReading.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _service;
+        private readonly IUserDataService _serviceData;
         private readonly IMapper _mapper;
 
-        public ArticleController(IArticleService articleService, IMapper mapper)
+        public ArticleController(IArticleService articleService, IUserDataService _userData, IMapper mapper)
         {
             _service = articleService;
+            _serviceData = _userData;
             _mapper = mapper;
         }
 
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Filter()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Filter(string filter)
         {
 
@@ -49,6 +55,8 @@ namespace PortalForReading.Controllers
             var result = _mapper.Map<List<ArticleView>>(articles);
 
             ViewBag.Message = "Articles";
+            ViewBag.Page = 0;
+
             int pageSize = 2;
             int pageNumber = (page ?? 1);
 
@@ -56,6 +64,7 @@ namespace PortalForReading.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult AuthorArticles(int author)
         {
             var articles = _service.GetByAuthor(author);
@@ -67,17 +76,44 @@ namespace PortalForReading.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult ReadOnline(int id, int pagenumber)
         {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                // the principal identity is a claims identity.
+                // now we need to find the NameIdentifier claim
+                var userIdClaim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    var userIdValue = userIdClaim.Value;
+                    if(pagenumber > 0)
+                    {
+                        var resultData = new UserDataModel { AccountId = userIdValue, BookId = id, BookPage = pagenumber };
+                        _serviceData.Update(resultData);
+                    }
+
+                    var userData = _serviceData.GetById(userIdValue, id);
+
+                    if (pagenumber == 0 & userData != null)
+                    {
+                        pagenumber = userData.BookPage;
+                    }
+                }
+            }
+
             var article = _service.GetForRead(id, pagenumber);
             var result = _mapper.Map<ArticleBookView>(article);
-
             result.pagenumber = pagenumber;
 
             return View(result);
         }
 
-        [Authorize(Roles = "admin")]
+
+        [Authorize(Roles = "user")]
         public FileResult DownLoad(int id)
         {
             var article = _service.GetById(id);

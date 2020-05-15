@@ -36,7 +36,7 @@
                 @article.Txt
             </p>
             <hr />
-            <a class="btn btn-default" style="background-color: bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})">Читать</a>
+            <a class="btn btn-default" style="background-color: bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = ViewBag.Page})">Читать</a>
             <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("DownLoad", new { id=article.Id })">Скачать</a>
             @if (User.IsInRole("admin"))
             {
