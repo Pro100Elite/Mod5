@@ -36,6 +36,22 @@
                             </li>
                         </ul>
                     </li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>
+                            <a class="btn">
+                                Adminka
+                            </a>
+                            <ul>
+                                <li>
+                                    <a class="btn" href="@Url.Action("Create", "Article")">Create Article</a>
+                                </li>
+                                <li>
+                                    <a class="btn" href="@Url.Action("Delete", "Article")">Delete Article</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
             <div class="navbar-left">

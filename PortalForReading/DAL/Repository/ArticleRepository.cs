@@ -64,7 +64,8 @@ namespace DAL.Repository
 
         public void Delete(int id)
         {
-            _ctx.Articles.Remove(GetById(id));
+            var result = GetById(id);
+            _ctx.Articles.Remove(result);
 
             _ctx.SaveChanges();
         }

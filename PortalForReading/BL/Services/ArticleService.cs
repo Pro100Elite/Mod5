@@ -94,11 +94,28 @@ namespace BL.Services
             return result;
         }
 
-        public void EditArticle(ArticleModel articleModel)
+        public void Create(ArticleModel articleModel)
+        {
+            var article = _mapper.Map<Article>(articleModel);
+
+            _repository.Create(article);
+        }
+
+        public void Delete(int Id)
+        {
+            _repository.Delete(Id);
+        }
+
+        public void Edite(ArticleModel articleModel)
         {
             var article = _mapper.Map<Article>(articleModel);
 
             _repository.Update(article);
+        }
+
+        public Dictionary<int, string> GetArticleToDelete()
+        {
+            return _repository.GetArticles().ToDictionary(x => x.Id, x => x.Title);
         }
     }
 }

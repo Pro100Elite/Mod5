@@ -1,0 +1,16 @@
+﻿@model PortalForReading.Models.ArticleView
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    <center>
+        @Html.DropDownListFor(x => x.Id, ViewBag.Article as IEnumerable<SelectListItem>)
+    </center>
+    <button type="submit">Отправить</button>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

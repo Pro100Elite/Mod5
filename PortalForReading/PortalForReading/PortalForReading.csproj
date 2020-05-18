@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArticleBookView.cs" />
+    <Compile Include="Models\ArticleCreateView.cs" />
     <Compile Include="Models\ArticleView.cs" />
     <Compile Include="Models\AuthorView.cs" />
     <Compile Include="Models\CategoryView.cs" />
@@ -271,6 +272,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Article\_GetArticles.cshtml" />
     <Content Include="Views\Article\Filter.cshtml" />
+    <Content Include="Views\Article\Create.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,12 +17,14 @@ namespace PortalForReading.Controllers
     {
         private readonly IArticleService _service;
         private readonly IUserDataService _serviceData;
+        private readonly IAuthorService _authorService;
         private readonly IMapper _mapper;
 
-        public ArticleController(IArticleService articleService, IUserDataService _userData, IMapper mapper)
+        public ArticleController(IArticleService articleService, IUserDataService userData, IAuthorService authorService, IMapper mapper)
         {
             _service = articleService;
-            _serviceData = _userData;
+            _serviceData = userData;
+            _authorService = authorService;
             _mapper = mapper;
         }
 
@@ -131,16 +133,25 @@ namespace PortalForReading.Controllers
         // GET: Article/Create
         public ActionResult Create()
         {
-            return View();
+            //            ViewBag.Author = _authorService.GetAuthorDictionary()
+            //.Select(x => new SelectListItem { Value = x.Key.ToString(), Text = x.Value });
+
+            var result = _authorService.GetAuthors();
+            SelectList authors = new SelectList(result, "Id", "Name");
+            //ViewBag.Author = authors;
+            var model = new ArticleCreateView { Authors = authors };
+
+            return View(model);
         }
 
         // POST: Article/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ArticleCreateView article)
         {
             try
             {
-                // TODO: Add insert logic here
+                var result = _mapper.Map<ArticleModel>(article);
+                _service.Create(result);
 
                 return RedirectToAction("Index");
             }
@@ -172,26 +183,21 @@ namespace PortalForReading.Controllers
             }
         }
 
-        // GET: Article/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Author/Delete/5
+        //[HttpGet]
+        public ActionResult Delete()
         {
+            ViewBag.Article = _service.GetArticleToDelete()
+                .Select(x => new SelectListItem { Value = x.Key.ToString(), Text = x.Value });
             return View();
         }
 
-        // POST: Article/Delete/5
+        // POST: Author/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _service.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -29,7 +29,7 @@ namespace PortalForReading
 
             builder.RegisterType<ArticleService>().As<IArticleService>();
             builder.RegisterType<UserDataService>().As<IUserDataService>();
-            //builder.RegisterType<AuthorService>().As<IAuthorService>();
+            builder.RegisterType<AuthorService>().As<IAuthorService>();
 
             builder.RegisterModule<BLAutofacConfig>();
 

@@ -14,6 +14,9 @@ namespace BL.Interfaces
         IEnumerable<ArticleModel> Filter(string filter);
         ArticleModel GetById(int id);
         ArticleModel GetForRead(int id, int pagenumber);
-        void EditArticle(ArticleModel articleModel);
+        void Create(ArticleModel articleModel);
+        void Delete(int Id);
+        void Edite(ArticleModel articleModel);
+        Dictionary<int, string> GetArticleToDelete();
     }
 }
