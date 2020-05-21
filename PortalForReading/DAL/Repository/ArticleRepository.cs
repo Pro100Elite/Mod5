@@ -18,41 +18,23 @@ namespace DAL.Repository
             _ctx = context;
         }
 
+        public IQueryable QueryAll()
+        {
+            var query = _ctx.Articles.Include(a => a.Author)
+                .Include(c => c.Categories).AsNoTracking();
+
+            return query;
+        }
+
         public Article GetById(int id)
         {
             return _ctx.Articles.Find(id);
-        }
-
-        public IEnumerable<Article> Filter(string filter)
-        {
-            return _ctx.Articles.Where(f => f.Title.Contains(filter)).Include(a => a.Author)
-                .Include(c => c.Categories).AsNoTracking().ToList();
-        }
-
-        public string GetBook(int id)
-        {
-            return _ctx.Articles.Find(id).Book;
         }
 
         public IEnumerable<Article> GetByAuthor(int author)
         {
             return _ctx.Articles.Where(x => x.Author.Id == author).Include(a => a.Author)
                 .Include(c => c.Categories).AsNoTracking().ToList();
-        }
-
-        public IEnumerable<Article> GetArticles()
-        {
-            var result = _ctx.Articles.Include(a => a.Author).Include(c => c.Categories).AsNoTracking().ToList();
-
-            return result;
-        }
-
-        public IEnumerable<Article> GetArticles(int? category)
-        {
-            var result = _ctx.Articles.Where(c => c.Categories.Any(x => x.Id == category))
-                .Include(a => a.Author).Include(c => c.Categories).AsNoTracking().ToList();
-
-            return result;
         }
 
         public void Create(Article article)

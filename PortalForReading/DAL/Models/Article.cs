@@ -19,12 +19,8 @@ namespace DAL.Models
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
 
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
-        public Article()
-        {
-            Categories = new List<Category>();
-        }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

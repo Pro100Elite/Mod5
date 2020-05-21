@@ -12,13 +12,8 @@ namespace DAL.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        //public DateTime Birthday { get; set; }
         public string Photo { get; set; }
 
-        public ICollection<Article> Articles { get; set; }
-        public Author()
-        {
-            Articles = new List<Article>();
-        }
+        public virtual ICollection<Article> Articles { get; set; }
     }
 }

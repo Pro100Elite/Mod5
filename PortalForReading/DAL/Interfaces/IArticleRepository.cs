@@ -10,10 +10,12 @@ namespace DAL.Interfaces
     public interface IArticleRepository
     {
         Article GetById(int id);
-        IEnumerable<Article> Filter(string filter);
+        IQueryable QueryAll();
+
+        //IEnumerable<Article> Filter(string filter);
         IEnumerable<Article> GetByAuthor(int author);
-        IEnumerable<Article> GetArticles();
-        IEnumerable<Article> GetArticles(int? category);
+        //IEnumerable<Article> GetArticles();
+        //IEnumerable<Article> GetArticles(int? category);
 
         void Create(Article article);
         void Delete(int id);

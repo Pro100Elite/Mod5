@@ -15,6 +15,7 @@ namespace BL.Models
         public string Img { get; set; }
 
         public int AuthorId { get; set; }
+
         public AuthorModel Author { get; set; }
 
         public ICollection<CategoryModel> Categories { get; set; }

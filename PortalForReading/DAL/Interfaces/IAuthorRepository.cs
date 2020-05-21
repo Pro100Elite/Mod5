@@ -9,6 +9,6 @@ namespace DAL.Interfaces
 {
     public interface IAuthorRepository
     {
-        IEnumerable<Author> GetAuthors();
+        IQueryable<Author> GetAuthors();
     }
 }

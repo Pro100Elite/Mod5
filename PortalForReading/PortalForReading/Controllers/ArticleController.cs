@@ -28,7 +28,6 @@ namespace PortalForReading.Controllers
             _mapper = mapper;
         }
 
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Filter()
@@ -41,7 +40,7 @@ namespace PortalForReading.Controllers
         public ActionResult Filter(string filter)
         {
 
-            var articles = _service.Filter(filter);
+            var articles = _service.QueryAll().Where(f => f.Title.Contains(filter)).ToList();
             var result = _mapper.Map<List<ArticleView>>(articles);
 
             return View(result);
@@ -50,14 +49,22 @@ namespace PortalForReading.Controllers
         //GET: Article
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(int? page, int? category, string filter = null)
+        public ActionResult Index(int? page, int? category)
         {
+            IEnumerable<ArticleModel> articles;
 
-            var articles = _service.GetArticles(category);
+            if (category != null)
+            {
+                articles = _service.QueryAll().Where(c => c.Categories.Any(x => x.Id == category)).ToList();
+            }
+            else
+            {
+                articles = _service.QueryAll().ToList();
+            }
+
             var result = _mapper.Map<List<ArticleView>>(articles);
 
             ViewBag.Message = "Articles";
-            ViewBag.Page = 0;
 
             int pageSize = 2;
             int pageNumber = (page ?? 1);
@@ -69,7 +76,7 @@ namespace PortalForReading.Controllers
         [AllowAnonymous]
         public ActionResult AuthorArticles(int author)
         {
-            var articles = _service.GetByAuthor(author);
+            var articles = _service.QueryAll().Where(x => x.Author.Id == author).ToList();
             var result = _mapper.Map<List<ArticleView>>(articles);
 
             ViewBag.Message = "Articles";
@@ -81,37 +88,45 @@ namespace PortalForReading.Controllers
         [AllowAnonymous]
         public ActionResult ReadOnline(int id, int pagenumber)
         {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            if (claimsIdentity != null)
+            var article = _service.GetForRead(id, pagenumber);
+
+            if (pagenumber >= 0 & pagenumber < article.PageCount)
             {
-                // the principal identity is a claims identity.
-                // now we need to find the NameIdentifier claim
-                var userIdClaim = claimsIdentity.Claims
-                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-
-                if (userIdClaim != null)
+                var claimsIdentity = User.Identity as ClaimsIdentity;
+                if (claimsIdentity != null)
                 {
-                    var userIdValue = userIdClaim.Value;
-                    if(pagenumber > 0)
-                    {
-                        var resultData = new UserDataModel { AccountId = userIdValue, BookId = id, BookPage = pagenumber };
-                        _serviceData.Update(resultData);
-                    }
+                    // the principal identity is a claims identity.
+                    // now we need to find the NameIdentifier claim
+                    var userIdClaim = claimsIdentity.Claims
+                        .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
 
-                    var userData = _serviceData.GetById(userIdValue, id);
-
-                    if (pagenumber == 0 & userData != null)
+                    if (userIdClaim != null)
                     {
-                        pagenumber = userData.BookPage;
+                        var userIdValue = userIdClaim.Value;
+                        if (pagenumber > 0)
+                        {
+                            var resultData = new UserDataModel { AccountId = userIdValue, BookId = id, BookPage = pagenumber };
+                            _serviceData.Update(resultData);
+                        }
+
+                        var userData = _serviceData.GetById(userIdValue, id);
+
+                        if (pagenumber == 0 & userData != null)
+                        {
+                            pagenumber = userData.BookPage;
+                        }
                     }
                 }
+
+                var result = _mapper.Map<ArticleBookView>(article);
+                result.pagenumber = pagenumber;
+
+                return View(result);
             }
-
-            var article = _service.GetForRead(id, pagenumber);
-            var result = _mapper.Map<ArticleBookView>(article);
-            result.pagenumber = pagenumber;
-
-            return View(result);
+            else
+            {
+                return RedirectToAction("ReadOnline", new { id = article.Id, pagenumber = 0 });
+            }
         }
 
 
@@ -133,12 +148,8 @@ namespace PortalForReading.Controllers
         // GET: Article/Create
         public ActionResult Create()
         {
-            //            ViewBag.Author = _authorService.GetAuthorDictionary()
-            //.Select(x => new SelectListItem { Value = x.Key.ToString(), Text = x.Value });
-
-            var result = _authorService.GetAuthors();
+            var result = _authorService.GetAuthors().ToList();
             SelectList authors = new SelectList(result, "Id", "Name");
-            //ViewBag.Author = authors;
             var model = new ArticleCreateView { Authors = authors };
 
             return View(model);
@@ -146,10 +157,26 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Create
         [HttpPost]
-        public ActionResult Create(ArticleCreateView article)
+        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2)
         {
             try
             {
+                if (upload != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                    article.Img = "~/Resourses/" + fileName;
+                }
+                if (upload2 != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload2.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload2.SaveAs(Server.MapPath("~/Books/" + fileName));
+                    article.Book = @"Books\" + fileName;
+                }
                 var result = _mapper.Map<ArticleModel>(article);
                 _service.Create(result);
 
@@ -164,16 +191,40 @@ namespace PortalForReading.Controllers
         // GET: Article/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var article = _service.GetById(id);
+            var result = _authorService.GetAuthors().ToList();
+            SelectList authors = new SelectList(result, "Id", "Name");
+            var model = _mapper.Map<ArticleEditorView>(article);
+            model.Authors = authors;
+
+            return View(model);
         }
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2)
         {
             try
             {
                 // TODO: Add update logic here
+                if (upload != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                    article.Img = "~/Resourses/" + fileName;
+                }
+                if (upload2 != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload2.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload2.SaveAs(Server.MapPath("~/Books/" + fileName));
+                    article.Book = @"Books\" + fileName;
+                }
+                var result = _mapper.Map<ArticleModel>(article);
+                _service.Edite(result);
 
                 return RedirectToAction("Index");
             }

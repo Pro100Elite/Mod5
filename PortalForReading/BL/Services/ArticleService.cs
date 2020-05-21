@@ -26,28 +26,10 @@ namespace BL.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<ArticleModel> GetArticles(int? category)
+        public IQueryable<ArticleModel> QueryAll()
         {
-            IEnumerable<Article> articles;
-
-            if (category != null) 
-            {
-                articles = _repository.GetArticles(category);
-            }
-            else
-            {
-                articles = _repository.GetArticles();
-            }
-
-            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
-
-            return result;
-        }
-
-        public IEnumerable<ArticleModel> GetByAuthor(int author)
-        {
-            var articles = _repository.GetByAuthor(author);
-            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
+            var query = _repository.QueryAll();
+            var result = _mapper.ProjectTo<ArticleModel>(query);
 
             return result;
         }
@@ -60,22 +42,15 @@ namespace BL.Services
             return result;
         }
 
-        public IEnumerable<ArticleModel> Filter(string filter)
-        {
-            var articles = _repository.Filter(filter);
-            var result = _mapper.Map<IEnumerable<ArticleModel>>(articles);
-
-            return result;
-        }
-
-        public ArticleModel GetForRead(int id, int pagenumber)
+        public ArticleReadModel GetForRead(int id, int pagenumber)
         {
             var article = _repository.GetById(id);
-            var result = _mapper.Map<ArticleModel>(article);
+            var result = _mapper.Map<ArticleReadModel>(article);
 
             string localPath = AppDomain.CurrentDomain.BaseDirectory;
 
             PdfLoadedDocument loadedDocument = new PdfLoadedDocument($"{localPath}{result.Book}");
+            result.PageCount = loadedDocument.Pages.Count;
             //Exporting specify page index as image
             if (pagenumber >= 0 & pagenumber < loadedDocument.Pages.Count)
             {
@@ -115,7 +90,10 @@ namespace BL.Services
 
         public Dictionary<int, string> GetArticleToDelete()
         {
-            return _repository.GetArticles().ToDictionary(x => x.Id, x => x.Title);
+            var query = _repository.QueryAll();
+            var result = _mapper.ProjectTo<ArticleModel>(query);
+
+            return result.ToDictionary(x => x.Id, x => x.Title);
         }
     }
 }

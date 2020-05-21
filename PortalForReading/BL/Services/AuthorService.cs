@@ -21,17 +21,10 @@ namespace BL.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<AuthorModel> GetAuthors()
+        public IQueryable<AuthorModel> GetAuthors()
         {
-            var authors = _repository.GetAuthors();
-            var result = _mapper.Map<IEnumerable<AuthorModel>>(authors);
-
-            return result;
-        }
-
-        public Dictionary<int, string> GetAuthorDictionary()
-        {
-            var result = _repository.GetAuthors().ToDictionary(x => x.Id, x => x.Name);
+            var query = _repository.GetAuthors();
+            var result = _mapper.ProjectTo<AuthorModel>(query);
 
             return result;
         }

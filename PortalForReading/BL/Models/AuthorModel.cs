@@ -13,6 +13,6 @@ namespace BL.Models
         //public DateTime Birthday { get; set; }
         public string Photo { get; set; }
 
-        public ICollection<ArticleModel> Articles { get; set; }
+        //public ICollection<ArticleModel> Articles { get; set; }
     }
 }

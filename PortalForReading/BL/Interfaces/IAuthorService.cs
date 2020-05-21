@@ -9,7 +9,6 @@ namespace BL.Interfaces
 {
     public interface IAuthorService
     {
-        IEnumerable<AuthorModel> GetAuthors();
-        Dictionary<int, string> GetAuthorDictionary();
+        IQueryable<AuthorModel> GetAuthors();
     }
 }

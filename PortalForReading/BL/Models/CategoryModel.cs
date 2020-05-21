@@ -11,6 +11,6 @@ namespace BL.Models
         public int Id { get; set; }
         public string Title { get; set; }
 
-        public ICollection<ArticleModel> Articles { get; set; }
+        //public ICollection<ArticleModel> Articles { get; set; }
     }
 }

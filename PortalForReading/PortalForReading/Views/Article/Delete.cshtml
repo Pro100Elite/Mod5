@@ -1,14 +1,18 @@
 ﻿@model PortalForReading.Models.ArticleView
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete Article";
 }
 
 @using (Html.BeginForm())
 {
-    <center>
-        @Html.DropDownListFor(x => x.Id, ViewBag.Article as IEnumerable<SelectListItem>)
-    </center>
+    <wbr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Id, ViewBag.Article as IEnumerable<SelectListItem>)
+        </div>
+    </div>
     <button type="submit">Отправить</button>
 }
 <div>

@@ -17,9 +17,9 @@ namespace DAL.Repository
             _ctx = context;
         }
 
-        public IEnumerable<Author> GetAuthors()
+        public IQueryable<Author> GetAuthors()
         {
-            var result = _ctx.Authors.AsNoTracking().ToList();
+            var result = _ctx.Authors.AsNoTracking();
 
             return result;
         }
