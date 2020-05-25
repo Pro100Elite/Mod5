@@ -73,16 +73,9 @@ namespace BL.Services
 
         public void Create(ArticleModel articleModel)
         {
-            var categories = _repositoryCat.GetCategories().Where(c => articleModel.CategoryId.Contains(c.Id)).ToList();
             var article = _mapper.Map<Article>(articleModel);
 
-            //foreach (var cat in categories)
-            //{
-            //    article.Categories.Add();
-            //}
-
-            //article.Categories = categories;
-            _repository.Create(article, categories);
+            _repository.Create(article);
         }
 
         public void Delete(int Id)

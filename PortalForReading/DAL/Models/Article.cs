@@ -25,6 +25,6 @@ namespace DAL.Models
         //[ForeignKey("Categories")]
         //public int CategoryId { get; set; }
 
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<CategoryArticle> ArticleCategories { get; set; }
     }
 }

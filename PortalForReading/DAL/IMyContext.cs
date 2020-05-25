@@ -15,6 +15,7 @@ namespace DAL
         DbSet<Author> Authors { get; set; }
         DbSet<Category> Categories { get; set; }
         DbSet<UserData> UserData { get; set; }
+        DbSet<CategoryArticle> CategoryArticles { get; set; }
         DbEntityEntry Entry(object entity);
         int SaveChanges();
     }

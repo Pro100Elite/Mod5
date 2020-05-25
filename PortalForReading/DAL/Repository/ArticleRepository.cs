@@ -20,8 +20,7 @@ namespace DAL.Repository
 
         public IQueryable QueryAll()
         {
-            var query = _ctx.Articles.Include(a => a.Author)
-                .Include(c => c.Categories).AsNoTracking();
+            var query = _ctx.Articles.AsNoTracking();
 
             return query;
         }
@@ -33,19 +32,13 @@ namespace DAL.Repository
 
         public IEnumerable<Article> GetByAuthor(int author)
         {
-            return _ctx.Articles.Where(x => x.Author.Id == author).Include(a => a.Author)
-                .Include(c => c.Categories).AsNoTracking().ToList();
+            return _ctx.Articles.Where(x => x.Author.Id == author).AsNoTracking().ToList();
         }
 
-        public void Create(Article article, List<Category> categories)
+        public void Create(Article article)
         {
             _ctx.Articles.Add(article);
-            _ctx.SaveChanges();
-            foreach (var cat in categories)
-            {
-                article.Categories.Add(cat);
-            }
-            _ctx.Entry(article).State = EntityState.Modified;
+
             _ctx.SaveChanges();
         }
 

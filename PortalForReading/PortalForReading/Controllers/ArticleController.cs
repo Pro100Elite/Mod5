@@ -58,7 +58,7 @@ namespace PortalForReading.Controllers
 
             if (category != null)
             {
-                articles = _service.QueryAll().Where(c => c.Categories.Any(x => x.Id == category)).ToList();
+                articles = _service.QueryAll().Where(c => c.ArticleCategories.Any(x => x.CategoryId == category)).ToList();
                 ViewBag.category = category;
             }
             else
@@ -122,6 +122,7 @@ namespace PortalForReading.Controllers
                     }
                 }
 
+                int pageSize = 2;
                 var result = _mapper.Map<ArticleBookView>(article);
                 result.pagenumber = pagenumber;
 
@@ -165,8 +166,8 @@ namespace PortalForReading.Controllers
         [HttpPost]
         public ActionResult Create(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2, params int[] selectedCategories)
         {
-            try
-            {
+            //try
+            //{
                 if (upload != null)
                 {
                     // получаем имя файла
@@ -184,28 +185,22 @@ namespace PortalForReading.Controllers
                     article.Book = @"Books\" + fileName;
                 }
 
-                var result = _mapper.Map<ArticleModel>(article);
+                var articleMap = _mapper.Map<ArticleModel>(article);
 
-                //var categories = _categoryService.GetCategories().Where(o => selectedCategories.Contains(o.Id)).ToList();
+                foreach (var cat in selectedCategories)
+                {
+                    var categ = new CategoryArticleModel { CategoryId = cat };
+                    articleMap.ArticleCategories = new List<CategoryArticleModel>{categ};
+                }
 
-                //result.Categories = categories;
-
-                //foreach (var cat in categories)
-                //{
-                //    result.Categories.Add(cat);
-                //}
-
-
-                result.CategoryId = selectedCategories;
-
-                _service.Create(result);
+                _service.Create(articleMap);
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
 
         // GET: Article/Edit/5

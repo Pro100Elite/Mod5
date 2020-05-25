@@ -17,7 +17,7 @@ namespace DAL.Interfaces
         //IEnumerable<Article> GetArticles();
         //IEnumerable<Article> GetArticles(int? category);
 
-        void Create(Article article, List<Category> categories);
+        void Create(Article article);
         void Delete(int id);
         void Update(Article article);
     }
