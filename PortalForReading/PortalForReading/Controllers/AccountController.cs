@@ -176,7 +176,7 @@ namespace PortalForReading.Controllers
                     var userData = new UserDataModel { AccountId = user.Id, BookId = 0, BookPage = 0};
                     _service.Create(userData);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Article");
                 }
  
 
@@ -407,7 +407,7 @@ namespace PortalForReading.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Article");
         }
 
         //

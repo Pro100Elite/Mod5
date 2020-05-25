@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class MyContextInitializer : DropCreateDatabaseAlways<MyContext>
+    class MyContextInitializer : CreateDatabaseIfNotExists<MyContext>
     {
         protected override void Seed(MyContext db)
         {
@@ -29,7 +29,8 @@ namespace DAL
 История начинается на свалке континента Вечной Ночи вместе с нашим протагонистом, брошенным ребенком, и следует за главным героем, когда он выживает в жестоком, со спартанскими условиями, военном лагере, и в конечном итоге получает своё место в качестве гордой элиты войск Империи. Но потом с ним случится нечто, что навсегда изменит его жизнь и поставит под сомнение все его убеждения, заставив по-новому посмотреть на то, что его раньше учили ненавидеть. Несовершенный человек, мы будем следовать за ним по мере того, как он становится сильнее и как боец, и как личность, обретая новых союзников и врагов на своем пути. Но куда приведет его эта тропа – это мы узнаем в процессе. 
 История начинается фактически со второго тома, и в последствии продолжает увеличивать темп. Первый том – это по сути долгий пролог",
                 ArticleCategories = new List<CategoryArticle>() { new CategoryArticle { Category = ct1}, new CategoryArticle { Category = ct2 }},
-                Book = @"Books\Монарх_Вечной_Ночи_Том_1_Глава_1_–_Кровавая_ночь.pdf"
+                Book = @"Books\Монарх_Вечной_Ночи_Том_1_Глава_1_–_Кровавая_ночь.pdf",
+                DatePost = DateTime.Now
             }
         }
             };
@@ -50,7 +51,8 @@ namespace DAL
                 названного Третьей войной; об Артасе и его становлении Королём-личом; об Иллидане Ярость Бури и Пылающем походе на Запределье; о пробуждении Короля - лича и о войне в Нордсколе; а также о Смертокрыле и о Катаклизме, который он причинил.
 По сути, третий том Хроник – это сжатый каноничный пересказ событий «Warcraft III», «WoW: Classic», «WoW: The Burning Crusade», «WoW: Wrath of the Lich King» и «WoW: Cataclysm».",
                 ArticleCategories = new List<CategoryArticle>() { new CategoryArticle { Category = ct1} },
-                Book = @"Books\Warcraft_Hroniki_Tom3.pdf"
+                Book = @"Books\Warcraft_Hroniki_Tom3.pdf",
+                DatePost = DateTime.Now
             },
                     new Article
             {
@@ -63,13 +65,15 @@ namespace DAL
                 но трогающего его душу.",
                 ArticleCategories = new List<CategoryArticle>() { new CategoryArticle { Category = ct1} },
                 Book = @"Books\Vedmak2.pdf",
+                DatePost = DateTime.Now
             },
                     new Article
             {
                 Img = "~/Resourses/Anonim.jpg",
                 Title = "Seed4",
                 Txt = "AOE BRATAN",
-                ArticleCategories = new List<CategoryArticle>() { new CategoryArticle { Category = ct1} }
+                ArticleCategories = new List<CategoryArticle>() { new CategoryArticle { Category = ct1} },
+                DatePost = DateTime.Now
             }
         }
             };

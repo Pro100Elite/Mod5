@@ -214,10 +214,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resourses\Anonim.jpg" />
-    <Content Include="Resourses\Back.Texture.png" />
     <Content Include="Resourses\BackGround.png" />
-    <Content Include="Resourses\BackPanel.png" />
-    <Content Include="Resourses\Game-menu.png" />
     <Content Include="Resourses\IconBook.png" />
     <Content Include="Resourses\Monarch.jpg" />
     <Content Include="Resourses\result.jpg" />
@@ -280,6 +277,8 @@
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Author\Create.cshtml" />
     <Content Include="Views\Author\Delete.cshtml" />
+    <Content Include="Views\Article\_GetArticlesNoPagin.cshtml" />
+    <Content Include="Views\Article\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

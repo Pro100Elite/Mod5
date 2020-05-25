@@ -15,6 +15,7 @@ namespace PortalForReading.Models
         public string Txt { get; set; }
         public string Book { get; set; }
         public string Img { get; set; }
+        public DateTime DatePost { get; set; }
 
         public AuthorView Author { get; set; }
 

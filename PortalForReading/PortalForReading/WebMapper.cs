@@ -14,14 +14,15 @@ namespace PortalForReading
         {
             CreateMap<AuthorModel, AuthorView>().ReverseMap();
 
-            //CreateMap<ArticleView, ArticleModel>();
+            CreateMap<ArticleModel, ArticleView>().ForMember(dest => dest.Categories, 
+                opt => opt.MapFrom(src => src.ArticleCategories.Select(c => c.Category))).ReverseMap();
 
-            CreateMap<ArticleModel, ArticleView>().ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.ArticleCategories.Select(c => c.Category))).ReverseMap(); ;
-
-            CreateMap<ArticleModel, ArticleCreateView>().ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.ArticleCategories.Select(c => c.Category))).ReverseMap();
+            CreateMap<ArticleModel, ArticleCreateView>().ForMember(dest => dest.Categories, 
+                opt => opt.MapFrom(src => src.ArticleCategories.Select(c => c.Category))).ReverseMap();
 
             CreateMap<ArticleModel, ArticleEditorView>().ReverseMap();
             CreateMap<ArticleReadModel, ArticleBookView>().ReverseMap();
+            CreateMap<ArticleModel, ArticleBookView>().ReverseMap();
             CreateMap<CategoryModel, CategoryView>().ReverseMap();
 
         }

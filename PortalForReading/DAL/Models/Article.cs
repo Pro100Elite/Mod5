@@ -16,6 +16,7 @@ namespace DAL.Models
         public string Txt { get; set; }
         public string Book { get; set; }
         public string Img { get; set; }
+        public DateTime DatePost { get; set; }
 
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
