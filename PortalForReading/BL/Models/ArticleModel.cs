@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace BL.Models
         public string Img { get; set; }
 
         public int AuthorId { get; set; }
+        public ICollection<int> CategoryId { get; set; }
 
         public AuthorModel Author { get; set; }
 

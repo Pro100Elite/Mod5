@@ -16,10 +16,14 @@ namespace DAL.Models
         public string Txt { get; set; }
         public string Book { get; set; }
         public string Img { get; set; }
+
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
 
         public virtual Author Author { get; set; }
+
+        //[ForeignKey("Categories")]
+        //public int CategoryId { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
     }

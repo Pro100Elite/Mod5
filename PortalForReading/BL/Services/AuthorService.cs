@@ -2,6 +2,7 @@
 using BL.Interfaces;
 using BL.Models;
 using DAL.Interfaces;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,25 @@ namespace BL.Services
             var result = _mapper.ProjectTo<AuthorModel>(query);
 
             return result;
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
+        }
+
+        public Dictionary<int, string> GetAuthorToDelete()
+        {
+            var query = _repository.GetAuthors();
+            var result = _mapper.ProjectTo<AuthorModel>(query);
+
+            return result.ToDictionary(x => x.Id, x => x.Name);
+        }
+
+        public void Create(AuthorModel author)
+        {
+            var result = _mapper.Map<Author>(author);
+            _repository.Create(result);
         }
     }
 }

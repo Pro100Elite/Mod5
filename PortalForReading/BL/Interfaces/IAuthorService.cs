@@ -10,5 +10,8 @@ namespace BL.Interfaces
     public interface IAuthorService
     {
         IQueryable<AuthorModel> GetAuthors();
+        Dictionary<int, string> GetAuthorToDelete();
+        void Delete(int id);
+        void Create(AuthorModel author);
     }
 }

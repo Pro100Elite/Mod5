@@ -10,5 +10,7 @@ namespace DAL.Interfaces
     public interface IAuthorRepository
     {
         IQueryable<Author> GetAuthors();
+        void Delete(int id);
+        void Create(Author author);
     }
 }

@@ -18,12 +18,15 @@ namespace PortalForReading.Controllers
         private readonly IArticleService _service;
         private readonly IUserDataService _serviceData;
         private readonly IAuthorService _authorService;
+        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public ArticleController(IArticleService articleService, IUserDataService userData, IAuthorService authorService, IMapper mapper)
+        public ArticleController(IArticleService articleService, IUserDataService userData,
+            IAuthorService authorService, ICategoryService categoryService, IMapper mapper)
         {
             _service = articleService;
             _serviceData = userData;
+            _categoryService = categoryService;
             _authorService = authorService;
             _mapper = mapper;
         }
@@ -56,6 +59,7 @@ namespace PortalForReading.Controllers
             if (category != null)
             {
                 articles = _service.QueryAll().Where(c => c.Categories.Any(x => x.Id == category)).ToList();
+                ViewBag.category = category;
             }
             else
             {
@@ -148,16 +152,18 @@ namespace PortalForReading.Controllers
         // GET: Article/Create
         public ActionResult Create()
         {
-            var result = _authorService.GetAuthors().ToList();
-            SelectList authors = new SelectList(result, "Id", "Name");
-            var model = new ArticleCreateView { Authors = authors };
+            var resultAuthors = _authorService.GetAuthors().ToList();
+            var resultCategories = _categoryService.GetCategories().ToList(); 
+            SelectList authors = new SelectList(resultAuthors, "Id", "Name");
+            SelectList categories = new SelectList(resultCategories, "Id", "Title");
+            var model = new ArticleCreateView { Authors = authors, Categories = categories };
 
             return View(model);
         }
 
         // POST: Article/Create
         [HttpPost]
-        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2)
+        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2, params int[] selectedCategories)
         {
             try
             {
@@ -177,7 +183,21 @@ namespace PortalForReading.Controllers
                     upload2.SaveAs(Server.MapPath("~/Books/" + fileName));
                     article.Book = @"Books\" + fileName;
                 }
+
                 var result = _mapper.Map<ArticleModel>(article);
+
+                //var categories = _categoryService.GetCategories().Where(o => selectedCategories.Contains(o.Id)).ToList();
+
+                //result.Categories = categories;
+
+                //foreach (var cat in categories)
+                //{
+                //    result.Categories.Add(cat);
+                //}
+
+
+                result.CategoryId = selectedCategories;
+
                 _service.Create(result);
 
                 return RedirectToAction("Index");
@@ -240,6 +260,7 @@ namespace PortalForReading.Controllers
         {
             ViewBag.Article = _service.GetArticleToDelete()
                 .Select(x => new SelectListItem { Value = x.Key.ToString(), Text = x.Value });
+
             return View();
         }
 
@@ -248,6 +269,7 @@ namespace PortalForReading.Controllers
         public ActionResult Delete(int id)
         {
             _service.Delete(id);
+
             return RedirectToAction("Index");
         }
     }

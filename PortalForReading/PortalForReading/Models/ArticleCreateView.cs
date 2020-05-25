@@ -18,8 +18,10 @@ namespace PortalForReading.Models
         public string Img { get; set; }
 
         public int AuthorId { get; set; }
+        public ICollection<int> CategoryId { get; set; }
+
         public IEnumerable<SelectListItem> Authors { get; set; }
 
-        public ICollection<CategoryView> Categories { get; set; }
+        public IEnumerable<SelectListItem> Categories { get; set; }
     }
 }

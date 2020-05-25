@@ -19,6 +19,7 @@ namespace BL
             builder.RegisterType<ArticleRepository>().As<IArticleRepository>();
             builder.RegisterType<UserDataRepository>().As<IUserDataRepository>();
             builder.RegisterType<AuthorRepository>().As<IAuthorRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
         }
     }
 }

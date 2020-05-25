@@ -20,6 +20,6 @@ namespace PortalForReading.Models
 
         public string Photo { get; set; }
 
-        public ICollection<ArticleView> Articles { get; set; }
+        //public ICollection<ArticleView> Articles { get; set; }
     }
 }

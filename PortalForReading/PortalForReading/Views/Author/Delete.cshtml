@@ -1,0 +1,22 @@
+﻿@model PortalForReading.Models.AuthorView
+
+
+@{
+    ViewBag.Title = "Delete Author";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <wbr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(x => x.Id, ViewBag.Author as IEnumerable<SelectListItem>)
+        </div>
+    </div>
+    <button type="submit">Отправить</button>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>

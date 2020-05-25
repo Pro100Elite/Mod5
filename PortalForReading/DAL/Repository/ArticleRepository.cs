@@ -37,10 +37,15 @@ namespace DAL.Repository
                 .Include(c => c.Categories).AsNoTracking().ToList();
         }
 
-        public void Create(Article article)
+        public void Create(Article article, List<Category> categories)
         {
             _ctx.Articles.Add(article);
-
+            _ctx.SaveChanges();
+            foreach (var cat in categories)
+            {
+                article.Categories.Add(cat);
+            }
+            _ctx.Entry(article).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
 

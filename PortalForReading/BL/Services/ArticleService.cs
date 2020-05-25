@@ -18,11 +18,13 @@ namespace BL.Services
     public class ArticleService : IArticleService
     {
         private readonly IArticleRepository _repository;
+        private readonly ICategoryRepository _repositoryCat;
         private readonly IMapper _mapper;
 
-        public ArticleService(IArticleRepository articleRepository, IMapper mapper)
+        public ArticleService(IArticleRepository articleRepository, ICategoryRepository repositoryCat, IMapper mapper)
         {
             _repository = articleRepository;
+            _repositoryCat = repositoryCat;
             _mapper = mapper;
         }
 
@@ -71,9 +73,16 @@ namespace BL.Services
 
         public void Create(ArticleModel articleModel)
         {
+            var categories = _repositoryCat.GetCategories().Where(c => articleModel.CategoryId.Contains(c.Id)).ToList();
             var article = _mapper.Map<Article>(articleModel);
 
-            _repository.Create(article);
+            //foreach (var cat in categories)
+            //{
+            //    article.Categories.Add();
+            //}
+
+            //article.Categories = categories;
+            _repository.Create(article, categories);
         }
 
         public void Delete(int Id)

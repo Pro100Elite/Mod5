@@ -16,23 +16,23 @@
                 <ul>
                     <li>
                         <a class=" btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Home")">
-                            <img src="@Url.Content("~/Resourses/IconBook.png")" width="30" alt="IMAGES" />  Home
+                            @*<img src="@Url.Content("~/Resourses/IconBook.png")" width="30" alt="IMAGES" />*@  Home
                         </a>
                     </li>
                     <li>
-                        <a class=" btn" href="@Url.Action("Contact", "Home")">Связаться</a>
+                        <a class=" btn" href="@Url.Action("Contact", "Home")">Contact</a>
                     </li>
                     <li>
-                        <a class=" btn" href="@Url.Action("Index", "Article")">Статьи</a>
+                        <a class=" btn" href="@Url.Action("Index", "Article")">Books</a>
                         <ul>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 1})">Фентези</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 1})">Fantasy</a>
                             </li>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 2})">Вампиры</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 2})">Vampires</a>
                             </li>
                             <li>
-                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 3})">Фантастика</a>
+                                <a class=" btn" href="@Url.Action("Index", "Article", new {category = 3})">Fantastic</a>
                             </li>
                         </ul>
                     </li>
@@ -48,6 +48,13 @@
                                 </li>
                                 <li>
                                     <a class="btn" href="@Url.Action("Delete", "Article")">Delete Article</a>
+                                </li>
+
+                                <li>
+                                    <a class="btn" href="@Url.Action("Create", "Author")">Create Author</a>
+                                </li>
+                                <li>
+                                    <a class="btn" href="@Url.Action("Delete", "Author")">Delete Author</a>
                                 </li>
                             </ul>
                         </li>

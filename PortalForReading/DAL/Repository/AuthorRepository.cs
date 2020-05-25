@@ -24,6 +24,28 @@ namespace DAL.Repository
             return result;
         }
 
+        public Author GetById(int id)
+        {
+            return _ctx.Authors.Find(id);
+        }
+
+        public void Create(Author author)
+        {
+            //author.Articles = new List<Article>();
+            _ctx.Authors.Add(author);
+
+            _ctx.SaveChanges();
+        }
+
+
+        public void Delete(int id)
+        {
+            var result = GetById(id);
+            _ctx.Authors.Remove(result);
+
+            _ctx.SaveChanges();
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();
