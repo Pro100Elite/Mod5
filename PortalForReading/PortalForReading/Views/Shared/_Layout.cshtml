@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar-fixed-top">
+    <div class="navbar-fixed-top" style="border-bottom:groove; border-bottom-color:#CCD6DD">
         <div class="container" id="Container">
             <div class=" navbar-left">
                 <ul>
@@ -60,7 +60,7 @@
                 @using (Html.BeginForm("Filter", "Article"))
                 {
                     <input type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." />
-                    <button type="submit">Find</button>
+                    <button type="submit" style="color:#616247">Find</button>
                 }
             </div>
             @Html.Partial("_LoginPartial")
@@ -70,7 +70,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - My PAIN!!!!</p>
         </footer>
     </div>
 

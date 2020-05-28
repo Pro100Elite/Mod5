@@ -8,7 +8,6 @@
     <ul class="navbar-right">
         <li>
             <a class="btn" style="height:inherit; width:inherit" href="@Url.Action("Index", "Manage", routeValues: null)">@User.Identity.GetUserName()</a>
-            @*@Html.ActionLink("Hi" + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
         </li>
         <li>
         <a class="btn" style="height:inherit; width:inherit" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
@@ -25,7 +24,5 @@ else
     <li>
         <a class="btn" style="height:inherit; width:inherit" href="@Url.Action("Login", "Account", routeValues: null)">Log in &raquo;</a>
     </li>
-    @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
 </ul>
 }

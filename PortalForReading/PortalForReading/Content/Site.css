@@ -1,39 +1,53 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: bisque;
+    background: linear-gradient(to bottom, #000000 -0%, #99ccff 120%) no-repeat fixed;
     font-family: Monotype Corsiva, Times, Serif;
     font-size: x-large;
     font-stretch: extra-condensed;
     font-weight: 400;
-    background: url('../Resourses/BackGround.png');
-    background-size: 100% 100%;
-    background-attachment: fixed;
 }
+
+h3 {
+    color: #616247
+}
+
 a.btn {
     height: inherit;
     width: inherit; 
     border-radius:10px 10px;
     font-size:large
 }
-input[type=text]{
+input[type=text] {
     float: unset;
-    border-radius: 10px 10px;
     border-style: groove;
-    background-color: burlywood;
+}
+
+.panel {
+    background-color: #CCD6DD;
+    border-radius: 15px;
+    border: groove;
+    border-color: #66757F
+}
+
+.panel-body {
+    background-color: transparent;
+    border-radius: 15px;
+    border: groove;
+    border-color: #CCD6DD
 }
 
 button {
     background-color: transparent;
-    border-color:transparent;
+    border-color: transparent;
 }
 
 .navbar-fixed-top {
     background-color: transparent;
-    border-color: bisque
+    border-color: #CCD6DD
 }
 .form-control {
-    background-color: burlywood;
+    border-style: groove;
 }
 
 * {
@@ -46,20 +60,18 @@ button {
 }
 
     #Container ul li {
-        background-color: burlywood;
+        background-color:#E1E8ED;
         width: 150px;
-        border: 2px solid bisque;
-        border-radius:10px 10px;
-        border-style:groove;
+        border: 2px solid #CCD6DD;
+        border-style: groove;
         height: 50px;
         line-height: 50px;
         text-align: center;
         float: left;
-        color: black;
     }
 
         #Container ul li:hover {
-            background-color: bisque;
+            background: #CCD6DD;
         }
 
     #Container ul ul {
@@ -71,25 +83,25 @@ button {
     }
 
 a {
-    color: saddlebrown;
+    color: #616247;
 }
 
 /*Index Article*/
 
 .ul.pagination {
-    background-color: burlywood;
+    background-color: transparent;
     display: inline-block;
     padding: 0;
     margin: 0;
 }
 
 ul.pagination li {
-    background-color: burlywood;
+    background-color: transparent;
     display: inline;
 }
 
     ul.pagination li a {
-        background-color: burlywood;
+        background-color: transparent;
         color: black;
         float: left;
         padding: 8px 16px;
@@ -98,18 +110,18 @@ ul.pagination li {
     }
 
         ul.pagination li a:hover:not(.active) {
-            background-color: bisque;
+            background-color: #E1E8ED;
         }
 
     ul.pagination li:last-child.active a {
-        background-color: burlywood;
-        border-color: black;
+        background-color: #CCD6DD;
+        border-color: transparent;
         border-style: double;
     }
 
     ul.pagination li:first-child.active a {
-        background-color: burlywood;
-        border-color: black;
+        background-color: #CCD6DD;
+        border-color: transparent; 
         border-style: double;
     }
 /* Set padding to keep content from hitting the edges */

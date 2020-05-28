@@ -30,16 +30,6 @@ namespace DAL.Repository
             _ctx.SaveChanges();
         }
 
-        //public void Delete(int id)
-        //{
-        //    using (_ctx)
-        //    {
-        //        _ctx.Articles.Remove(GetById(id));
-
-        //        _ctx.SaveChanges();
-        //    }
-        //}
-
         public void Update(UserData userData)
         {
             var bookPage = _ctx.UserData.FirstOrDefault(x => x.AccountId == userData.AccountId && x.BookId == userData.BookId);

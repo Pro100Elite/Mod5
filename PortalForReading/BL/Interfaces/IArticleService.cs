@@ -11,9 +11,6 @@ namespace BL.Interfaces
     {
         IQueryable<ArticleModel> QueryAll();
 
-        //IEnumerable<ArticleModel> GetArticles(int? category);
-        //IEnumerable<ArticleModel> GetByAuthor(int author);
-        //IEnumerable<ArticleModel> Filter(string filter);
         ArticleModel GetById(int id);
         ArticleReadModel GetForRead(int id, int pagenumber);
         void Create(ArticleModel articleModel);

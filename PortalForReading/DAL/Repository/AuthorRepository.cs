@@ -31,7 +31,6 @@ namespace DAL.Repository
 
         public void Create(Author author)
         {
-            //author.Articles = new List<Article>();
             _ctx.Authors.Add(author);
 
             _ctx.SaveChanges();

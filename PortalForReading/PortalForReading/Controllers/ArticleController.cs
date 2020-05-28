@@ -21,6 +21,8 @@ namespace PortalForReading.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
+        private const int startPage = 0;
+
         public ArticleController(IArticleService articleService, IUserDataService userData,
             IAuthorService authorService, ICategoryService categoryService, IMapper mapper)
         {
@@ -102,7 +104,7 @@ namespace PortalForReading.Controllers
         {
             var article = _service.GetForRead(id, pagenumber);
 
-            if (pagenumber >= 0 & pagenumber < article.PageCount)
+            if (pagenumber >= startPage & pagenumber < article.PageCount)
             {
                 var claimsIdentity = User.Identity as ClaimsIdentity;
                 if (claimsIdentity != null)
@@ -115,7 +117,7 @@ namespace PortalForReading.Controllers
                     if (userIdClaim != null)
                     {
                         var userIdValue = userIdClaim.Value;
-                        if (pagenumber > 0)
+                        if (pagenumber > startPage)
                         {
                             var resultData = new UserDataModel { AccountId = userIdValue, BookId = id, BookPage = pagenumber };
                             _serviceData.Update(resultData);
@@ -123,7 +125,7 @@ namespace PortalForReading.Controllers
 
                         var userData = _serviceData.GetById(userIdValue, id);
 
-                        if (pagenumber == 0 & userData != null)
+                        if (pagenumber == startPage & userData != null)
                         {
                             pagenumber = userData.BookPage;
                         }
@@ -138,7 +140,7 @@ namespace PortalForReading.Controllers
             }
             else
             {
-                return RedirectToAction("ReadOnline", new { id = article.Id, pagenumber = 0 });
+                return RedirectToAction("ReadOnline", new { id = article.Id, pagenumber = startPage });
             }
         }
 
@@ -146,13 +148,14 @@ namespace PortalForReading.Controllers
         [Authorize(Roles = "user")]
         public FileResult DownLoad(int id)
         {
+            string typePDF = "application/pdf";
             var article = _service.GetById(id);
             var result = _mapper.Map<ArticleBookView>(article);
-            // Путь к файлу
+
             string file_path = Server.MapPath($@"\{result.Book}");
-            // Тип файла - content-type
-            string file_type = "application/pdf";
-            // Имя файла - необязательно
+
+            string file_type = typePDF;
+
             string file_name = $"{result.Title}.pdf";
 
             return File(file_path, file_type, file_name);
@@ -172,32 +175,33 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Create
         [HttpPost]
-        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2, params int[] selectedCategories)
+        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase uploadImg, HttpPostedFileBase uploadBook, params int[] selectedCategories)
         {
-            if (upload != null)
+            if (uploadImg != null)
             {
-                // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(upload.FileName);
-                // сохраняем файл в папку Files в проекте
-                upload.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+
+                string fileName = System.IO.Path.GetFileName(uploadImg.FileName);
+
+                uploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
                 article.Img = "~/Resourses/" + fileName;
             }
-            if (upload2 != null)
+            if (uploadBook != null)
             {
-                // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(upload2.FileName);
+
+                string fileName = System.IO.Path.GetFileName(uploadBook.FileName);
                 // сохраняем файл в папку Files в проекте
-                upload2.SaveAs(Server.MapPath("~/Books/" + fileName));
+                uploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
 
             article.DatePost = DateTime.Now;
             var articleMap = _mapper.Map<ArticleModel>(article);
+            articleMap.ArticleCategories = new List<CategoryArticleModel>();
 
             foreach (var cat in selectedCategories)
             {
-                var categ = new CategoryArticleModel { CategoryId = cat };
-                articleMap.ArticleCategories = new List<CategoryArticleModel> { categ };
+                var category = new CategoryArticleModel { CategoryId = cat };
+                articleMap.ArticleCategories.Add(category);
             }
 
             _service.Create(articleMap);
@@ -219,23 +223,23 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(ArticleCreateView article, HttpPostedFileBase upload, HttpPostedFileBase upload2)
+        public ActionResult Edit(ArticleCreateView article, HttpPostedFileBase uploadImg, HttpPostedFileBase uploadBook)
         {
             // TODO: Add update logic here
-            if (upload != null)
+            if (uploadImg != null)
             {
-                // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(upload.FileName);
-                // сохраняем файл в папку Files в проекте
-                upload.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
+
+                string fileName = System.IO.Path.GetFileName(uploadImg.FileName);
+
+                uploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
                 article.Img = $"~/Resourses/{fileName}";
             }
-            if (upload2 != null)
+            if (uploadBook != null)
             {
-                // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(upload2.FileName);
-                // сохраняем файл в папку Files в проекте
-                upload2.SaveAs(Server.MapPath("~/Books/" + fileName));
+
+                string fileName = System.IO.Path.GetFileName(uploadBook.FileName);
+
+                uploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
             var result = _mapper.Map<ArticleModel>(article);
@@ -261,17 +265,17 @@ namespace PortalForReading.Controllers
         public ActionResult Delete(int id)
         {
             var article = _service.GetById(id);
-            var fullPath = Server.MapPath($@"..\{article.Book}");
-            var fullPath2 = Server.MapPath(article.Img);
+            var pathImg = Server.MapPath(article.Img);
+            var pathBook = Server.MapPath($@"..\{article.Book}");
 
-            if (System.IO.File.Exists(fullPath))
+            if (System.IO.File.Exists(pathImg))
             {
-                System.IO.File.Delete(fullPath);
+                System.IO.File.Delete(pathImg);
             }
 
-            if (System.IO.File.Exists(fullPath2))
+            if (System.IO.File.Exists(pathBook))
             {
-                System.IO.File.Delete(fullPath2);
+                System.IO.File.Delete(pathBook);
             }
 
             _service.Delete(id);

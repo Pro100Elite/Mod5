@@ -3,18 +3,23 @@
 @{
     ViewBag.Title = "Delete Article";
 }
-
-@using (Html.BeginForm())
-{
-    <wbr />
-    <div class="form-group">
-        @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => x.Id, ViewBag.Article as IEnumerable<SelectListItem>)
+    <h3>@ViewBag.Title</h3>
+    <div style=" background-color: #CCD6DD;
+    border-radius: 15px;
+    border: groove;
+    border-color: #66757F">
+        @using (Html.BeginForm())
+        {
+            <wbr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(x => x.Id, ViewBag.Article as IEnumerable<SelectListItem>)
+                </div>
+            </div>
+            <button type="submit">Отправить</button>
+        }
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
     </div>
-    <button type="submit">Отправить</button>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

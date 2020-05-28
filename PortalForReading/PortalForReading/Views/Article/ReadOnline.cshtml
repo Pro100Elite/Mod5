@@ -10,17 +10,17 @@
 <body>
     <div class="pager" style="background-color:transparent">
         <p>
-            <strong>
+            <strong style="color:#616247">
                 @Model.Title
             </strong>
             <br />
             <div>
-                <img src="@Url.Content(Model.Book)" alt="IMAGES" style="border-radius:15px; border:groove; border-color:burlywood"/>
+                <img src="@Url.Content(Model.Book)" alt="IMAGES" style="border-radius:15px; border:groove; border-color:#E1E8ED"/>
             </div>
             <br />
-            <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>
+            <a class="btn btn-default" style="background-color:#E1E8ED" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber - 1)})"> <<</a>
             @(Model.pagenumber+1)
-            <a class="btn btn-default" style="background-color:burlywood" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> >></a>
+            <a class="btn btn-default" style="background-color:#E1E8ED" href="@Url.Action("ReadOnline",new{id= @Model.Id, pagenumber = (@Model.pagenumber + 1)})"> >></a>
         </p>
     </div>
 </body>

@@ -1,15 +1,13 @@
-﻿<div class="panel-body" style="background-color: transparent; border-radius:15px; border:groove; border-color:burlywood">
+﻿<div class="panel-body">
     @foreach (var article in Model)
     {
-        <div class="panel" style="background-color:burlywood; border-radius:15px; border:groove; border-color:burlywood">
-            @article.Id
-
+        <div class="panel">
             <h1>
                 @article.Title
             </h1>
 
             <hr />
-            <img src="@Url.Content(article.Img)" width="200" alt="IMAGES" style="border-radius:15px; border:groove; border-color:bisque; float:left" />
+            <img src="@Url.Content(article.Img)" width="200" height="304" alt="IMAGES" style=" border-radius: 15px; border: groove; border-color: white; float: left" />
 
             <h2>
                 Автор:
@@ -17,16 +15,16 @@
             </h2>
 
             <br />
-            <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: bisque">
+            <p class="panel-body" style=" border-radius: 15px; border: groove; border-color: white">
                 @article.Txt
             </p>
             <hr />
 
-            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})"> Читать &raquo;</a>
-            <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("DownLoad", new { id=article.Id })">Download</a>
+            <a class="btn btn-default" href="@Url.Action("ReadOnline", new { id=article.Id, pagenumber = 0})">To read &raquo;</a>
+            <a class="btn btn-default" href="@Url.Action("DownLoad", new { id=article.Id })">Download</a>
             @if (User.IsInRole("admin"))
             {
-                <a class="btn btn-default" style="background-color:bisque" href="@Url.Action("Edit",new { id=article.Id })">Edit</a>
+                <a class="btn btn-default" href="@Url.Action("Edit",new { id=article.Id })">Edit &raquo;</a>
             }
         </div>
     }
