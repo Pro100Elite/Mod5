@@ -10,8 +10,8 @@ namespace PortalForReading.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Обязательно для заполнения!")]
-        [RegularExpression(@"^[a-z A-Z]+$", ErrorMessage = "Некорректное имя")]
+        [Required(ErrorMessage = "Required!")]
+        [RegularExpression(@"^[a-z A-Z]+$", ErrorMessage = "Invalid name")]
         public string Name { get; set; }
 
         public string Photo { get; set; }

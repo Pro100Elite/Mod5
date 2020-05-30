@@ -175,22 +175,22 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Create
         [HttpPost]
-        public ActionResult Create(ArticleCreateView article, HttpPostedFileBase uploadImg, HttpPostedFileBase uploadBook, params int[] selectedCategories)
+        public ActionResult Create(ArticleCreateView article, params int[] selectedCategories)
         {
-            if (uploadImg != null)
+            if (article.UploadImg != null)
             {
 
-                string fileName = System.IO.Path.GetFileName(uploadImg.FileName);
+                string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
 
-                uploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                article.UploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
                 article.Img = "~/Resourses/" + fileName;
             }
-            if (uploadBook != null)
+            if (article.UploadBook != null)
             {
 
-                string fileName = System.IO.Path.GetFileName(uploadBook.FileName);
+                string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
                 // сохраняем файл в папку Files в проекте
-                uploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
+                article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
 
@@ -223,23 +223,23 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(ArticleCreateView article, HttpPostedFileBase uploadImg, HttpPostedFileBase uploadBook)
+        public ActionResult Edit(ArticleCreateView article)
         {
             // TODO: Add update logic here
-            if (uploadImg != null)
+            if (article.UploadImg != null)
             {
 
-                string fileName = System.IO.Path.GetFileName(uploadImg.FileName);
+                string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
 
-                uploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
+                article.UploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
                 article.Img = $"~/Resourses/{fileName}";
             }
-            if (uploadBook != null)
+            if (article.UploadBook != null)
             {
 
-                string fileName = System.IO.Path.GetFileName(uploadBook.FileName);
+                string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
 
-                uploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
+                article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
             var result = _mapper.Map<ArticleModel>(article);
@@ -282,5 +282,20 @@ namespace PortalForReading.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //public JsonResult ValidatorImg(HttpPostedFileBase UploadImg)
+        //{
+        //    return Json(UploadImg.ContentType != "image/jpeg", JsonRequestBehavior.AllowGet);
+        //}
+
+        //public JsonResult ValidatorPdf(HttpPostedFileBase UploadBook)
+        //{
+        //    return Json(UploadBook.ContentType != "application/pdf", JsonRequestBehavior.AllowGet);
+        //}
+
+        //public JsonResult ValidatorTxt(string Txt)
+        //{
+        //    return Json(Txt != "txt", JsonRequestBehavior.AllowGet);
+        //}
     }
 }

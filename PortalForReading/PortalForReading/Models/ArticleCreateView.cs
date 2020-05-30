@@ -11,18 +11,29 @@ namespace PortalForReading.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Обязательно для заполнения!")]
+        [Required(ErrorMessage = "Required!")]
         public string Title { get; set; }
+        [Required(ErrorMessage = "Required!")]
         public string Txt { get; set; }
         public string Book { get; set; }
+
+     
         public string Img { get; set; }
+
         public DateTime DatePost { get; set; }
 
         public int AuthorId { get; set; }
+
         public ICollection<int> CategoryId { get; set; }
 
         public IEnumerable<SelectListItem> Authors { get; set; }
 
         public IEnumerable<SelectListItem> Categories { get; set; }
+
+        [Remote("ValidatorImg", "Article", ErrorMessage = "IMG SUKA")]
+        public HttpPostedFileBase UploadImg { get; set; }
+
+        [Remote("ValidatorPdf", "Article", ErrorMessage = "PDF SUKA")]
+        public HttpPostedFileBase UploadBook { get; set; }
     }
 }

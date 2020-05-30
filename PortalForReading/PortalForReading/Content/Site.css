@@ -19,8 +19,8 @@ a.btn {
     font-size:large
 }
 input[type=text] {
-    float: unset;
     border-style: groove;
+    float: unset;
 }
 
 .panel {
@@ -48,6 +48,7 @@ button {
 }
 .form-control {
     border-style: groove;
+    /*max-width: 280px;*/
 }
 
 * {
@@ -137,7 +138,7 @@ ul.pagination li {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+ /*Set width on the form input elements since they're 100% wide by default*/ 
 input,
 select,
 textarea {

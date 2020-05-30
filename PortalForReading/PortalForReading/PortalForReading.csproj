@@ -214,8 +214,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resourses\Anonim.jpg" />
-    <Content Include="Resourses\BackGround.png" />
-    <Content Include="Resourses\IconBook.png" />
+    <Content Include="Resourses\DeleteImg.png" />
     <Content Include="Resourses\Monarch.jpg" />
     <Content Include="Resourses\result.jpg" />
     <Content Include="Resourses\Vedmak2.jpg" />
