@@ -30,10 +30,16 @@ namespace PortalForReading.Models
 
         public IEnumerable<SelectListItem> Categories { get; set; }
 
-        [Remote("ValidatorImg", "Article", ErrorMessage = "IMG SUKA")]
+        //[Remote("ValidatorImg", "Article", ErrorMessage = "IMG")]
+        [Required(ErrorMessage = "Please select file.")]
+        //[RegularExpression(@"(^[А-Яа-яa-zA-Z0-9\s_\\.\-:–])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        //[FileExtensions(Extensions = ("png|jpg|gif"), ErrorMessage = "Only Img files allowed.")]
         public HttpPostedFileBase UploadImg { get; set; }
 
-        [Remote("ValidatorPdf", "Article", ErrorMessage = "PDF SUKA")]
+        //[Remote("ValidatorPdf", "Article", ErrorMessage = "PDF")]
+        [Required(ErrorMessage = "Please select file.")]
+        //[RegularExpression(@"([А-Яа-яa-zA-Z0-9\s_\\.\-:–])+(.pdf)$", ErrorMessage = "Only Pdf files allowed.")]
+        //[FileExtensions(Extensions = ("pdf"), ErrorMessage = "Only Pdf files allowed.")]
         public HttpPostedFileBase UploadBook { get; set; }
     }
 }

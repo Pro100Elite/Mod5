@@ -102,7 +102,7 @@ namespace PortalForReading.Controllers
         [AllowAnonymous]
         public ActionResult ReadOnline(int id, int pagenumber)
         {
-            var article = _service.GetForRead(id, pagenumber);
+            var article = _service.GetForRead(id, startPage);
 
             if (pagenumber >= startPage & pagenumber < article.PageCount)
             {
@@ -124,7 +124,6 @@ namespace PortalForReading.Controllers
                         }
 
                         var userData = _serviceData.GetById(userIdValue, id);
-
                         if (pagenumber == startPage & userData != null)
                         {
                             pagenumber = userData.BookPage;
@@ -177,36 +176,54 @@ namespace PortalForReading.Controllers
         [HttpPost]
         public ActionResult Create(ArticleCreateView article, params int[] selectedCategories)
         {
-            if (article.UploadImg != null)
+            if (article.UploadImg != null & article.UploadImg.ContentType == "image/jpeg")
             {
-
                 string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
 
                 article.UploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
                 article.Img = "~/Resourses/" + fileName;
             }
-            if (article.UploadBook != null)
+            else
+            {
+                ModelState.AddModelError("UploadImg", "incorrect image format");
+            }
+
+            if (article.UploadBook != null & article.UploadBook.ContentType == "application/pdf")
             {
 
                 string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
-                // сохраняем файл в папку Files в проекте
                 article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
-
-            article.DatePost = DateTime.Now;
-            var articleMap = _mapper.Map<ArticleModel>(article);
-            articleMap.ArticleCategories = new List<CategoryArticleModel>();
-
-            foreach (var cat in selectedCategories)
+            else
             {
-                var category = new CategoryArticleModel { CategoryId = cat };
-                articleMap.ArticleCategories.Add(category);
+                ModelState.AddModelError("UploadBook", "incorrect book format (pdf only)");
             }
 
-            _service.Create(articleMap);
+            if (ModelState.IsValid)
+            {
+                article.DatePost = DateTime.Now;
+                var articleMap = _mapper.Map<ArticleModel>(article);
+                articleMap.ArticleCategories = new List<CategoryArticleModel>();
 
-            return RedirectToAction("Index");
+                foreach (var cat in selectedCategories)
+                {
+                    var category = new CategoryArticleModel { CategoryId = cat };
+                    articleMap.ArticleCategories.Add(category);
+                }
+
+                _service.Create(articleMap);
+
+                return RedirectToAction("Index");
+            }
+
+            var resultAuthors = _authorService.GetAuthors().ToList();
+            var resultCategories = _categoryService.GetCategories().ToList();
+            SelectList authors = new SelectList(resultAuthors, "Id", "Name");
+            SelectList categories = new SelectList(resultCategories, "Id", "Title");
+            article = new ArticleCreateView { Authors = authors, Categories = categories };
+
+            return View(article);
         }
 
         // GET: Article/Edit/5
@@ -226,7 +243,7 @@ namespace PortalForReading.Controllers
         public ActionResult Edit(ArticleCreateView article)
         {
             // TODO: Add update logic here
-            if (article.UploadImg != null)
+            if (article.UploadImg != null  & article.UploadImg.ContentType == "image/jpeg")
             {
 
                 string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
@@ -234,7 +251,12 @@ namespace PortalForReading.Controllers
                 article.UploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
                 article.Img = $"~/Resourses/{fileName}";
             }
-            if (article.UploadBook != null)
+            else
+            {
+                ModelState.AddModelError("UploadImg", "incorrect image format");
+            }
+
+            if (article.UploadBook != null & article.UploadBook.ContentType == "application/pdf")
             {
 
                 string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
@@ -242,12 +264,25 @@ namespace PortalForReading.Controllers
                 article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
                 article.Book = @"Books\" + fileName;
             }
-            var result = _mapper.Map<ArticleModel>(article);
-            result.DatePost = DateTime.Now;
+            else
+            {
+                ModelState.AddModelError("UploadBook", "incorrect book format (pdf only)");
+            }
 
-            _service.Edite(result);
+            if (ModelState.IsValid)
+            {
+                var articleMod = _mapper.Map<ArticleModel>(article);
+                articleMod.DatePost = DateTime.Now;
 
-            return RedirectToAction("Index");
+                _service.Edite(articleMod);
+
+                return RedirectToAction("Index");
+            }
+
+            var result = _authorService.GetAuthors().ToList();
+            SelectList authors = new SelectList(result, "Id", "Name");
+            article.Authors = authors;
+            return View(article);
         }
 
         // GET: Author/Delete/5
@@ -282,20 +317,5 @@ namespace PortalForReading.Controllers
 
             return RedirectToAction("Index");
         }
-
-        //public JsonResult ValidatorImg(HttpPostedFileBase UploadImg)
-        //{
-        //    return Json(UploadImg.ContentType != "image/jpeg", JsonRequestBehavior.AllowGet);
-        //}
-
-        //public JsonResult ValidatorPdf(HttpPostedFileBase UploadBook)
-        //{
-        //    return Json(UploadBook.ContentType != "application/pdf", JsonRequestBehavior.AllowGet);
-        //}
-
-        //public JsonResult ValidatorTxt(string Txt)
-        //{
-        //    return Json(Txt != "txt", JsonRequestBehavior.AllowGet);
-        //}
     }
 }

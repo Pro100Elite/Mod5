@@ -125,3 +125,15 @@ I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.AspNet.Identity.
 I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.AspNet.Identity.Owin.xml
 I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.Owin.Host.SystemWeb.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.AspNetCore.Http.Features.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.Extensions.Primitives.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Buffers.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.IO.Pipelines.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Memory.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Numerics.Vectors.dll
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.AspNetCore.Http.Features.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\Microsoft.Extensions.Primitives.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Buffers.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.IO.Pipelines.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Memory.xml
+I:\project\Mod5\PortalForReading\PortalForReading\bin\System.Numerics.Vectors.xml

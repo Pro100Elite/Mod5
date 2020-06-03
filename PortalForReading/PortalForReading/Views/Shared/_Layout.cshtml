@@ -59,8 +59,12 @@
             <div class="navbar-left">
                 @using (Html.BeginForm("Filter", "Article"))
                 {
-                    <input style="position:center" type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." />
-                    <button type="submit" style="color:#616247">Find</button>
+                    <div class="input-group" style="max-width:280px; padding-left:2em; padding-top:0.5em">
+                        <span class="input-group-addon">
+                                <button class="glyphicon glyphicon-search" type="submit"></button>
+                        </span>
+                        <input type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." class="form-control" />
+                    </div>
                 }
             </div>
             @Html.Partial("_LoginPartial")

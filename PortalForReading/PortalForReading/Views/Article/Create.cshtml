@@ -42,12 +42,14 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <input type="file" name="uploadImg" class="form-control text-box single-line" /><br>
+                    @Html.TextBoxFor(model => model.UploadImg, new { type = "file",  accept=".png,.jpg,.gif"})
+                    @Html.ValidationMessageFor(model => model.UploadImg)
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <input type="file" name="uploadBook" class="form-control text-box single-line" /><br>
+                    @Html.TextBoxFor(model => model.UploadBook, new { type = "file",  accept=".pdf"})
+                    @Html.ValidationMessageFor(model => model.UploadBook)
                 </div>
 
                 <div class="form-group">
