@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar-fixed-top" style="border-bottom:groove; border-bottom-color:#CCD6DD">
+    <div class="navbar-fixed-top" id="navbar">
         <div class="container" id="Container">
             <div class=" navbar-left">
                 <ul>
@@ -61,7 +61,7 @@
                 {
                     <div class="input-group" style="max-width:280px; padding-left:2em; padding-top:0.5em">
                         <span class="input-group-addon">
-                                <button class="glyphicon glyphicon-search" type="submit"></button>
+                            <button class="glyphicon glyphicon-search" type="submit"></button>
                         </span>
                         <input type="text" name="filter" value="@ViewBag.filter" placeholder="Input Title..." class="form-control" />
                     </div>
@@ -77,6 +77,19 @@
             <p>&copy; @DateTime.Now.Year - My PAIN!!!!</p>
         </footer>
     </div>
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-50px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")

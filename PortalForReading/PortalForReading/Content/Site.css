@@ -8,6 +8,12 @@
     font-weight: 400;
 }
 
+#navbar {
+    top: 0; /* Stay on top */
+    width: 100%; /* Full width */
+    transition: top 0.5s; /* Transition effect when sliding down (and up) */
+}
+
 h3 {
     color: #616247
 }
