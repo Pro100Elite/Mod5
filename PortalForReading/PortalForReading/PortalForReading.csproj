@@ -238,6 +238,7 @@
     <Content Include="Resourses\result.jpg" />
     <Content Include="Resourses\Vedmak2.jpg" />
     <Content Include="Resourses\WarcraftTom3.jpg" />
+    <Content Include="Resourses\Монарх_Вечной_Ночи_Том_1_Глава_1_–_Кровавая_ночь.pdf + result.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
