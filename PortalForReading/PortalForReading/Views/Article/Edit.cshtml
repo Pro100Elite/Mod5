@@ -42,14 +42,16 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <input type="file" name="uploadImg" class="form-control text-box single-line" /><br>
-                    @Html.HiddenFor(model => model.Img);
+                    @Html.TextBoxFor(model => model.UploadImg, new { type = "file", accept = ".png,.jpg,.gif" })
+                    @Html.ValidationMessageFor(model => model.UploadImg, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Img)
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <input type="file" name="uploadBook" class="form-control text-box single-line" /><br>
-                    @Html.HiddenFor(model => model.Book);
+                    @Html.TextBoxFor(model => model.UploadBook, new { type = "file", accept = ".pdf" })
+                    @Html.ValidationMessageFor(model => model.UploadBook,  "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Book)
                 </div>
 
                 <div class="form-group">
@@ -59,13 +61,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                @*<div class="form-group">
                     @Html.LabelFor(model => model.Categories, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Categories, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Categories, "", new { @class = "text-danger" })
                     </div>
-                </div>
+                </div>*@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">

@@ -43,13 +43,13 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "control-label col-md-2" })
                     @Html.TextBoxFor(model => model.UploadImg, new { type = "file",  accept=".png,.jpg,.gif"})
-                    @Html.ValidationMessageFor(model => model.UploadImg)
+                    @Html.ValidationMessageFor(model => model.UploadImg, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Book, htmlAttributes: new { @class = "control-label col-md-2" })
                     @Html.TextBoxFor(model => model.UploadBook, new { type = "file",  accept=".pdf"})
-                    @Html.ValidationMessageFor(model => model.UploadBook)
+                    @Html.ValidationMessageFor(model => model.UploadBook, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
@@ -61,6 +61,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Categories, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.ValidationMessageFor(model => model.Categories, "", new { @class = "text-danger" })
                     <div class=" col-md-10">
                         @foreach (var item in Model.Categories)
                         {

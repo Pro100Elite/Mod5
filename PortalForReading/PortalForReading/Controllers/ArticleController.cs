@@ -176,28 +176,61 @@ namespace PortalForReading.Controllers
         [HttpPost]
         public ActionResult Create(ArticleCreateView article, params int[] selectedCategories)
         {
-            if (article.UploadImg != null & article.UploadImg.ContentType == "image/jpeg")
-            {
-                string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
 
-                article.UploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
-                article.Img = "~/Resourses/" + fileName;
+            if (string.IsNullOrEmpty(article.Title))
+            {
+                ModelState.AddModelError("Title", "Required field");
+            }
+
+            if (string.IsNullOrEmpty(article.Txt))
+            {
+                ModelState.AddModelError("Txt", "Required field");
+            }
+
+
+            if (article.UploadImg != null)
+            {
+                if (article.UploadImg.ContentType == "image/jpeg")
+                {
+                    string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
+
+                    article.UploadImg.SaveAs(Server.MapPath("~/Resourses/" + fileName));
+                    article.Img = "~/Resourses/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("UploadImg", "Incorrect image format");
+                }
             }
             else
             {
-                ModelState.AddModelError("UploadImg", "incorrect image format");
+                ModelState.AddModelError("UploadImg", "Please select file");
             }
 
-            if (article.UploadBook != null & article.UploadBook.ContentType == "application/pdf")
-            {
 
-                string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
-                article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
-                article.Book = @"Books\" + fileName;
+
+            if (article.UploadBook != null)
+            {
+                if (article.UploadBook.ContentType == "application/pdf")
+                {
+
+                    string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
+                    article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
+                    article.Book = @"Books\" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("UploadBook", "Incorrect book format (pdf only)");
+                }
             }
             else
             {
-                ModelState.AddModelError("UploadBook", "incorrect book format (pdf only)");
+                ModelState.AddModelError("UploadBook", "Please select file");
+            }           
+
+            if (article.Categories == null)
+            {
+                ModelState.AddModelError("Categories", "Please select Categories");
             }
 
             if (ModelState.IsValid)
@@ -240,34 +273,54 @@ namespace PortalForReading.Controllers
 
         // POST: Article/Edit/5
         [HttpPost]
-        public ActionResult Edit(ArticleCreateView article)
+        public ActionResult Edit(ArticleEditorView article)
         {
             // TODO: Add update logic here
-            if (article.UploadImg != null  & article.UploadImg.ContentType == "image/jpeg")
-            {
 
-                string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
-
-                article.UploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
-                article.Img = $"~/Resourses/{fileName}";
-            }
-            else
+            if (string.IsNullOrEmpty(article.Title))
             {
-                ModelState.AddModelError("UploadImg", "incorrect image format");
+                ModelState.AddModelError("Title", "Required field");
             }
 
-            if (article.UploadBook != null & article.UploadBook.ContentType == "application/pdf")
+            if (string.IsNullOrEmpty(article.Txt))
             {
-
-                string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
-
-                article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
-                article.Book = @"Books\" + fileName;
+                ModelState.AddModelError("Txt", "Required field");
             }
-            else
+
+
+            if (article.UploadImg != null)
             {
-                ModelState.AddModelError("UploadBook", "incorrect book format (pdf only)");
+                if (article.UploadImg.ContentType == "image/jpeg")
+                {
+
+                    string fileName = System.IO.Path.GetFileName(article.UploadImg.FileName);
+
+                    article.UploadImg.SaveAs(Server.MapPath($"~/Resourses/{fileName}"));
+                    article.Img = $"~/Resourses/{fileName}";
+                }
+                else
+                {
+                    ModelState.AddModelError("UploadImg", "incorrect image format");
+                }
             }
+
+
+            if (article.UploadBook != null)
+            {
+                if (article.UploadBook.ContentType == "application/pdf")
+                {
+
+                    string fileName = System.IO.Path.GetFileName(article.UploadBook.FileName);
+
+                    article.UploadBook.SaveAs(Server.MapPath("~/Books/" + fileName));
+                    article.Book = @"Books\" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("UploadBook", "incorrect book format (pdf only)");
+                }
+            }
+
 
             if (ModelState.IsValid)
             {

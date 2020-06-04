@@ -10,15 +10,11 @@ namespace PortalForReading.Models
     public class ArticleEditorView
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Required!")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "Required!")]
         public string Txt { get; set; }
         public string Book { get; set; }
         public string Img { get; set; }
         public DateTime DatePost { get; set; }
-
         public int AuthorId { get; set; }
 
         public AuthorView Author { get; set; }
@@ -27,10 +23,8 @@ namespace PortalForReading.Models
 
         public ICollection<CategoryView> Categories { get; set; }
 
-        [Remote("ValidatorImg", "Article", ErrorMessage = "IMG SUKA")]
         public HttpPostedFileBase UploadImg { get; set; }
 
-        [Remote("ValidatorPdf", "Article", ErrorMessage = "PDF SUKA")]
         public HttpPostedFileBase UploadBook { get; set; }
     }
 }

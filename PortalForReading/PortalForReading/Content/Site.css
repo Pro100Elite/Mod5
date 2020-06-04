@@ -15,7 +15,7 @@
 }
 
 h3 {
-    color: #616247
+    color: #99ccff
 }
 
 a.btn {
@@ -54,7 +54,6 @@ button {
 }
 .form-control {
     border-style: groove;
-    /*max-width: 280px;*/
 }
 
 * {
@@ -90,7 +89,7 @@ button {
     }
 
 a {
-    color: #616247;
+    color:mediumblue;
 }
 
 /*Index Article*/
