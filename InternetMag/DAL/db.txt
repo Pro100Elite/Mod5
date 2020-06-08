@@ -1,7 +1,0 @@
-Id = 1, categoryId = 1, Name = "Product1", Price = 1.1
-Id = 2, categoryId = 2, Name = "Product2", Price = 1.1
-Id = 3, categoryId = 2, Name = "Product3", Price = 1.1
-Id = 4, categoryId = 1, Name = "Product4", Price = 1.1
-Id = 5, categoryId = 3, Name = "Product5", Price = 1.1
-Id = 6, categoryId = 4, Name = "Product6", Price = 1.1
-Id = 7, categoryId = 1, Name = "Product7", Price = 1.1

@@ -216,3 +216,7 @@ I:\project\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.csprojAssemblyReference.cache
 I:\project\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.csproj.CopyComplete
 I:\project\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.dll
 I:\project\Mod5\WebApp2\WebApp2\obj\Debug\WebApp2.pdb
+I:\project\Mod5\WebApp2\WebApp2\bin\System.Net.Http.Formatting.dll
+I:\project\Mod5\WebApp2\WebApp2\bin\System.Web.Http.dll
+I:\project\Mod5\WebApp2\WebApp2\bin\System.Net.Http.Formatting.xml
+I:\project\Mod5\WebApp2\WebApp2\bin\System.Web.Http.xml

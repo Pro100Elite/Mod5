@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace ApiWebAppl2.Models
@@ -12,6 +13,6 @@ namespace ApiWebAppl2.Models
         public DateTime Birthday { get; set; }
         public string Photo { get; set; }
 
-        public ICollection<ArticleApi> Articles { get; set; }
+        //public ICollection<ArticleApi> Articles { get; set; }
     }
 }

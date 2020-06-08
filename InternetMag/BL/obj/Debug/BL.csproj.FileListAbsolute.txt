@@ -1,9 +1,0 @@
-I:\project\Mod5\InternetMag\BL\bin\Debug\BL.dll
-I:\project\Mod5\InternetMag\BL\bin\Debug\BL.pdb
-I:\project\Mod5\InternetMag\BL\bin\Debug\DAL.dll
-I:\project\Mod5\InternetMag\BL\bin\Debug\DAL.pdb
-I:\project\Mod5\InternetMag\BL\bin\Debug\DAL.dll.config
-I:\project\Mod5\InternetMag\BL\obj\Debug\BL.csprojAssemblyReference.cache
-I:\project\Mod5\InternetMag\BL\obj\Debug\BL.csproj.CopyComplete
-I:\project\Mod5\InternetMag\BL\obj\Debug\BL.dll
-I:\project\Mod5\InternetMag\BL\obj\Debug\BL.pdb
