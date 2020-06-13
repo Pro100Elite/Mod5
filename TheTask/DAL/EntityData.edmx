@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TheTaskDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DEPT">
+          <Key>
+            <PropertyRef Name="DEPTNO" />
+          </Key>
+          <Property Name="DEPTNO" Type="decimal" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="DNAME" Type="varchar" MaxLength="14" />
+          <Property Name="LOC" Type="varchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+          </Key>
+          <Property Name="EMPNO" Type="decimal" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="ENAME" Type="varchar" MaxLength="10" />
+          <Property Name="JOB" Type="varchar" MaxLength="9" />
+          <Property Name="MGR" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="HIREDATE" Type="date" />
+          <Property Name="SAL" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="COMM" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="DEPTNO" Type="decimal" Precision="30" Scale="0" />
+        </EntityType>
+        <EntityType Name="SALGRADE">
+          <Key>
+            <PropertyRef Name="GRADE" />
+          </Key>
+          <Property Name="GRADE" Type="int" Nullable="false" />
+          <Property Name="LOSAL" Type="int" />
+          <Property Name="HISAL" Type="int" />
+        </EntityType>
+        <Association Name="FK_DEPTNO">
+          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
+          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="EMP">
+              <PropertyRef Name="DEPTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheTaskDbModelStoreContainer">
+          <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALGRADE" EntityType="Self.SALGRADE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DEPTNO" Association="Self.FK_DEPTNO">
+            <End Role="DEPT" EntitySet="DEPT" />
+            <End Role="EMP" EntitySet="EMP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TheTaskDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DEPT">
+          <Key>
+            <PropertyRef Name="DEPTNO" />
+          </Key>
+          <Property Name="DEPTNO" Type="Decimal" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="DNAME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="LOC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMP" Relationship="Self.FK_DEPTNO" FromRole="DEPT" ToRole="EMP" />
+        </EntityType>
+        <EntityType Name="EMP">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+          </Key>
+          <Property Name="EMPNO" Type="Decimal" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="ENAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JOB" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="MGR" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="HIREDATE" Type="DateTime" Precision="0" />
+          <Property Name="SAL" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="COMM" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="DEPTNO" Type="Decimal" Precision="30" Scale="0" />
+          <NavigationProperty Name="DEPT" Relationship="Self.FK_DEPTNO" FromRole="EMP" ToRole="DEPT" />
+        </EntityType>
+        <EntityType Name="SALGRADE">
+          <Key>
+            <PropertyRef Name="GRADE" />
+          </Key>
+          <Property Name="GRADE" Type="Int32" Nullable="false" />
+          <Property Name="LOSAL" Type="Int32" />
+          <Property Name="HISAL" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_DEPTNO">
+          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
+          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="EMP">
+              <PropertyRef Name="DEPTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TheTaskDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DEPT" EntityType="Self.DEPT" />
+          <EntitySet Name="EMP" EntityType="Self.EMP" />
+          <EntitySet Name="SALGRADE" EntityType="Self.SALGRADE" />
+          <AssociationSet Name="FK_DEPTNO" Association="Self.FK_DEPTNO">
+            <End Role="DEPT" EntitySet="DEPT" />
+            <End Role="EMP" EntitySet="EMP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TheTaskDbModelStoreContainer" CdmEntityContainer="TheTaskDbEntities">
+          <EntitySetMapping Name="DEPT">
+            <EntityTypeMapping TypeName="TheTaskDbModel.DEPT">
+              <MappingFragment StoreEntitySet="DEPT">
+                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
+                <ScalarProperty Name="DNAME" ColumnName="DNAME" />
+                <ScalarProperty Name="LOC" ColumnName="LOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP">
+            <EntityTypeMapping TypeName="TheTaskDbModel.EMP">
+              <MappingFragment StoreEntitySet="EMP">
+                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
+                <ScalarProperty Name="ENAME" ColumnName="ENAME" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="MGR" ColumnName="MGR" />
+                <ScalarProperty Name="HIREDATE" ColumnName="HIREDATE" />
+                <ScalarProperty Name="SAL" ColumnName="SAL" />
+                <ScalarProperty Name="COMM" ColumnName="COMM" />
+                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALGRADE">
+            <EntityTypeMapping TypeName="TheTaskDbModel.SALGRADE">
+              <MappingFragment StoreEntitySet="SALGRADE">
+                <ScalarProperty Name="GRADE" ColumnName="GRADE" />
+                <ScalarProperty Name="LOSAL" ColumnName="LOSAL" />
+                <ScalarProperty Name="HISAL" ColumnName="HISAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
