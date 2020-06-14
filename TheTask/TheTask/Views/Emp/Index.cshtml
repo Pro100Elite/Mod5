@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TheTask.Models.EmpPL>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <table border="1" width="100%" cellpadding="5">
+            <tr>
+                <th>DEPTNO</th>
+                <th>DEPTNAME</th>
+                <th>EMPNO</th>
+                <th>ENAME</th>
+                <th>COMM</th>
+                <th>HIREDATE</th>
+                <th>JOB</th>
+                <th>MGR</th>
+                <th>SAL</th>
+            </tr>
+            @foreach (var emps in Model)
+            {
+                <tr>
+                    <td>@emps.DEPTNO</td>
+                    <td>@emps.DEPTNAME</td>
+                    <td>@emps.EMPNO</td>
+                    <td>@emps.ENAME</td>
+                    <td>@emps.COMM</td>
+                    <td>@emps.HIREDATE</td>
+                    <td>@emps.JOB</td>
+                    <td>@emps.MGR</td>
+                    <td>@emps.SAL</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

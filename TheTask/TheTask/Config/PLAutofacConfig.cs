@@ -25,6 +25,7 @@ namespace TheTask.Config
             builder.Register(c => config.CreateMapper());
 
             builder.RegisterType<DeptService>().As<IDeptService>();
+            builder.RegisterType<EmpService>().As<IEmpService>();
 
             builder.RegisterModule<BLAutofacConfig>();
 

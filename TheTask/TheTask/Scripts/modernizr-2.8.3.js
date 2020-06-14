@@ -342,12 +342,12 @@ window.Modernizr = (function( window, document, undefined ) {
     }
     /*>>testprop*/
 
-    // TODO :: add testDOMProps
+    // TODO :: add tesdivOMProps
     /**
-     * testDOMProps is a generic DOM property test; if a browser supports
+     * tesdivOMProps is a generic DOM property test; if a browser supports
      *   a certain property, it won't return undefined for it.
      */
-    function testDOMProps( props, obj, elem ) {
+    function tesdivOMProps( props, obj, elem ) {
         for ( var i in props ) {
             var item = obj[props[i]];
             if ( item !== undefined) {
@@ -387,7 +387,7 @@ window.Modernizr = (function( window, document, undefined ) {
         // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
         } else {
           props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
-          return testDOMProps(props, prefixed, elem);
+          return tesdivOMProps(props, prefixed, elem);
         }
     }
     /*>>testallprops*/
@@ -1019,7 +1019,7 @@ window.Modernizr = (function( window, document, undefined ) {
         var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
 
         /** Not all elements can be cloned in IE **/
-        var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
+        var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|div|th|tr|ul)$/i;
 
         /** Detect whether the browser supports default html5 styles */
         var supportsHtml5Styles;

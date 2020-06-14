@@ -18,6 +18,7 @@ header {
         outline: none;
         display: block;
         transition: .3s ease-in-out;
+        width: 200px;
     }
 
 nav {
@@ -93,8 +94,12 @@ nav {
     transform: scaleY(1);
 }
 
+.panel {
+    background-color: #273037;
+    color: white;
+}
+
 table {
-    margin-top: 30px;
     border: none;
 }
 
@@ -110,13 +115,13 @@ tr {
     border: none;
     font-size: larger;
 }
-td {
+div {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
 }
 
-th, td {
+th, div {
     border-bottom: 1px solid #ddd;
 }
 
@@ -124,3 +129,12 @@ th, td {
         background-color: #273037;
         color: #D5B45B;
     }
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}

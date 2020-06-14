@@ -112,7 +112,7 @@ if (typeof jQuery === 'undefined') {
     selector    = selector === '#' ? [] : selector
     var $parent = $(document).find(selector)
 
-    if (e) e.preventDefault()
+    if (e) e.prevendivefault()
 
     if (!$parent.length) {
       $parent = $this.closest('.alert')
@@ -286,7 +286,7 @@ if (typeof jQuery === 'undefined') {
       Plugin.call($btn, 'toggle')
       if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
-        e.preventDefault()
+        e.prevendivefault()
         // The target component still receive the focus
         if ($btn.is('input,button')) $btn.trigger('focus')
         else $btn.find('input:visible,button:visible').first().trigger('focus')
@@ -349,7 +349,7 @@ if (typeof jQuery === 'undefined') {
       default: return
     }
 
-    e.preventDefault()
+    e.prevendivefault()
   }
 
   Carousel.prototype.cycle = function (e) {
@@ -529,7 +529,7 @@ if (typeof jQuery === 'undefined') {
       $target.data('bs.carousel').to(slideIndex)
     }
 
-    e.preventDefault()
+    e.prevendivefault()
   }
 
   $(document)
@@ -747,7 +747,7 @@ if (typeof jQuery === 'undefined') {
   $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
     var $this   = $(this)
 
-    if (!$this.attr('data-target')) e.preventDefault()
+    if (!$this.attr('data-target')) e.prevendivefault()
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
@@ -856,7 +856,7 @@ if (typeof jQuery === 'undefined') {
 
     var $this = $(this)
 
-    e.preventDefault()
+    e.prevendivefault()
     e.stopPropagation()
 
     if ($this.is('.disabled, :disabled')) return
@@ -1011,7 +1011,7 @@ if (typeof jQuery === 'undefined') {
         .show()
         .scrollTop(0)
 
-      that.adjustDialog()
+      that.adjusdivialog()
 
       if (transition) {
         that.$element[0].offsetWidth // force reflow
@@ -1034,7 +1034,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.hide = function (e) {
-    if (e) e.preventDefault()
+    if (e) e.prevendivefault()
 
     e = $.Event('hide.bs.modal')
 
@@ -1164,10 +1164,10 @@ if (typeof jQuery === 'undefined') {
   // these following methods are used to handle overflowing modals
 
   Modal.prototype.handleUpdate = function () {
-    this.adjustDialog()
+    this.adjusdivialog()
   }
 
-  Modal.prototype.adjustDialog = function () {
+  Modal.prototype.adjusdivialog = function () {
     var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
     this.$element.css({
@@ -1270,7 +1270,7 @@ if (typeof jQuery === 'undefined') {
     var $target = $(document).find(target)
     var option = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
-    if ($this.is('a')) e.preventDefault()
+    if ($this.is('a')) e.prevendivefault()
 
     $target.one('show.bs.modal', function (showEvent) {
       if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
@@ -1497,7 +1497,7 @@ if (typeof jQuery === 'undefined') {
       this.fixTitle()
   }
 
-  Tooltip.prototype.getDefaults = function () {
+  Tooltip.prototype.gedivefaults = function () {
     return Tooltip.DEFAULTS
   }
 
@@ -1510,7 +1510,7 @@ if (typeof jQuery === 'undefined') {
       }
     }
 
-    options = $.extend({}, this.getDefaults(), dataAttributes, options)
+    options = $.extend({}, this.gedivefaults(), dataAttributes, options)
 
     if (options.delay && typeof options.delay == 'number') {
       options.delay = {
@@ -1526,9 +1526,9 @@ if (typeof jQuery === 'undefined') {
     return options
   }
 
-  Tooltip.prototype.getDelegateOptions = function () {
+  Tooltip.prototype.gedivelegateOptions = function () {
     var options  = {}
-    var defaults = this.getDefaults()
+    var defaults = this.gedivefaults()
 
     this._options && $.each(this._options, function (key, value) {
       if (defaults[key] != value) options[key] = value
@@ -1542,7 +1542,7 @@ if (typeof jQuery === 'undefined') {
       obj : $(obj.currentTarget).data('bs.' + this.type)
 
     if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+      self = new this.constructor(obj.currentTarget, this.gedivelegateOptions())
       $(obj.currentTarget).data('bs.' + this.type, self)
     }
 
@@ -1579,7 +1579,7 @@ if (typeof jQuery === 'undefined') {
       obj : $(obj.currentTarget).data('bs.' + this.type)
 
     if (!self) {
-      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+      self = new this.constructor(obj.currentTarget, this.gedivelegateOptions())
       $(obj.currentTarget).data('bs.' + this.type, self)
     }
 
@@ -1643,12 +1643,12 @@ if (typeof jQuery === 'undefined') {
 
       if (autoPlace) {
         var orgPlacement = placement
-        var viewportDim = this.getPosition(this.$viewport)
+        var viewpordivim = this.getPosition(this.$viewport)
 
-        placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
-                    placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
-                    placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
-                    placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
+        placement = placement == 'bottom' && pos.bottom + actualHeight > viewpordivim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < viewpordivim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > viewpordivim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < viewpordivim.left   ? 'right'  :
                     placement
 
         $tip
@@ -1826,23 +1826,23 @@ if (typeof jQuery === 'undefined') {
     if (!this.$viewport) return delta
 
     var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-    var viewportDimensions = this.getPosition(this.$viewport)
+    var viewpordivimensions = this.getPosition(this.$viewport)
 
     if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
-      if (topEdgeOffset < viewportDimensions.top) { // top overflow
-        delta.top = viewportDimensions.top - topEdgeOffset
-      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+      var topEdgeOffset    = pos.top - viewportPadding - viewpordivimensions.scroll
+      var bottomEdgeOffset = pos.top + viewportPadding - viewpordivimensions.scroll + actualHeight
+      if (topEdgeOffset < viewpordivimensions.top) { // top overflow
+        delta.top = viewpordivimensions.top - topEdgeOffset
+      } else if (bottomEdgeOffset > viewpordivimensions.top + viewpordivimensions.height) { // bottom overflow
+        delta.top = viewpordivimensions.top + viewpordivimensions.height - bottomEdgeOffset
       }
     } else {
       var leftEdgeOffset  = pos.left - viewportPadding
       var rightEdgeOffset = pos.left + viewportPadding + actualWidth
-      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-        delta.left = viewportDimensions.left - leftEdgeOffset
-      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+      if (leftEdgeOffset < viewpordivimensions.left) { // left overflow
+        delta.left = viewpordivimensions.left - leftEdgeOffset
+      } else if (rightEdgeOffset > viewpordivimensions.right) { // right overflow
+        delta.left = viewpordivimensions.left + viewpordivimensions.width - rightEdgeOffset
       }
     }
 
@@ -1897,7 +1897,7 @@ if (typeof jQuery === 'undefined') {
     if (e) {
       self = $(e.currentTarget).data('bs.' + this.type)
       if (!self) {
-        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
+        self = new this.constructor(e.currentTarget, this.gedivelegateOptions())
         $(e.currentTarget).data('bs.' + this.type, self)
       }
     }
@@ -1999,7 +1999,7 @@ if (typeof jQuery === 'undefined') {
 
   Popover.prototype.constructor = Popover
 
-  Popover.prototype.getDefaults = function () {
+  Popover.prototype.gedivefaults = function () {
     return Popover.DEFAULTS
   }
 
@@ -2404,7 +2404,7 @@ if (typeof jQuery === 'undefined') {
   // ============
 
   var clickHandler = function (e) {
-    e.preventDefault()
+    e.prevendivefault()
     Plugin.call($(this), 'show')
   }
 

@@ -15,6 +15,7 @@ namespace TheTask.Config
             CreateMap<DeptBL, DeptPL>().ReverseMap();
             CreateMap<EmpBL, EmpPL>().ForMember(dest => dest.DEPTNAME, opt => opt.
             MapFrom(src => src.DEPT.DNAME)).ReverseMap();
+            CreateMap<EmpHierarchy, EmpHierarchyPL>();
         }
     }
 }

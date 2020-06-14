@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Models\DeptBL.cs" />
     <Compile Include="Models\EmpBL.cs" />
+    <Compile Include="Models\EmpHierarchy.cs" />
     <Compile Include="Models\SalGradeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DeptService.cs" />

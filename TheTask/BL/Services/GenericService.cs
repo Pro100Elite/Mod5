@@ -13,8 +13,8 @@ namespace BL.Services
         where BLModel: class
         where TEntity: class
     {
-        private readonly IGenericRepository<TEntity> _repository;
-        private readonly IMapper _mapper;
+        protected readonly IGenericRepository<TEntity> _repository;
+        protected readonly IMapper _mapper;
 
         public GenericService(IGenericRepository<TEntity> repository, IMapper mapper)
         {

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TheTask.Models.EmpHierarchyPL>
+
+@helper DisplayTree(IEnumerable<TheTask.Models.EmpHierarchyPL> elements)
+{
+    <ul class="panel">
+        @foreach (var element in elements)
+        {
+            <li>
+                <table width="100%" cellpadding="5">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>@element.Emp.DEPTNO</td>
+                        <td>@element.Emp.DEPTNAME</td>
+                        <td>@element.Emp.EMPNO</td>
+                        <td>@element.Emp.ENAME</td>
+                        <td>@element.Emp.COMM</td>
+                        <td>@element.Emp.HIREDATE</td>
+                        <td>@element.Emp.JOB</td>
+                        <td>@element.Emp.MGR</td>
+                        <td>@element.Emp.SAL</td>
+                    </tr>
+                </table>
+                @{
+                    var children = element.Subordinates;
+                    if (children.Count() > 0)
+                    {
+                        @DisplayTree(children)
+                    }
+                }
+                <wbr />
+            </li>
+        }
+    </ul>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetHierarchy</title>
+</head>
+<body>
+    <div>
+        <table width="100%" cellpadding="5">
+            <tr>
+                <th>DEPTNO</th>
+                <th>DEPTNAME</th>
+                <th>EMPNO</th>
+                <th>ENAME</th>
+                <th>COMM</th>
+                <th>HIREDATE</th>
+                <th>JOB</th>
+                <th>MGR</th>
+                <th>SAL</th>
+            </tr>
+        </table>
+        @DisplayTree(Model)
+    </div>
+</body>
+</html>
+
+

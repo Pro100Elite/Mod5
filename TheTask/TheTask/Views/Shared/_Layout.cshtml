@@ -11,17 +11,24 @@
     <header>
         <nav>
             <ul class="topmenu">
-                <li><a href="">Главная</a></li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                 <li>
-                    <a href="" class="submenu-link">О нас</a>
+                    <a class="submenu-link">MASTER-DETAIL</a>
                     <ul class="submenu">
                         <li><a href="@Url.Action("Index", "Dept")">Depts</a></li>
-                        <li><a href="">Магазин</a></li>
+                        <li><a href="@Url.Action("GetHierarchy", "Emp")">Магазин</a></li>
                         <li><a href="">Сервис</a></li>
                     </ul>
                 </li>
                 <li><a href="@Url.Action("Index", "Dept")">DEPARTMENTS</a></li>
-                <li><a href="">Контакты</a></li>
+                <li>
+                    <a class="submenu-link">EMPS</a>
+                    <ul class="submenu">
+                        <li><a href="@Url.Action("Index", "Emp")">Emps</a></li>
+                        <li><a href="@Url.Action("GetHierarchy", "Emp")">HierarchyEmps</a></li>
+                        <li><a href="">Сервис</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
