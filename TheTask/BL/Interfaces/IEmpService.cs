@@ -11,6 +11,7 @@ namespace BL.Interfaces
 {
     public interface IEmpService : IGenericService<EmpBL>
     {
-        IEnumerable<EmpHierarchy> GetEmpHierarchy();
+        IEnumerable<EmpHierarchy> GetEmpHierarchy(IEnumerable<SalGradeBL> salGradeBL);
+        IEnumerable<EmpBL> Get(IEnumerable<SalGradeBL> salGradeBL);
     }
 }

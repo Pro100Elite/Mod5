@@ -14,7 +14,8 @@ namespace BL.Config
         public BLMapper()
         {
             CreateMap<DEPT, DeptBL>().ReverseMap();
-            CreateMap<EMP, EmpBL>().ReverseMap();
+            CreateMap<EMP, EmpBL>();
+            CreateMap<EmpBL, EMP>().ForMember(dest => dest.DEPT, opt => opt.Ignore());
             CreateMap<SALGRADE, SalGradeBL>().ReverseMap();
         }
     }

@@ -9,6 +9,10 @@ namespace BL.Interfaces
     public interface IGenericService<BLModel> where BLModel: class
     {
         IEnumerable<BLModel> Get();
-        BLModel FindById(int id);
+        BLModel FindById(decimal id);
+
+        void Create(BLModel item);
+        void Update(BLModel item);
+        void Remove(decimal id);
     }
 }

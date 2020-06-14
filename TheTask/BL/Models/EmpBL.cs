@@ -17,6 +17,7 @@ namespace BL.Models
         public Nullable<decimal> SAL { get; set; }
         public Nullable<decimal> COMM { get; set; }
         public Nullable<decimal> DEPTNO { get; set; }
+        public int SALGRADE { get; set; }
 
         public DeptBL DEPT { get; set; }
     }

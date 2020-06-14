@@ -62,6 +62,7 @@
     <Compile Include="Interfaces\IDeptService.cs" />
     <Compile Include="Interfaces\IEmpService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Interfaces\ISalGradeService.cs" />
     <Compile Include="Models\DeptBL.cs" />
     <Compile Include="Models\EmpBL.cs" />
     <Compile Include="Models\EmpHierarchy.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Services\DeptService.cs" />
     <Compile Include="Services\EmpService.cs" />
     <Compile Include="Services\GenericService.cs" />
+    <Compile Include="Services\SalGradeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

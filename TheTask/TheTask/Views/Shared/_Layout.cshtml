@@ -16,23 +16,21 @@
                     <a class="submenu-link">MASTER-DETAIL</a>
                     <ul class="submenu">
                         <li><a href="@Url.Action("Index", "Dept")">Depts</a></li>
-                        <li><a href="@Url.Action("GetHierarchy", "Emp")">Магазин</a></li>
-                        <li><a href="">Сервис</a></li>
+                        <li><a href="@Url.Action("Create", "Emp")">CreateEmp</a></li>
+                        <li><a href="@Url.Action("Index", "Emp")">Emps</a></li>
                     </ul>
                 </li>
                 <li><a href="@Url.Action("Index", "Dept")">DEPARTMENTS</a></li>
                 <li>
                     <a class="submenu-link">EMPS</a>
                     <ul class="submenu">
-                        <li><a href="@Url.Action("Index", "Emp")">Emps</a></li>
                         <li><a href="@Url.Action("GetHierarchy", "Emp")">HierarchyEmps</a></li>
-                        <li><a href="">Сервис</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
-    
+
     <div class="container body-content">
         @RenderBody()
         <hr />

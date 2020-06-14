@@ -8,15 +8,16 @@
             <li>
                 <table width="100%" cellpadding="5">
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>DEPTNO</th>
+                        <th>DEPTNAME</th>
+                        <th>EMPNO</th>
+                        <th>ENAME</th>
+                        <th>COMM</th>
+                        <th>HIREDATE</th>
+                        <th>JOB</th>
+                        <th>MGR</th>
+                        <th>SAL</th>
+                        <th>SALGRADE</th>
                     </tr>
                     <tr>
                         <td>@element.Emp.DEPTNO</td>
@@ -28,6 +29,7 @@
                         <td>@element.Emp.JOB</td>
                         <td>@element.Emp.MGR</td>
                         <td>@element.Emp.SAL</td>
+                        <td>@element.Emp.SALGRADE</td>
                     </tr>
                 </table>
                 @{
@@ -52,19 +54,6 @@
 </head>
 <body>
     <div>
-        <table width="100%" cellpadding="5">
-            <tr>
-                <th>DEPTNO</th>
-                <th>DEPTNAME</th>
-                <th>EMPNO</th>
-                <th>ENAME</th>
-                <th>COMM</th>
-                <th>HIREDATE</th>
-                <th>JOB</th>
-                <th>MGR</th>
-                <th>SAL</th>
-            </tr>
-        </table>
         @DisplayTree(Model)
     </div>
 </body>

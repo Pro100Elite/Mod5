@@ -26,6 +26,7 @@ namespace TheTask.Config
 
             builder.RegisterType<DeptService>().As<IDeptService>();
             builder.RegisterType<EmpService>().As<IEmpService>();
+            builder.RegisterType<SalGradeService>().As<ISalGradeService>();
 
             builder.RegisterModule<BLAutofacConfig>();
 

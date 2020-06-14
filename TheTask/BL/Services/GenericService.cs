@@ -30,11 +30,30 @@ namespace BL.Services
             return modelsBL;
         }
 
-        public BLModel FindById(int id)
+        public BLModel FindById(decimal id)
         {
             var data = _repository.FindById(id);
             var modelBL = _mapper.Map<BLModel>(data);
             return modelBL;
+        }
+
+        public void Create(BLModel item)
+        {
+            var model = _mapper.Map<TEntity>(item);
+
+            _repository.Create(model);
+        }
+
+        public void Update(BLModel item)
+        {
+            var model = _mapper.Map<TEntity>(item);
+
+            _repository.Update(model);
+        }
+
+        public void Remove(decimal id)
+        {
+            _repository.Remove(id);
         }
     }
 }

@@ -21,9 +21,7 @@ namespace DAL.Repositories
 
         public IEnumerable<TEntity> Get()
         {
-            var ff = _dbSet.AsNoTracking().ToList();          
-            _context.SaveChanges();
-            return ff;
+            return _dbSet.AsNoTracking().ToList();          
         }
 
         public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate)
@@ -31,7 +29,7 @@ namespace DAL.Repositories
             return _dbSet.AsNoTracking().Where(predicate).ToList();
         }
 
-        public TEntity FindById(int id)
+        public TEntity FindById(decimal id)
         {
             return _dbSet.Find(id);
         }
@@ -39,16 +37,20 @@ namespace DAL.Repositories
         public void Create(TEntity item)
         {
             _dbSet.Add(item);
+
             _context.SaveChanges();
         }
         public void Update(TEntity item)
         {
             _context.Entry(item).State = EntityState.Modified;
+
             _context.SaveChanges();
         }
-        public void Remove(TEntity item)
+        public void Remove(decimal id)
         {
-            _dbSet.Remove(item);
+            var model = _dbSet.Find(id);
+
+            _dbSet.Remove(model);
             _context.SaveChanges();
         }
     }

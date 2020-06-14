@@ -16,5 +16,6 @@ namespace TheTask.Models
         public Nullable<decimal> COMM { get; set; }
         public Nullable<decimal> DEPTNO { get; set; }
         public string DEPTNAME { get; set; }
+        public int SALGRADE { get; set; }
     }
 }

@@ -18,7 +18,20 @@ namespace BL.Services
 
         }
 
-        public IEnumerable<EmpHierarchy> GetEmpHierarchy()
+        public IEnumerable<EmpBL> Get(IEnumerable<SalGradeBL> salGradeBL)
+        {
+            var data = _repository.Get();
+            var empsBL = _mapper.Map<IEnumerable<EmpBL>>(data);
+
+            foreach (var emp in empsBL)
+            {
+                emp.SALGRADE = salGradeBL.FirstOrDefault(t => emp.SAL <= t.HISAL && emp.SAL >= t.LOSAL).GRADE;
+            }
+
+            return empsBL;
+        }
+
+        public IEnumerable<EmpHierarchy> GetEmpHierarchy(IEnumerable<SalGradeBL> salGradeBL)
         {
             ICollection<EmpHierarchy> hierarchy = new List<EmpHierarchy>();
 
@@ -34,6 +47,11 @@ namespace BL.Services
                 pres.Subordinates = GetHierarchyForEmp(allEmp, president);
 
                 hierarchy.Add(pres);
+            }
+
+            foreach (var emp in allEmp)
+            {
+                emp.SALGRADE = salGradeBL.FirstOrDefault(t => emp.SAL <= t.HISAL && emp.SAL >= t.LOSAL).GRADE;
             }
 
             return hierarchy;
