@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - My Task</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -15,7 +15,6 @@
                 <li>
                     <a class="submenu-link">MASTER-DETAIL</a>
                     <ul class="submenu">
-                        <li><a href="@Url.Action("Index", "Dept")">Depts</a></li>
                         <li><a href="@Url.Action("Create", "Emp")">CreateEmp</a></li>
                         <li><a href="@Url.Action("Index", "Emp")">Emps</a></li>
                     </ul>

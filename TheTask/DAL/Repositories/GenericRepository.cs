@@ -24,11 +24,6 @@ namespace DAL.Repositories
             return _dbSet.AsNoTracking().ToList();          
         }
 
-        public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate)
-        {
-            return _dbSet.AsNoTracking().Where(predicate).ToList();
-        }
-
         public TEntity FindById(decimal id)
         {
             return _dbSet.Find(id);

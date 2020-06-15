@@ -10,7 +10,6 @@ namespace DAL.Interfaces
     {
         TEntity FindById(decimal id);
         IEnumerable<TEntity> Get();
-        IEnumerable<TEntity> Get(Func<TEntity, bool> predicate);
 
         void Create(TEntity item);
         void Remove(decimal id);

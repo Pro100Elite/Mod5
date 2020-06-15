@@ -38,7 +38,7 @@
                     @if (emps == Model.Where(l => l.DEPTNO == emps.DEPTNO).Last())
                     {
                         <th>AVG</th>
-                        <td>@Model.Where(l => l.DEPTNO == emps.DEPTNO).Average(avg => avg.SAL)</td>
+                        <td> @string.Format("{0:0.00}", Model.Where(l => l.DEPTNO == emps.DEPTNO).Average(avg => avg.SAL))</td>
                     }
                 </tr>
             }
