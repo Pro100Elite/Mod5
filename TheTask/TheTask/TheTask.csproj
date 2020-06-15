@@ -202,10 +202,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Dept\Index.cshtml" />
     <Content Include="Views\Emp\GetHierarchy.cshtml" />
-    <Content Include="Views\Emp\ShowEmp.cshtml" />
     <Content Include="Views\Emp\Index.cshtml" />
     <Content Include="Views\Emp\Create.cshtml" />
     <Content Include="Views\Emp\Edit.cshtml" />
+    <Content Include="Views\Emp\GetEmpsAvgSal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

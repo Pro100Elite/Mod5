@@ -24,13 +24,13 @@
                 <li>
                     <a class="submenu-link">EMPS</a>
                     <ul class="submenu">
+                        <li><a href="@Url.Action("GetEmpsAvgSal", "Emp")">EmpsAvgSal</a></li>
                         <li><a href="@Url.Action("GetHierarchy", "Emp")">HierarchyEmps</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </header>
-
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -38,6 +38,7 @@
             <p>&copy; @DateTime.Now.Year - My PAIN</p>
         </footer>
     </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

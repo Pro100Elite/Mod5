@@ -35,6 +35,13 @@ namespace TheTask.Controllers
             return View(emps);
         }
 
+        public ActionResult GetEmpsAvgSal()
+        {
+            var data = _service.Get().OrderBy(o => o.DEPTNO).ThenByDescending(s => s.SAL);
+            var emps = _mapper.Map<IEnumerable<EmpPL>>(data);
+            return View(emps);
+        }
+
         public ActionResult GetHierarchy()
         {
             var salGrade = _salGradeService.Get();

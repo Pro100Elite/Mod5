@@ -34,10 +34,15 @@
                     <td>@emps.MGR</td>
                     <td>@emps.SAL</td>
                 </tr>
+                <tr>
+                    @if (emps == Model.Where(l => l.DEPTNO == emps.DEPTNO).Last())
+                    {
+                        <th>AVG</th>
+                        <td>@Model.Where(l => l.DEPTNO == emps.DEPTNO).Average(avg => avg.SAL)</td>
+                    }
+                </tr>
             }
         </table>
     </div>
 </body>
 </html>
-
-
